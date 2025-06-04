@@ -1,0 +1,152 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id          String             @id @default(uuid())
+  clerkUserId String             @unique
+  email       String             @unique
+  name        String?
+  imageUrl    String?
+  phone       String?
+  role        UserRole           @default(USER)
+  savedCars   UserSavedCar[]
+  testDrives  TestDriveBooking[]
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+}
+
+model Car {
+  id                String             @id @default(uuid())
+  make              String
+  model             String
+  year              Int
+  price             Decimal            @db.Decimal(10, 2)
+  mileage           Int
+  color             String
+  fuelType          String
+  transmission      String
+  bodyType          String
+  seats             Int?
+  description       String
+  status            CarStatus          @default(AVAILABLE)
+  featured          Boolean            @default(false)
+  images            String[]
+  savedBy           UserSavedCar[]
+  testDriveBookings TestDriveBooking[]
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+
+  @@index([make, model])
+  @@index([bodyType])
+  @@index([price])
+  @@index([year])
+  @@index([status])
+  @@index([fuelType])
+  @@index([featured])
+}
+
+model DealershipInfo {
+  id           String        @id @default(uuid())
+  name         String        @default("Mira Motors")
+  address      String        @default("123 Main St, Anytown, USA")
+  phone        String        @default("+1 (123) 456-7890")
+  email        String        @default("contact@MiraMotors.com")
+  workingHours WorkingHour[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model WorkingHour {
+  id           String         @id @default(uuid())
+  dealersihpId String
+  dealership   DealershipInfo @relation(fields: [dealersihpId], references: [id], onDelete: Cascade)
+  dayOfWeek    DayOfWeek
+  openTime     String
+  closeTime    String
+  isOpen       Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@unique([dealersihpId, dayOfWeek])
+  @@index([isOpen])
+  @@index([dealersihpId])
+  @@index([dayOfWeek])
+}
+
+model UserSavedCar {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  carId     String
+  car       Car      @relation(fields: [carId], references: [id], onDelete: Cascade)
+  savedAt   DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, carId])
+  @@index([userId])
+  @@index([carId])
+}
+
+model TestDriveBooking {
+  id          String        @id @default(uuid())
+  carId       String
+  car         Car           @relation(fields: [carId], references: [id])
+  userId      String
+  user        User          @relation(fields: [userId], references: [id])
+  bookingDate DateTime      @db.Date
+  startTime   DateTime
+  endTime     DateTime
+  status      BookingStatus @default(PENDING)
+  notes       String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([carId])
+  @@index([userId])
+  @@index([status])
+  @@index([bookingDate])
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum CarStatus {
+  AVAILABLE
+  UNAVAILABLE
+  SOLD
+}
+
+enum DayOfWeek {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
