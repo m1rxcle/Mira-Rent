@@ -34,10 +34,10 @@ const ReservationsList: React.FC<{ initialData: initialDataProps[] }> = ({ initi
 				<div className="bg-gray-100 p-4 rounded-full mb-4">
 					<Calendar className="h-8 w-8 text-gray-500" />
 				</div>
-				<h3 className="text-lg font-medium mb-2">No Reservations Found</h3>
-				<p className="text-gray-500 mb-6 max-w-md">You have not made any reservations yet. Browse our cars and book a test drive to get started.</p>
+				<h3 className="text-lg font-medium mb-2">Не удалось найти бронирования</h3>
+				<p className="text-gray-500 mb-6 max-w-md">Вы не забронировали ни одной машины. Пожалуйста выберите машину из нашего списка.</p>
 				<Button asChild variant="default">
-					<Link href="/cars">Browse Cars</Link>
+					<Link href="/cars">Найти машину</Link>
 				</Button>
 			</div>
 		)
@@ -46,10 +46,10 @@ const ReservationsList: React.FC<{ initialData: initialDataProps[] }> = ({ initi
 	return (
 		<div className="space-y-6">
 			<div>
-				<h2 className="text-2xl font-bold mb-4">Upcoming Test Drive</h2>
+				<h2 className="text-2xl font-bold mb-4">Предстоящие тест-драйвы</h2>
 
 				{upcomingBookings.length === 0 ? (
-					<p className="text-gray-500 italic">No upcoming test drives found.</p>
+					<p className="text-gray-500 italic">Нет предстоящих тест-драйвов</p>
 				) : (
 					<div className="space-y-3">
 						{upcomingBookings.map((booking) => (
@@ -61,7 +61,7 @@ const ReservationsList: React.FC<{ initialData: initialDataProps[] }> = ({ initi
 
 			{pastBookings.length > 0 && (
 				<div className="text-2xl font-bold mb-4">
-					<h2 className="text-2xl font-bold mb-4">Past Test Drives</h2>
+					<h2 className="text-2xl font-bold mb-4">Прошлые тест-драйвы</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 						{pastBookings.map((booking) => (
 							<TestDriveCard key={booking.id} booking={booking} isPast={true} showActions={false} isCanceling={cancelling} />

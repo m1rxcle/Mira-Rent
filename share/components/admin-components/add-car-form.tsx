@@ -34,7 +34,7 @@ const AddCarForm = () => {
 
 	useEffect(() => {
 		if (addCarResult?.success) {
-			toast.success("Car added successfully")
+			toast.success("Машина добавлена успешно")
 			router.push("/admin/cars")
 		}
 	}, [addCarResult, addCarLoading])
@@ -67,7 +67,7 @@ const AddCarForm = () => {
 
 	const onSubmit = async (data: CarPropsForSubmit) => {
 		if (uploadedImages.length === 0) {
-			setImageError("Please upload at least one image")
+			setImageError("Пожалуйста загрузите хотя бы одну картинку")
 			return
 		}
 
@@ -108,7 +108,7 @@ const AddCarForm = () => {
 				if (newImages.length === validFiles.length) {
 					setUploadedImages((prev) => [...prev, ...newImages])
 					setImageError("")
-					toast.success(`Successfully uploaded ${validFiles.length} images`)
+					toast.success(`Успешно загружено ${validFiles.length} картинок`)
 				}
 			}
 
@@ -142,7 +142,7 @@ const AddCarForm = () => {
 		const reader = new FileReader()
 		reader.onload = (e: ProgressEvent<FileReader>) => {
 			setImagePreview(e.target?.result as string)
-			toast.success("Image uploaded successfully")
+			toast.success("Картинка загружена успешно")
 		}
 
 		reader.readAsDataURL(file)
@@ -159,7 +159,7 @@ const AddCarForm = () => {
 
 	const processWithAi = async () => {
 		if (!uploadedAiImage) {
-			toast.error("Please upload an image first")
+			toast.error("Пожалуйста загрузите картинку")
 			return
 		}
 
@@ -168,7 +168,7 @@ const AddCarForm = () => {
 
 	useEffect(() => {
 		if (error) {
-			toast.error(error || "Failed to upload image")
+			toast.error(error || "Ошибка загрузки картинки")
 		}
 	}, [error])
 
@@ -193,10 +193,10 @@ const AddCarForm = () => {
 				}
 				reader.readAsDataURL(uploadedAiImage)
 			}
-			toast.success("Successfully extracted car details ", {
-				description: `Detected ${data?.data.year} ${data?.data.make} ${data?.data.model} with ${Math.round(
+			toast.success("Успешно обработаны детали ", {
+				description: `Detected ${data?.data.year} ${data?.data.make} ${data?.data.model} с ${Math.round(
 					(data?.data.confidence as number) * 100
-				)}% confidence`,
+				)}% уверенности`,
 			})
 
 			setActiveTab("manual")
@@ -208,17 +208,17 @@ const AddCarForm = () => {
 			<Tabs defaultValue="ai" className="mt-6 " value={activeTab} onValueChange={setActiveTab}>
 				<TabsList className="grid w-full grid-cols-2 ">
 					<TabsTrigger value="manual" className="cursor-pointer">
-						Manual Entry
+						Ручная загрузка
 					</TabsTrigger>
 					<TabsTrigger value="ai" className="cursor-pointer">
-						AI Upload
+						Загрузка при помощи ИИ
 					</TabsTrigger>
 				</TabsList>
 				<TabsContent value="manual" className="mt-6">
 					<Card>
 						<CardHeader>
-							<CardTitle>Car Details</CardTitle>
-							<CardDescription>Enter the details of the car</CardDescription>
+							<CardTitle>Детали машины</CardTitle>
+							<CardDescription>Введите детали машины</CardDescription>
 						</CardHeader>
 						<CardContent>
 							<ManualEntry
@@ -242,8 +242,8 @@ const AddCarForm = () => {
 				<TabsContent value="ai" className="mt-6">
 					<Card>
 						<CardHeader>
-							<CardTitle>AI-Powered Car Details Extraction</CardTitle>
-							<CardDescription>Upload an image of the car and let AI extract its details</CardDescription>
+							<CardTitle>Обработать детали при помощи ИИ</CardTitle>
+							<CardDescription>Загрузите картинку машины чтобы ИИ обработал ее</CardDescription>
 						</CardHeader>
 						<CardContent>
 							<AiUpload

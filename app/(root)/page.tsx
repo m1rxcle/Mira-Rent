@@ -19,9 +19,9 @@ export default async function Home() {
 			<section className="relative py-16 md:py-28 dotted-background ">
 				<div className="container max-w-4xl mx-auto text-center px-4">
 					<div className="mb-8">
-						<h1 className="text-5xl md:text-8xl mb-4 gradient-title">Find your Dream Car with Mira-Rent</h1>
+						<h1 className="text-5xl md:text-8xl mb-4 gradient-title">Найди машину своей мечты с Miracle Rent</h1>
 						<p className="text-xl text-gray-500 mb-8 max-w-2xl mx-auto">
-							Find you dream car with Mira Rent. We provide you the best car for your budget.
+							Найди машину своей мечты с Miracle Rent. Мы предлагаем высококлассные автомобили, которые подходят именно тебе.
 						</p>
 					</div>
 					{/* Search */}
@@ -31,15 +31,15 @@ export default async function Home() {
 			<section className="py-12">
 				<div className="contrainer mx-auto px-4">
 					<div className="flex justify-between items-center mb-8">
-						<h2 className="text-2xl font-bold">Featured Cars</h2>
+						<h2 className="text-2xl font-bold">Избранные автомобили</h2>
 						<Button variant="ghost" className="flex items-center" asChild>
 							{user ? (
 								<Link href="/cars">
-									View All <ChevronRight calcMode="ml-1 h-4 w-4" />
+									Посмотреть все <ChevronRight calcMode="ml-1 h-4 w-4" />
 								</Link>
 							) : (
 								<Link href="/sign-in">
-									Sign Up to view all <ChevronRight calcMode="ml-1 h-4 w-4" />
+									Войдите, чтобы увидеть все <ChevronRight calcMode="ml-1 h-4 w-4" />
 								</Link>
 							)}
 						</Button>
@@ -55,15 +55,15 @@ export default async function Home() {
 			<section className="py-12 bg-gray-50">
 				<div className="contrainer mx-auto px-4">
 					<div className="flex justify-between items-center mb-8">
-						<h2 className="text-2xl font-bold">Browse by Make</h2>
+						<h2 className="text-2xl font-bold">Поиск по маркам</h2>
 						<Button variant="ghost" className="flex items-center" asChild>
 							{user ? (
 								<Link href="/cars">
-									View All <ChevronRight calcMode="ml-1 h-4 w-4" />
+									Посмотреть все <ChevronRight calcMode="ml-1 h-4 w-4" />
 								</Link>
 							) : (
 								<Link href="/sign-in">
-									Sign Up to view all <ChevronRight calcMode="ml-1 h-4 w-4" />
+									Войдите, чтобы увидеть все <ChevronRight calcMode="ml-1 h-4 w-4" />
 								</Link>
 							)}
 						</Button>
@@ -86,33 +86,31 @@ export default async function Home() {
 
 			<section className="py-16">
 				<div className="container mx-auto px-4">
-					<h2 className="text-2xl font-bold text-center mb-12">Why Choose Our Platform</h2>
+					<h2 className="text-2xl font-bold text-center mb-12">Почему выбирают нас</h2>
 
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 						<div className="text-center">
 							<div className="bg-blue-100 text-blue-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
 								<CarIcon className="h-8 w-8" />
 							</div>
-							<h3 className="text-xl font-bold mb-2">Wide Selection</h3>
-							<p className="text-gray-600">Thousands of cars to choose from for your dream car rental experience.</p>
+							<h3 className="text-xl font-bold mb-2">Большой выбор</h3>
+							<p className="text-gray-600">Сотни автомобилей в наличии, чтобы удовлетворить любые потребности.</p>
 						</div>
 
 						<div className="text-center">
 							<div className="bg-blue-100 text-blue-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
 								<Shield className="h-8 w-8" />
 							</div>
-							<h3 className="text-xl font-bold mb-2">Sucure Process</h3>
-							<p className="text-gray-600">
-								We take your privacy seriously and use state-of-the-art security measures to protect your personal information.
-							</p>
+							<h3 className="text-xl font-bold mb-2">Безопастность</h3>
+							<p className="text-gray-600">Мы предлагаем автомобили, которые соответствуют современным стандартам безопасности.</p>
 						</div>
 
 						<div className="text-center">
 							<div className="bg-blue-100 text-blue-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
 								<Calendar className="h-8 w-8" />
 							</div>
-							<h3 className="text-xl font-bold mb-2">Easy Test Drive</h3>
-							<p className="text-gray-600">We offer easy test drives to help you decide which car is right for you.</p>
+							<h3 className="text-xl font-bold mb-2">Легкий тест-драйв</h3>
+							<p className="text-gray-600">Мы предлагаем автомобили, которые легко подходят к тест-драйву.</p>
 						</div>
 					</div>
 				</div>
@@ -121,11 +119,17 @@ export default async function Home() {
 			<section className="py-12 bg-gray-50">
 				<div className="contrainer mx-auto px-4">
 					<div className="flex justify-between items-center mb-8">
-						<h2 className="text-2xl font-bold">Browse by Body Type</h2>
+						<h2 className="text-2xl font-bold">Поиск по кузову</h2>
 						<Button variant="ghost" className="flex items-center" asChild>
-							<Link href="/cars">
-								View All <ChevronRight calcMode="ml-1 h-4 w-4" />
-							</Link>
+							{user ? (
+								<Link href="/cars">
+									Посмотреть все <ChevronRight calcMode="ml-1 h-4 w-4" />
+								</Link>
+							) : (
+								<Link href="/sign-in">
+									Войдите, чтобы увидеть все <ChevronRight calcMode="ml-1 h-4 w-4" />
+								</Link>
+							)}
 						</Button>
 					</div>
 					<div className="grid grid-cols-2 md:grid-cols-4  gap-4">
@@ -145,7 +149,7 @@ export default async function Home() {
 
 			<section className="py-12 bg-gray-50">
 				<div className="container mx-auto px-4">
-					<h2 className="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+					<h2 className="text-2xl font-bold text-center mb-8">Часто задаваемые вопросы</h2>
 
 					<Accordion type="single" collapsible className="w-full">
 						{faqItems.map((faq, index) => (

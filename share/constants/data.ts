@@ -65,43 +65,41 @@ export const bodyTypes = [
 
 export const faqItems = [
 	{
-		question: "How does the test drive booking work?",
-		answer:
-			"Simply find a car you're interested in, click the 'Test Drive' button, and select an available time slot. Our system will confirm your booking and provide all necessary details.",
+		question: "Как мне найти машину, которую хочу купить?",
+		answer: "Просто выберите марку, модель, год выпуска и другие характеристики, чтобы найти подходящую машину.",
 	},
 	{
-		question: "Can I search for cars using an image?",
-		answer: "Yes! Our AI-powered image search lets you upload a photo of a car you like, and we'll find similar models in our inventory.",
+		question: "Могу ли я найти машину по фотографии?",
+		answer: "Да! Вы можете загрузить фотографию машины и найти подходящую машину по ней.",
 	},
 	{
-		question: "Are all cars certified and verified?",
-		answer: "All cars listed on our platform undergo a verification process. We are a trusted dealerships and verified private seller.",
+		question: "Все ли машины на сайте проверены?",
+		answer: "Все машины на сайте проходят проверку перед продажей.",
 	},
 	{
-		question: "What happens after I book a test drive?",
-		answer:
-			"After booking, you'll receive a confirmation email with all the details. We will also contact you to confirm and provide any additional information.",
+		question: "Что делать, после бронирования машины?",
+		answer: "После бронирования машины, вы получите уведомление о том, когда машина будет доступна для покупки.",
 	},
 ]
 
 export const routes = [
 	{
-		label: "Dashboard",
+		label: "Панель ",
 		icon: LayoutDashboard,
 		href: "/admin",
 	},
 	{
-		label: "Cars",
+		label: "Машины",
 		icon: Car,
 		href: "/admin/cars",
 	},
 	{
-		label: "Test Drives",
+		label: "Бронирование",
 		icon: Calendar,
 		href: "/admin/test-drives",
 	},
 	{
-		label: "Settings",
+		label: "Настройки",
 		icon: Cog,
 		href: "/admin/settings",
 	},

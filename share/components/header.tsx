@@ -15,14 +15,14 @@ const Header = async ({ isAdminPage = false }: { isAdminPage: boolean }) => {
 			<nav className="mx-auto p-4 flex items-center justify-between ">
 				<Link href={isAdminPage ? "/admin" : "/"} className="flex ">
 					<Image src={"/logo.png"} width={200} height={60} alt="logo" className="w-34 md:w-auto h-12 object-contain" />
-					{isAdminPage && <span className="text-xs font-extralight">admin</span>}
+					{isAdminPage && <span className="text-xs font-light text-blue-500">Админ</span>}
 				</Link>
 				<div className="flex items-center space-x-4">
 					{isAdminPage ? (
 						<Link href="/">
 							<Button variant="outline" className="flex items-center gap-2">
 								<ArrowLeft size={18} />
-								<span>Back to App</span>
+								<span>В приложение</span>
 							</Button>
 						</Link>
 					) : (
@@ -30,7 +30,7 @@ const Header = async ({ isAdminPage = false }: { isAdminPage: boolean }) => {
 							<Link href="/saved-cars">
 								<Button>
 									<Heart size={18} />
-									<span className="hidden md:inline">Saved Cars</span>
+									<span className="hidden md:inline">Избранные автомобили</span>
 								</Button>
 							</Link>
 
@@ -38,14 +38,14 @@ const Header = async ({ isAdminPage = false }: { isAdminPage: boolean }) => {
 								<Link href="/admin">
 									<Button variant="outline">
 										<Layout size={18} />
-										<span className="hidden md:inline">Admin Portal</span>
+										<span className="hidden md:inline">Админ панель</span>
 									</Button>
 								</Link>
 							) : (
 								<Link href="/reservations">
 									<Button variant="outline">
 										<CarFront size={18} />
-										<span className="hidden md:inline">My Reservations</span>
+										<span className="hidden md:inline">Мои бронирования</span>
 									</Button>
 								</Link>
 							)}
@@ -54,7 +54,7 @@ const Header = async ({ isAdminPage = false }: { isAdminPage: boolean }) => {
 
 					<SignedOut>
 						<SignInButton forceRedirectUrl="/">
-							<Button variant="outline">Login</Button>
+							<Button variant="outline">Войти</Button>
 						</SignInButton>
 					</SignedOut>
 					<SignedIn>

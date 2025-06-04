@@ -17,7 +17,7 @@ const SavedCars = async () => {
 
 	return (
 		<div className="container mx-auto px-4 py-12 mb-20">
-			<h1 className="text-6xl mb-6 gradient-title">Your Saved Cars</h1>
+			<h1 className="text-6xl mb-6 gradient-title">Автомобили в избранном</h1>
 			<SavedCarsList initialData={savedCarsResult} />
 		</div>
 	)

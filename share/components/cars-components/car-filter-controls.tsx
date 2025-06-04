@@ -1,5 +1,3 @@
-"use client"
-
 import { CurrentFiltersProps } from "@/@types"
 import { Badge, Slider } from "@/share/ui/index"
 import { Check, X } from "lucide-react"
@@ -26,28 +24,28 @@ const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFil
 	const filterSection = [
 		{
 			id: "make",
-			title: "Make",
+			title: "Марка",
 			options: filters.makes.map((make) => ({ value: make, label: make })),
 			currentValue: make,
 			onChange: (value: string) => onFilterChange("make", value),
 		},
 		{
 			id: "bodyType",
-			title: "Body Type",
+			title: "Кузов",
 			options: filters.bodyTypes.map((bodyType) => ({ value: bodyType, label: bodyType })),
 			currentValue: bodyType,
 			onChange: (value: string) => onFilterChange("bodyType", value),
 		},
 		{
 			id: "fuelType",
-			title: "Fuel Type",
+			title: "Топливо",
 			options: filters.fuelTypes.map((fuelType) => ({ value: fuelType, label: fuelType })),
 			currentValue: fuelType,
 			onChange: (value: string) => onFilterChange("fuelType", value),
 		},
 		{
 			id: "transmission",
-			title: "Transmission",
+			title: "Коробка передач",
 			options: filters.transmissions.map((transmission) => ({ value: transmission, label: transmission })),
 			currentValue: transmission,
 			onChange: (value: string) => onFilterChange("transmission", value),
@@ -57,14 +55,16 @@ const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFil
 	return (
 		<div className="space-y-6">
 			<div className="space-y-2">
-				<h3 className="font-medium">Price Range</h3>
+				<h3 className="font-medium">Цена</h3>
 				<div className="px-2">
 					<Slider
 						min={filters.priceRange.min}
 						max={filters.priceRange.max}
 						step={100}
 						value={priceRange}
-						onValueChange={(value: number[]) => onFilterChange("priceRange", value)}
+						onValueChange={(value) => {
+							onFilterChange("priceRange", priceRange)
+						}}
 					/>
 				</div>
 				<div className="flex items-center justify-between">
@@ -80,7 +80,7 @@ const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFil
 						{section.currentValue && (
 							<button className="text-sm text-gray-600 flex items-center cursor-pointer" onClick={() => onClearFilter(section.id)}>
 								<X className="mr-1 h-3 w-3" />
-								Clear
+								Очистить
 							</button>
 						)}
 					</h4>

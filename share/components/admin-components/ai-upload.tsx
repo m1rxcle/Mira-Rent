@@ -40,18 +40,18 @@ const AiUpload: React.FC<AiUploadProps> = ({
 									setUploadedAiImage(null)
 								}}
 							>
-								Remove
+								Удалить
 							</Button>
 							<Button size="sm" onClick={processWithAi} disabled={loading}>
 								{loading ? (
 									<>
 										<Loader2 className="animate-spin mr-2 h-4 w-4" />
-										Processing...
+										Обработка...
 									</>
 								) : (
 									<>
 										<Camera className="mr-2 h-4 w-4" />
-										Extract Details
+										Загрузить данные
 									</>
 								)}
 							</Button>
@@ -62,32 +62,32 @@ const AiUpload: React.FC<AiUploadProps> = ({
 						<input {...getAiInputProps()} />
 						<div className="flex flex-col items-center justify-center">
 							<Camera className="h-12 w-12 text-gray-400 mb-2" />
-							<p className="text-gray-600 text-sm ">Drag & drop or click to upload a car image</p>
+							<p className="text-gray-600 text-sm ">Перетащите или нажмите для загрузки изображения</p>
 
-							<p className="text-gray-500 text-xs mt-1">Supports: JPG, PNG, WebP (max 5MB)</p>
+							<p className="text-gray-500 text-xs mt-1">Поддерживает: JPG, PNG, WebP (max 5MB)</p>
 						</div>
 					</div>
 				)}
 			</div>
 
 			<div className="bg-gray-50 p-4 rounded-md">
-				<h3 className="font-medium mb-2">How it works</h3>
+				<h3 className="font-medium mb-2">Как это работает</h3>
 				<ol className="space-y-2 text-sm text-gray-600 list-decimal pl-4">
-					<li>Upload a clear image of the car</li>
-					<li>Click `Extract Details` to analyze with AI</li>
-					<li>Review the extracted information</li>
-					<li>Fill in any missing details manully</li>
-					<li>Add the car to your inventory</li>
+					<li>Загрузите чистое изображение без лишних деталей</li>
+					<li>Нажмите `Загрузить данные` что бы ИИ извлек информацию</li>
+					<li>Проверьте извлеченную информацию</li>
+					<li>Заполните недостающие поля</li>
+					<li>Добавьте машину в ваш список</li>
 				</ol>
 			</div>
 
 			<div className="space-y-1 text-sm text-amber-700">
-				<h3 className="font-medium text-amber-800 mb-1">Tips for best result</h3>
+				<h3 className="font-medium text-amber-800 mb-1">Подказки для лучшего результата:</h3>
 				<ul className="space-y-1 text-sm text-amber-700 list-disc marker:text-md list-inside pl-1">
-					<li>Use clear, well-lit images</li>
-					<li>Try to capture the entire vehicle </li>
-					<li>For difficult models, use multiple views</li>
-					<li>Always verify AI-extracted inforamtion</li>
+					<li>Используйте чистое изображение, без лишних деталей</li>
+					<li>Пробуйте захватить все машину</li>
+					<li>Для сложных моделей используйте несколько видов.</li>
+					<li>Всегда проверяйте информацию, полученную с помощью ИИ</li>
 				</ul>
 			</div>
 		</div>

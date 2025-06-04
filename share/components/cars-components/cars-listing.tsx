@@ -70,8 +70,8 @@ const CarsListing = () => {
 		return (
 			<Alert variant="destructive">
 				<InfoIcon className="h-4 w-4" />
-				<AlertTitle>Error</AlertTitle>
-				<AlertDescription>Failed to load cars. Please try later.</AlertDescription>
+				<AlertTitle>Ошибка</AlertTitle>
+				<AlertDescription>Ошибка при загрузке автомобилей. Попробуйте позже.</AlertDescription>
 			</Alert>
 		)
 	}
@@ -88,12 +88,10 @@ const CarsListing = () => {
 				<div className="bg-gray-100 p-4 rounded-full mb-4">
 					<Info className="h-8 w-8 text-gray-500" />
 				</div>
-				<h3 className="text-lg font-medium mb-2">No cars found</h3>
-				<p className="text-gray-500 mb-6 max-w-md">
-					We couldnt find any cars that match your search criteria. Try adjusting your search or filters or resetting them.
-				</p>
+				<h3 className="text-lg font-medium mb-2">Машины не найдены</h3>
+				<p className="text-gray-500 mb-6 max-w-md">Мы не смогли найти машины по вашему запросу. Попробуйте изменить параметры поиска.</p>
 				<Button variant="outline" asChild>
-					<Link href="/cars">Clear all filters</Link>
+					<Link href="/cars">Очистить все фильтры</Link>
 				</Button>
 			</div>
 		)
@@ -146,11 +144,11 @@ const CarsListing = () => {
 		<div>
 			<div className="flex items-center justify-between mb-6">
 				<p className="text-gray-600">
-					Showing{" "}
+					Показаны{" "}
 					<span className="font-medium">
 						{(page - 1) * limit + 1}-{Math.min(page * limit, pagination.total)}
 					</span>{" "}
-					of <span className="font-medium">{pagination.total}</span> cars
+					из <span className="font-medium">{pagination.total}</span> машин
 				</p>
 			</div>
 			<div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

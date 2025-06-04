@@ -129,7 +129,7 @@ const TestDriveCard = ({
 						<div className="space-y-2 my-2">
 							<div className="flex items-center text-gray-600">
 								<Calendar className="mr-2 h-4 w-4" />
-								<p className="font-medium text-[20px]">{format(new Date(booking.bookingDate), "EEEE, MMMM d, yyyy")}</p>
+								<p className="font-medium text-[20px]">{format(new Date(booking.bookingDate), "d, MMMM yyyy")}</p>
 							</div>
 							<div className="flex items-center text-gray-600">
 								<Clock className="mr-2 h-4 w-4" />
@@ -157,13 +157,13 @@ const TestDriveCard = ({
 							)}
 							<Button className="w-full my-2 " variant="outline" size="sm" asChild>
 								<Link href={`/cars/${booking.carId}`} className="flex items-center justify-center">
-									View Car <ArrowRight className="ml-2 h-4 w-4" />
+									Посмотреть машину <ArrowRight className="ml-2 h-4 w-4" />
 								</Link>
 							</Button>
 
 							{(booking.status === "PENDING" || booking.status === "CONFIRMED") && (
 								<Button variant="destructive" size="sm" className="w-full" onClick={() => setCanceDialogOpen(true)} disabled={isCanceling}>
-									{isCanceling ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Cancel"}
+									{isCanceling ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Отменить"}
 								</Button>
 							)}
 						</div>
@@ -174,19 +174,18 @@ const TestDriveCard = ({
 				<Dialog open={cancelDialogOpen} onOpenChange={setCanceDialogOpen}>
 					<DialogContent>
 						<DialogHeader>
-							<DialogTitle>Cancel Test Drive</DialogTitle>
+							<DialogTitle>Отменить запись</DialogTitle>
 							<DialogDescription>
-								Are you sure you want to cancel your test drive for the {booking.car.make} {booking.car.model} {booking.car.year}? This action cannot
-								be undone.
+								Вы уверены, что хотите отменить бронирование {booking.car.make} {booking.car.model} {booking.car.year}? Это действие необратимо.
 							</DialogDescription>
 						</DialogHeader>
 						<div className="py-4">
 							<div className="flex justify-between">
-								<span className="font-medium">Date:</span>
+								<span className="font-medium">День:</span>
 								<span>{format(new Date(booking.bookingDate), "EEEE, MMMM d, yyyy")}</span>
 							</div>
 							<div className="flex justify-between">
-								<span className="font-medium">Time:</span>
+								<span className="font-medium">Время:</span>
 								<span>
 									{formatTimeForTestDrive(booking.startTime)} - {formatTimeForTestDrive(booking.endTime)}
 								</span>
@@ -194,15 +193,15 @@ const TestDriveCard = ({
 						</div>
 						<DialogFooter>
 							<Button variant="outline" onClick={() => setCanceDialogOpen(false)} disabled={isCanceling}>
-								Keep Reservation
+								Оставить бронирование
 							</Button>
 							<Button variant="destructive" onClick={handleCancel} disabled={isCanceling}>
 								{isCanceling ? (
 									<>
-										<Loader2 className="mr-2 h-4 w-4 animate-spin" /> Cancelling...
+										<Loader2 className="mr-2 h-4 w-4 animate-spin" /> Отмена...
 									</>
 								) : (
-									"Cancel Reservation"
+									"Отменить бронирование"
 								)}
 							</Button>
 						</DialogFooter>

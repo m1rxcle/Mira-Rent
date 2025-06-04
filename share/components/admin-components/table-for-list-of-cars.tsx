@@ -64,12 +64,12 @@ const TableForListOfCars: React.FC<TableForListOfCarsProps> = ({
 					<TableHead>
 						<ImagesIcon className="h-6 w-10 mr-2" />
 					</TableHead>
-					<TableHead>Make & Model</TableHead>
-					<TableHead>Year</TableHead>
-					<TableHead>Price</TableHead>
-					<TableHead>Status</TableHead>
-					<TableHead>Featured</TableHead>
-					<TableHead className="text-right">Actions</TableHead>
+					<TableHead>Марка & Модель</TableHead>
+					<TableHead>Год</TableHead>
+					<TableHead>Цена</TableHead>
+					<TableHead>Статус</TableHead>
+					<TableHead>Избранное</TableHead>
+					<TableHead className="text-right">Действия</TableHead>
 				</TableRow>
 			</TableHeader>
 			<TableBody>
@@ -109,28 +109,28 @@ const TableForListOfCars: React.FC<TableForListOfCarsProps> = ({
 									<DropdownMenuContent className="w-50" align="end">
 										<DropdownMenuLabel className="flex items-center flex-row">
 											<ActivityIcon className="mr-2 h-4 w-4" />
-											Actions
+											Действия
 										</DropdownMenuLabel>
 										<DropdownMenuItem onClick={() => router.push(`/cars/${car.id}`)}>
 											<Eye className="mr-2 h-4 w-4 text-blue-500" />
-											View
+											Просмотр машины
 										</DropdownMenuItem>
 										<DropdownMenuSeparator />
 										<DropdownMenuLabel className="flex items-center flex-row">
-											<List className="mr-2 h-4 w-4" /> Statuses
+											<List className="mr-2 h-4 w-4" /> Статусы
 										</DropdownMenuLabel>
 
 										<DropdownMenuItem onClick={() => handleToggleStatus("AVAILABLE", car)}>
 											<BadgeCheck className="text-green-400 mr-2" />
-											Set Available
+											Сделать доступной
 										</DropdownMenuItem>
 										<DropdownMenuItem onClick={() => handleToggleStatus("UNAVAILABLE", car)}>
 											<BadgeCheck className="text-amber-400 mr-2" />
-											Set Unavailable
+											Сделать недоступной
 										</DropdownMenuItem>
 										<DropdownMenuItem onClick={() => handleToggleStatus("SOLD", car)}>
 											<BadgeCheck className="text-red-400 mr-2" />
-											Mark as Sold
+											Пометить как продано
 										</DropdownMenuItem>
 
 										<DropdownMenuSeparator />
@@ -142,7 +142,7 @@ const TableForListOfCars: React.FC<TableForListOfCarsProps> = ({
 											}}
 										>
 											<Trash2 className="mr-2 h-4 w-4 text-destructive" />
-											Delete
+											Удалить
 										</DropdownMenuItem>
 									</DropdownMenuContent>
 								</DropdownMenu>

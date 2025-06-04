@@ -7,7 +7,7 @@ export const metadata = {
 const CarsPage = () => {
 	return (
 		<div className="p-6">
-			<h1 className="text-2xl font-bold mb-6">Cars Management</h1>
+			<h1 className="text-2xl font-bold mb-6">Управление автомобилями</h1>
 			<CarsList />
 		</div>
 	)

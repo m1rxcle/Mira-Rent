@@ -87,19 +87,19 @@ const SettingsForm = () => {
 
 	useEffect(() => {
 		if (settingsError) {
-			toast.error("Failed to load dealership settings")
+			toast.error("Ошибка загрузки настроек")
 		}
 
 		if (saveError) {
-			toast.error(`Failed to save working hours: ${saveError}`)
+			toast.error(`Ошибка сохранения: ${saveError}`)
 		}
 
 		if (usersError) {
-			toast.error("Failed to load users")
+			toast.error("Ошибка загрузки пользователей")
 		}
 
 		if (updateRoleError) {
-			toast.error(`Failed to update user role: ${updateRoleError}`)
+			toast.error(`Ошибка обновления роли: ${updateRoleError}`)
 		}
 	}, [settingsError, saveError, usersError, updateRoleError])
 
@@ -118,12 +118,12 @@ const SettingsForm = () => {
 
 	useEffect(() => {
 		if (saveResult?.success) {
-			toast.success("Working hours updated successfully")
+			toast.success("Часы работы сохранены успешно")
 			fetchDealershipInfo()
 		}
 
 		if (updateRoleResult?.success) {
-			toast.success("User role updated successfully")
+			toast.success("Права пользователя обновлены успешно")
 			fetchUsers()
 		}
 	}, [saveResult, updateRoleResult])
@@ -135,19 +135,13 @@ const SettingsForm = () => {
 		: []
 
 	const handleRemoveAdmin = async (user: User) => {
-		if (
-			confirm(
-				`Are you sure you want to remove admin privileges from ${user.name || user.email}? They will no longer be able to access the admin dashboard.`
-			)
-		) {
+		if (confirm(`Вы уверены, что хотите удалить права администратора ${user.name || user.email}? Он будет переведен в обычного пользователя.`)) {
 			await updateRole(user.id, "USER")
 		}
 	}
 
 	const handleMakeAdmin = async (user: User) => {
-		if (
-			confirm(`Are you sure you want to give admin privileges to ${user.name || user.email}? Admin users can manage all aspects of the dealership.`)
-		) {
+		if (confirm(`Вы уверены, что хотите выдать права администратора ${user.name || user.email}? Администратор будет иметь полные права.`)) {
 			await updateRole(user.id, "ADMIN")
 		}
 	}
@@ -157,10 +151,10 @@ const SettingsForm = () => {
 			<Tabs defaultValue="hours">
 				<TabsList className="w-full">
 					<TabsTrigger value="hours">
-						<Clock className="mr-2 h-4 w-4" /> Working Hours
+						<Clock className="mr-2 h-4 w-4" /> Рабочие часы
 					</TabsTrigger>
 					<TabsTrigger value="admins">
-						<Shield className="mr-2 h-4 w-4" /> Admin Users
+						<Shield className="mr-2 h-4 w-4" /> Администраторы и пользователи
 					</TabsTrigger>
 				</TabsList>
 				<TabsContent value="hours" className="space-y-6 mt-6">
@@ -172,8 +166,8 @@ const SettingsForm = () => {
 						) : (
 							<>
 								<CardHeader>
-									<CardTitle>Working Hours</CardTitle>
-									<CardDescription>Set your dealership working hours for each day of the week.</CardDescription>
+									<CardTitle>Рабочие часы</CardTitle>
+									<CardDescription>Настройте рабочие часы для вашего автосалона</CardDescription>
 								</CardHeader>
 								<CardContent>
 									<div className="space-y-4">
@@ -193,7 +187,7 @@ const SettingsForm = () => {
 													/>
 
 													<Label htmlFor={`is-open-${day.value}`} className="ml-2 cursor-pointer">
-														{workingHours[index]?.isOpen ? "Open" : "Closed"}
+														{workingHours[index]?.isOpen ? "Открыто" : "Закрыто"}
 													</Label>
 												</div>
 
@@ -211,7 +205,7 @@ const SettingsForm = () => {
 															</div>
 														</div>
 
-														<div className="text-center col-span-1">to</div>
+														<div className="text-center col-span-1">до</div>
 
 														<div className="col-span-5 md:col-span-3">
 															<div className="flex items-center">
@@ -226,7 +220,9 @@ const SettingsForm = () => {
 													</>
 												)}
 
-												{!workingHours[index]?.isOpen && <div className="col-span-11 md:col-span-8 text-gray-500 italic text-sm">Closed all day</div>}
+												{!workingHours[index]?.isOpen && (
+													<div className="col-span-11 md:col-span-8 text-gray-500 italic text-sm">Закрыто весь день</div>
+												)}
 											</div>
 										))}
 									</div>
@@ -235,12 +231,12 @@ const SettingsForm = () => {
 											{savingHours ? (
 												<>
 													<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-													Saving...
+													Сохранение...
 												</>
 											) : (
 												<>
 													<Save className="mr-2 h-4 w-4" />
-													Save Working Hours
+													Сохранить рабочие часы
 												</>
 											)}
 										</Button>
@@ -253,13 +249,13 @@ const SettingsForm = () => {
 				<TabsContent value="admins" className="space-y-6 mt-6">
 					<Card>
 						<CardHeader>
-							<CardTitle>Admin Users</CardTitle>
-							<CardDescription>Manage users with admin privileges.</CardDescription>
+							<CardTitle>Администраторы и пользователи</CardTitle>
+							<CardDescription>Управление администраторами и пользователями</CardDescription>
 						</CardHeader>
 						<CardContent>
 							<div className="mb-6 relative">
 								<Search className="absolute top-2.5 left-2.5 h-4 w-4 text-gray-500" />
-								<Input type="search" placeholder="Search users..." className="pl-9 w-full" onChange={(e) => setSearch(e.target.value)} />
+								<Input type="search" placeholder="Поиск..." className="pl-9 w-60" onChange={(e) => setSearch(e.target.value)} />
 							</div>
 
 							{fetchinUsers ? (
@@ -273,10 +269,10 @@ const SettingsForm = () => {
 									<Table>
 										<TableHeader>
 											<TableRow>
-												<TableHead>User</TableHead>
-												<TableHead>Email</TableHead>
-												<TableHead>Role</TableHead>
-												<TableHead className="text-right">Action</TableHead>
+												<TableHead>Пользователь</TableHead>
+												<TableHead>Почта</TableHead>
+												<TableHead>Права</TableHead>
+												<TableHead className="text-right">Действия</TableHead>
 											</TableRow>
 										</TableHeader>
 										<TableBody>
@@ -309,12 +305,12 @@ const SettingsForm = () => {
 																	disabled={updatingRole}
 																>
 																	<UserX className="mr-2 h-4 w-4" />
-																	Remove Admin
+																	Сделать пользователем
 																</Button>
 															) : (
 																<Button variant="outline" size="sm" onClick={() => handleMakeAdmin(user)} disabled={updatingRole}>
 																	<Shield className="mr-2 h-4 w-4" />
-																	Make Admin
+																	Сделать администратором
 																</Button>
 															)}
 														</TableCell>
@@ -327,8 +323,8 @@ const SettingsForm = () => {
 							) : (
 								<div className="py-12 text-center">
 									<Users className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-									<h3 className="text-lg font-medium text-gray-900 mb-1">No users found</h3>
-									<p className="text-gray-500">{search ? "No users match your search criteria." : "There are no users registered yet."}</p>
+									<h3 className="text-lg font-medium text-gray-900 mb-1">Пользователи не найдены</h3>
+									<p className="text-gray-500">{search ? "Не найдено пользователей по вашему запросу." : "Никто еще не зарегистрировался."}</p>
 								</div>
 							)}
 						</CardContent>

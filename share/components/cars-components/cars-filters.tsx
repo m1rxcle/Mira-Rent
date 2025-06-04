@@ -142,7 +142,7 @@ const CarsFilters = ({ filters }: FiltersProps) => {
 					<Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
 						<SheetTrigger asChild>
 							<Button variant="outline" className="flex items-center gap-2">
-								<Filter className="w-4 h-4" /> Filters{" "}
+								<Filter className="w-4 h-4" /> Фильтрация{" "}
 								{activeFilterCount > 0 && (
 									<Badge className="ml-1 h-5 w-5 rouded-full p-0 flex items-center justify-center">{activeFilterCount}</Badge>
 								)}
@@ -150,7 +150,7 @@ const CarsFilters = ({ filters }: FiltersProps) => {
 						</SheetTrigger>
 						<SheetContent side="left" className="w-full sm:max-w-md overflow-y-auto px-5">
 							<SheetHeader>
-								<SheetTitle>Filters</SheetTitle>
+								<SheetTitle>Фильтрация</SheetTitle>
 							</SheetHeader>
 
 							<div className="py-6">
@@ -163,10 +163,10 @@ const CarsFilters = ({ filters }: FiltersProps) => {
 							</div>
 							<SheetFooter className="sm:justify-between flex-row pt-2 border-t space-x-4 mt-auto">
 								<Button type="button" variant="outline" onClick={clearFilters} className="flex-1">
-									Reset
+									Сбросить
 								</Button>
 								<Button type="button" className="flex-1" onClick={applyFilters}>
-									Show Resut
+									Показать результат
 								</Button>
 							</SheetFooter>
 						</SheetContent>
@@ -183,14 +183,14 @@ const CarsFilters = ({ filters }: FiltersProps) => {
 				}}
 			>
 				<SelectTrigger className="w-[180px] lg:w-full">
-					<SelectValue placeholder="Sort by" />
+					<SelectValue placeholder="Сортировка" />
 				</SelectTrigger>
 				<SelectContent>
 					{[
-						{ value: "newest", label: "Newest First" },
+						{ value: "newest", label: "Сначала новые" },
 
-						{ value: "priceAsc", label: "Price: Low to High" },
-						{ value: "priceDesc", label: "Price: High to Low" },
+						{ value: "priceAsc", label: "Цена: Низкая к Высокой" },
+						{ value: "priceDesc", label: "Price: Высокая к Низкой" },
 					].map((option) => (
 						<SelectItem key={option.value} value={option.value}>
 							{option.label}
@@ -206,13 +206,13 @@ const CarsFilters = ({ filters }: FiltersProps) => {
 					<div className="p-4 border-b bg-gray-50 flex justify-between items-center">
 						<h3 className="font-medium flex items-center">
 							<Sliders className="mr-2 h-4 w-4" />
-							Filters
+							Фильтрация
 						</h3>
 
 						{activeFilterCount > 0 && (
 							<Button variant="ghost" size="sm" className="h-6 text-sm text-gray-600" onClick={clearFilters}>
 								<X className="mr-1 h-3 w-3" />
-								Clear All
+								Очистить все
 							</Button>
 						)}
 					</div>
@@ -227,7 +227,7 @@ const CarsFilters = ({ filters }: FiltersProps) => {
 					</div>
 					<div className="px-4 py-4 border-t">
 						<Button onClick={applyFilters} className="w-full">
-							Apply Filters
+							Показать результат
 						</Button>
 					</div>
 				</div>

@@ -83,12 +83,12 @@ const TestDriveList = () => {
 						<SelectValue placeholder="Select status" />
 					</SelectTrigger>
 					<SelectContent>
-						<SelectItem value={null as unknown as string}>All statuses</SelectItem>
-						<SelectItem value="PENDING">Pending</SelectItem>
-						<SelectItem value="CONFIRMED">Confirmed</SelectItem>
-						<SelectItem value="COMPLETED">Completed</SelectItem>
-						<SelectItem value="CANCELLED">Canceled</SelectItem>
-						<SelectItem value="NO_SHOW">No Show</SelectItem>
+						<SelectItem value={null as unknown as string}>Все статусы</SelectItem>
+						<SelectItem value="PENDING">Ожидающие</SelectItem>
+						<SelectItem value="CONFIRMED">Подтвержденные</SelectItem>
+						<SelectItem value="COMPLETED">Завершеные</SelectItem>
+						<SelectItem value="CANCELLED">Отмененые</SelectItem>
+						<SelectItem value="NO_SHOW">Недоступные</SelectItem>
 					</SelectContent>
 				</Select>
 
@@ -97,14 +97,14 @@ const TestDriveList = () => {
 						<Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
 						<Input
 							type="search"
-							placeholder="Search by car or customer"
+							placeholder="Поиск по машине или клиенту"
 							className="pl-9 w-full"
 							value={search}
 							onChange={(e) => setSearch(e.target.value)}
 						/>
 					</div>
 					<Button type="submit" className={cn("ml-2", fetchingTestDrives ? "opacity-50" : "")}>
-						{fetchingTestDrives ? <Loader2 className="h-4 w-4 animate-spin" /> : "Search"}
+						{fetchingTestDrives ? <Loader2 className="h-4 w-4 animate-spin" /> : "Поиск"}
 					</Button>
 				</form>
 			</div>
@@ -113,21 +113,19 @@ const TestDriveList = () => {
 					<CardHeader>
 						<CardTitle className="flex items-center gap-2">
 							<CalendarRange className="h-5 w-5" />
-							Test Drive Bookings
+							Забронированные тест драйвы
 						</CardTitle>
-						<CardDescription>Mange all test drive reservations and update their status</CardDescription>
+						<CardDescription>Управляйте забронированными тест драйвами</CardDescription>
 					</CardHeader>
 					<CardContent>
 						<div className="flex flex-col items-center justify-center text-center p-8 border rounded-lg bg-gray-50">
 							<div className="bg-gray-100 p-4 rounded-full mb-4">
 								<CalendarRange className="h-8 w-8 text-gray-500" />
 							</div>
-							<h3 className="text-lg font-medium mb-2">No Reservations Found</h3>
-							<p className="text-gray-500 mb-6 max-w-md">
-								You have not made any reservations yet. Browse our cars and book a test drive to get started.
-							</p>
+							<h3 className="text-lg font-medium mb-2">Не найдено забронированных тест драйвов</h3>
+							<p className="text-gray-500 mb-6 max-w-md">Нет забронированных тест драйвов. Просмотрите наши автомобили и забронируйте тест драйв</p>
 							<Button asChild variant="default">
-								<Link href="/cars">Browse Cars</Link>
+								<Link href="/cars">Поиск машин</Link>
 							</Button>
 						</div>
 					</CardContent>
@@ -137,9 +135,9 @@ const TestDriveList = () => {
 					<CardHeader>
 						<CardTitle className="flex items-center gap-2">
 							<CalendarRange className="h-5 w-5" />
-							Test Drive Bookings
+							Забронированные тест драйвы
 						</CardTitle>
-						<CardDescription>Mange all test drive reservations and update their status</CardDescription>
+						<CardDescription>Управляйте забронированными тест драйвами и их статусами</CardDescription>
 					</CardHeader>
 					<CardContent>
 						{fetchingTestDrives && !testDrivesData ? (
@@ -162,14 +160,14 @@ const TestDriveList = () => {
 													disabled={updatingStatus}
 												>
 													<SelectTrigger className="w-full h-8">
-														<SelectValue placeholder="Update Status" />
+														<SelectValue placeholder="Обновить статус" />
 													</SelectTrigger>
 													<SelectContent>
-														<SelectItem value="PENDING">Pending</SelectItem>
-														<SelectItem value="CONFIRMED">Confirmed</SelectItem>
-														<SelectItem value="COMPLETED">Completed</SelectItem>
-														<SelectItem value="CANCELLED">Canceled</SelectItem>
-														<SelectItem value="NO_SHOW">No Show</SelectItem>
+														<SelectItem value="PENDING">Ожидает</SelectItem>
+														<SelectItem value="CONFIRMED">Подтвержден</SelectItem>
+														<SelectItem value="COMPLETED">Завершен</SelectItem>
+														<SelectItem value="CANCELLED">Отмененен</SelectItem>
+														<SelectItem value="NO_SHOW">Недоступно</SelectItem>
 													</SelectContent>
 												</Select>
 											)}

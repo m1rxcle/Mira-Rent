@@ -17,31 +17,31 @@ const DeleteCarDialog: React.FC<DeleteCarDialogProps> = ({ deleteDialogOpen, car
 		<Dialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
 			<DialogContent>
 				<DialogHeader>
-					<DialogTitle>Confirm Deletion</DialogTitle>
+					<DialogTitle>Подтверждение удаления</DialogTitle>
 					<DialogDescription>
-						Are you sure you want to delete{" "}
+						Вы действительно хотите удалить машину{" "}
 						<span className="font-semibold text-[14px]">
 							{" "}
 							{carToDelete?.make} {carToDelete?.model} ({carToDelete?.year})
 						</span>{" "}
 						?
 						<br />
-						This action cannot be undone.
+						Это действие необратимо.
 					</DialogDescription>
 				</DialogHeader>
 				<DialogFooter>
 					<Button variant="outline" onClick={() => setDeleteDialogOpen(false)} disabled={isDeletingCars}>
-						Cancel
+						Отмена
 					</Button>
 
 					<Button variant="destructive" onClick={handleDeleteCar} disabled={isDeletingCars}>
 						{isDeletingCars ? (
 							<>
 								<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-								Deleting...
+								Удаление...
 							</>
 						) : (
-							"Delete this Car"
+							"Удалить эту машину"
 						)}
 					</Button>
 				</DialogFooter>

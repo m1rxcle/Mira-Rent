@@ -13,7 +13,7 @@ const AdminPage = async () => {
 
 	return (
 		<div className="p-6 mb-20">
-			<h1 className="text-2xl font-bold mb-6">Dashboard</h1>
+			<h1 className="text-2xl font-bold mb-6">Админ панель</h1>
 			<Dashboard initialData={dashboardData} />
 		</div>
 	)

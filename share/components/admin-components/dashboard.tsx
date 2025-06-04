@@ -39,8 +39,8 @@ const Dashboard = ({ initialData }: { initialData: DashboardProps }) => {
 		return (
 			<Alert>
 				<Info className="h-4 w-4" />
-				<AlertTitle>Error</AlertTitle>
-				<AlertDescription>{String(initialData?.error) || "Something went wrong"}</AlertDescription>
+				<AlertTitle>Ошибка</AlertTitle>
+				<AlertDescription>{String(initialData?.error) || "Что-то пошло не так"}</AlertDescription>
 			</Alert>
 		)
 	}
@@ -53,80 +53,80 @@ const Dashboard = ({ initialData }: { initialData: DashboardProps }) => {
 		<div>
 			<Tabs defaultValue="overview" value={activeTab} onValueChange={setActiveTab}>
 				<TabsList>
-					<TabsTrigger value="overview">Overview</TabsTrigger>
-					<TabsTrigger value="test-drives">Test Drives</TabsTrigger>
+					<TabsTrigger value="overview">Просмотр</TabsTrigger>
+					<TabsTrigger value="test-drives">Тест драйвы</TabsTrigger>
 				</TabsList>
 				<TabsContent value="overview" className="space-y-6">
 					<div className="grid gap-4 md:grid-cols-2 lg:gird-cols-4">
 						<Card>
 							<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-								<CardTitle className="text-sm font-medium">Total Cars</CardTitle>
+								<CardTitle className="text-sm font-medium">Всего машин</CardTitle>
 								<Car className="h-4 w-4 text-muted-foreground" />
 							</CardHeader>
 							<CardContent>
 								<div className="text-2xl font-bold">{cars.total}</div>
 								<p className="text-xs text-muted-foreground">
-									{cars.available} available, {cars.unavailable} unavailable, {cars.sold} sold
+									{cars.available} доступно, {cars.unavailable} недостуно, {cars.sold} продано
 								</p>
 							</CardContent>
 						</Card>
 
 						<Card>
 							<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-								<CardTitle className="text-sm font-medium">Test Drives</CardTitle>
+								<CardTitle className="text-sm font-medium">Тест драйвы</CardTitle>
 								<Calendar className="h-4 w-4 text-muted-foreground" />
 							</CardHeader>
 							<CardContent>
 								<div className="text-2xl font-bold">{testDrives.total}</div>
 								<p className="text-xs text-muted-foreground">
-									{testDrives.pending} pending, {testDrives.confirmed} confirmed
+									{testDrives.pending} ожаданиет, {testDrives.confirmed} подтверждено
 								</p>
 							</CardContent>
 						</Card>
 
 						<Card>
 							<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-								<CardTitle className="text-sm font-medium">Conversion Rate</CardTitle>
+								<CardTitle className="text-sm font-medium">Коэфициент конверсии</CardTitle>
 								<TrendingUp className="h-4 w-4 text-muted-foreground" />
 							</CardHeader>
 							<CardContent>
 								<div className="text-2xl font-bold">{testDrives.conversionRate}%</div>
-								<p className="text-xs text-muted-foreground">From test drives to sales</p>
+								<p className="text-xs text-muted-foreground">От брони до прожади</p>
 							</CardContent>
 						</Card>
 
 						<Card>
 							<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-								<CardTitle className="text-sm font-medium">Cars Sold</CardTitle>
+								<CardTitle className="text-sm font-medium">Машин продано</CardTitle>
 								<DollarSign className="h-4 w-4 text-muted-foreground" />
 							</CardHeader>
 							<CardContent>
-								<div className="text-2xl font-bold">{cars.sold}%</div>
-								<p className="text-xs text-muted-foreground">{((cars.sold / cars.total) * 100).toFixed(1)}% of all cars</p>
+								<div className="text-2xl font-bold">{cars.sold}</div>
+								<p className="text-xs text-muted-foreground">{((cars.sold / cars.total) * 100).toFixed(1)}% от всех машин</p>
 							</CardContent>
 						</Card>
 					</div>
 
 					<Card>
 						<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-							<CardTitle>Dealership Summary</CardTitle>
+							<CardTitle>Резюме дилера</CardTitle>
 							<LineChart className="h-4 w-4 text-muted-foreground" />
 						</CardHeader>
 						<CardContent>
 							<div className="space-y-4">
 								<div className="grid grid-cols-2 gap-4">
 									<div className="bg-gray-50 p-4 rounded-lg">
-										<h3 className="font-medium text-sm mb-2">Car Inventory</h3>
+										<h3 className="font-medium text-sm mb-2">Машин в наличии</h3>
 										<div className="flex items-center">
 											<div className="w-full bg-gray-200 rounded-full h-2.5">
 												<div className="bg-green-600 h-2.5 rounded-full" style={{ width: `${(cars.available / cars.total) * 100}` }}></div>
 											</div>
 											<span className="ml-2 text-sm">{((cars.available / cars.total) * 100).toFixed(0)}%</span>
 										</div>
-										<p className="text-xs text-gray-500 mt-2">Availabe inventory capacity</p>
+										<p className="text-xs text-gray-500 mt-2">Доступный объем машин</p>
 									</div>
 									<div className="bg-green p-4 rounded-lg">
-										<h3 className="font-medium text-sm mb-2">Test Drive Success</h3>
+										<h3 className="font-medium text-sm mb-2">Успешные тест драйвы</h3>
 										<div className="flex items-center">
 											<div className="w-full bg-gray-200 rouded-full h-2.5">
 												<div
@@ -136,22 +136,22 @@ const Dashboard = ({ initialData }: { initialData: DashboardProps }) => {
 											</div>
 											<span className="ml-2 text-sm">{((testDrives.completed / (testDrives.total || 1)) * 100).toFixed(0)}%</span>
 										</div>
-										<p className="text-xs text-gray-500 mt-2">Completed test drives</p>
+										<p className="text-xs text-gray-500 mt-2">Завершенные тест драйвы</p>
 									</div>
 								</div>
 
 								<div className="grid grid-cols-3 gap-4 mt-6">
 									<div className="text-center">
 										<span className="text-3xl font-bold text-blue-600">{cars.sold}</span>
-										<p className="text-sm text-gray-600 mt-1">Cars Sold</p>
+										<p className="text-sm text-gray-600 mt-1">Машин продано</p>
 									</div>
 									<div className="text-center">
 										<span className="text-3xl font-bold text-amber-600">{testDrives.pending + testDrives.confirmed}</span>
-										<p className="text-sm text-gray-600 mt-1">Upcoming Test Drives</p>
+										<p className="text-sm text-gray-600 mt-1">Предстоящие тест драйвы</p>
 									</div>
 									<div className="text-center">
 										<span className="text-3xl font-bold text-green-600">{((cars.available / (cars.total || 1)) * 100).toFixed(0)}%</span>
-										<p className="text-sm text-gray-600 mt-1">Inventory Utilization</p>
+										<p className="text-sm text-gray-600 mt-1">Доступный объем машин</p>
 									</div>
 								</div>
 							</div>
@@ -164,7 +164,7 @@ const Dashboard = ({ initialData }: { initialData: DashboardProps }) => {
 					<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
 						<Card>
 							<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-								<CardTitle className="text-sm font-medium">Total Bookings</CardTitle>
+								<CardTitle className="text-sm font-medium">Всего записей</CardTitle>
 								<Calendar className="h-4 w-4 text-muted-foreground" />
 							</CardHeader>
 							<CardContent>
@@ -173,42 +173,42 @@ const Dashboard = ({ initialData }: { initialData: DashboardProps }) => {
 						</Card>
 						<Card>
 							<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-								<CardTitle className="text-sm font-medium">Pending</CardTitle>
+								<CardTitle className="text-sm font-medium">Ожидающие</CardTitle>
 								<Clock className="h-4 w-4 text-amber-500" />
 							</CardHeader>
 							<CardContent>
 								<div className="text-2xl font-bold">{testDrives.pending}</div>
-								<p className="text-xs text-muted-foreground">{((testDrives.pending / testDrives.total) * 100).toFixed(1)}% of bookings</p>
+								<p className="text-xs text-muted-foreground">{((testDrives.pending / testDrives.total) * 100).toFixed(1)}% от всех</p>
 							</CardContent>
 						</Card>
 						<Card>
 							<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-								<CardTitle className="text-sm font-medium">Confirmed</CardTitle>
+								<CardTitle className="text-sm font-medium">Подтверженные</CardTitle>
 								<CheckCircle className="h-4 w-4 text-green-500" />
 							</CardHeader>
 							<CardContent>
 								<div className="text-2xl font-bold">{testDrives.confirmed}</div>
-								<p className="text-xs text-muted-foreground">{((testDrives.confirmed / testDrives.total) * 100).toFixed(1)}% of bookings</p>
+								<p className="text-xs text-muted-foreground">{((testDrives.confirmed / testDrives.total) * 100).toFixed(1)}% от всех</p>
 							</CardContent>
 						</Card>
 						<Card>
 							<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-								<CardTitle className="text-sm font-medium">Completed</CardTitle>
+								<CardTitle className="text-sm font-medium">Завершенные</CardTitle>
 								<CheckCircle className="h-4 w-4 text-blue-500" />
 							</CardHeader>
 							<CardContent>
 								<div className="text-2xl font-bold">{testDrives.completed}</div>
-								<p className="text-xs text-muted-foreground">{((testDrives.completed / testDrives.total) * 100).toFixed(1)}% of bookings</p>
+								<p className="text-xs text-muted-foreground">{((testDrives.completed / testDrives.total) * 100).toFixed(1)}% от всех</p>
 							</CardContent>
 						</Card>
 						<Card>
 							<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-								<CardTitle className="text-sm font-medium">Cancelled</CardTitle>
+								<CardTitle className="text-sm font-medium">Отмененные</CardTitle>
 								<XCircle className="h-4 w-4 text-red-500" />
 							</CardHeader>
 							<CardContent>
 								<div className="text-2xl font-bold">{testDrives.cancelled}</div>
-								<p className="text-xs text-muted-foreground">{((testDrives.cancelled / testDrives.total) * 100).toFixed(1)}% of bookings</p>
+								<p className="text-xs text-muted-foreground">{((testDrives.cancelled / testDrives.total) * 100).toFixed(1)}% от всех</p>
 							</CardContent>
 						</Card>
 					</div>
@@ -216,36 +216,36 @@ const Dashboard = ({ initialData }: { initialData: DashboardProps }) => {
 					{/* Test Drive Status Visualization */}
 					<Card>
 						<CardHeader>
-							<CardTitle>Test Drive Statistics</CardTitle>
+							<CardTitle>Статистика тест-драйвов</CardTitle>
 						</CardHeader>
 						<CardContent>
 							<div className="space-y-6">
 								<div className="grid grid-cols-2 gap-6">
 									{/* Conversion Rate Card */}
 									<div className="bg-gray-50 rounded-lg p-4">
-										<h3 className="text-lg font-medium mb-2">Conversion Rate</h3>
+										<h3 className="text-lg font-medium mb-2">Коэфициент конверсии</h3>
 										<div className="text-3xl font-bold text-blue-600">{testDrives.conversionRate}%</div>
-										<p className="text-sm text-gray-600 mt-1">Test drives resulting in car purchases</p>
+										<p className="text-sm text-gray-600 mt-1">Тест-драйвы, приведшие к покупке автомобиля</p>
 									</div>
 
 									{/* Test Drive Success Rate */}
 									<div className="bg-gray-50 rounded-lg p-4">
-										<h3 className="text-lg font-medium mb-2">Completion Rate</h3>
+										<h3 className="text-lg font-medium mb-2">Коэфициент успешных</h3>
 										<div className="text-3xl font-bold text-green-600">
 											{testDrives.total ? ((testDrives.completed / testDrives.total) * 100).toFixed(1) : 0}%
 										</div>
-										<p className="text-sm text-gray-600 mt-1">Test drives successfully completed</p>
+										<p className="text-sm text-gray-600 mt-1">Успешно завершенные тест-драйвы</p>
 									</div>
 								</div>
 
 								{/* Status Breakdown */}
 								<div className="space-y-4 mt-4">
-									<h3 className="font-medium">Booking Status Breakdown</h3>
+									<h3 className="font-medium">Статусы бронирования</h3>
 
 									{/* Pending */}
 									<div className="space-y-2">
 										<div className="flex justify-between text-sm">
-											<span>Pending</span>
+											<span>Ожидающие</span>
 											<span className="font-medium">
 												{testDrives.pending} ({((testDrives.pending / testDrives.total) * 100).toFixed(1)}
 												%)
@@ -264,7 +264,7 @@ const Dashboard = ({ initialData }: { initialData: DashboardProps }) => {
 									{/* Confirmed */}
 									<div className="space-y-2">
 										<div className="flex justify-between text-sm">
-											<span>Confirmed</span>
+											<span>Подтверженные</span>
 											<span className="font-medium">
 												{testDrives.confirmed} ({((testDrives.confirmed / testDrives.total) * 100).toFixed(1)}
 												%)
@@ -283,7 +283,7 @@ const Dashboard = ({ initialData }: { initialData: DashboardProps }) => {
 									{/* Completed */}
 									<div className="space-y-2">
 										<div className="flex justify-between text-sm">
-											<span>Completed</span>
+											<span>Завершенные</span>
 											<span className="font-medium">
 												{testDrives.completed} ({((testDrives.completed / testDrives.total) * 100).toFixed(1)}
 												%)
@@ -302,7 +302,7 @@ const Dashboard = ({ initialData }: { initialData: DashboardProps }) => {
 									{/* Cancelled */}
 									<div className="space-y-2">
 										<div className="flex justify-between text-sm">
-											<span>Cancelled</span>
+											<span>Отмененные</span>
 											<span className="font-medium">
 												{testDrives.cancelled} ({((testDrives.cancelled / testDrives.total) * 100).toFixed(1)}
 												%)
@@ -321,7 +321,7 @@ const Dashboard = ({ initialData }: { initialData: DashboardProps }) => {
 									{/* No Show */}
 									<div className="space-y-2">
 										<div className="flex justify-between text-sm">
-											<span>No Show</span>
+											<span>Не доступные</span>
 											<span className="font-medium">
 												{testDrives.noShow} ({((testDrives.noShow / testDrives.total) * 100).toFixed(1)}
 												%)

@@ -29,7 +29,7 @@ const CarCard = ({ car }: { car: CarProps }) => {
 
 	useEffect(() => {
 		if (toggleError) {
-			toast.error("Failed to update favorites")
+			toast.error("Ошибка при сохранении автомобиля")
 		}
 	}, [toggleError])
 
@@ -37,7 +37,7 @@ const CarCard = ({ car }: { car: CarProps }) => {
 		e.preventDefault()
 
 		if (!isSignedIn) {
-			toast.error("Please sign in to save a car")
+			toast.error("Пожалуйста, войдите в свой аккаунт")
 			router.push("/sign-in")
 			return
 		}
@@ -91,7 +91,7 @@ const CarCard = ({ car }: { car: CarProps }) => {
 						{car.bodyType}
 					</Badge>
 					<Badge variant="outline" className="bg-gray-50">
-						{car.mileage.toLocaleString()} miles
+						{car.mileage.toLocaleString()} км
 					</Badge>
 					<Badge variant="outline" className="bg-gray-50">
 						{car.color}
@@ -100,7 +100,7 @@ const CarCard = ({ car }: { car: CarProps }) => {
 
 				<div className="flex justify-between">
 					<Button className="flex-1" onClick={() => router.push(`/cars/${car.id}`)}>
-						View Car
+						Посмотреть машину
 					</Button>
 				</div>
 			</CardContent>

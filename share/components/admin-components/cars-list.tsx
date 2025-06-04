@@ -36,27 +36,27 @@ const CarsList = () => {
 
 	useEffect(() => {
 		if (deletedResult?.success) {
-			toast.success("Car deleted successfully")
+			toast.success("Машина удалена успешно")
 			fetchCars(search)
 		}
 
 		if (upadtedResult?.success) {
-			toast.success("Car updated successfully")
+			toast.success("Машина обновлена успешно")
 			fetchCars(search)
 		}
 	}, [upadtedResult, deletedResult])
 
 	useEffect(() => {
 		if (fetchingError) {
-			toast.error("Failed to fetch cars. Please try again later.")
+			toast.error("Ошибка при получении списка машин. Пожалуйста, попробуйте ещё раз.")
 		}
 
 		if (updateError) {
-			toast.error("Failed to update car. Please try again later.")
+			toast.error("Ошибка при обновлении машины. Пожалуйста, попробуйте ещё раз.")
 		}
 
 		if (deleteError) {
-			toast.error("Failed to delete car. Please try again later.")
+			toast.error("Ошибка при удалении машины. Пожалуйста, попробуйте ещё раз.")
 		}
 	}, [fetchingError, updateError, deleteError])
 
@@ -99,7 +99,7 @@ const CarsList = () => {
 		<div className="space-y-4 mb-20 md:mb-0 ">
 			<div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
 				<Button onClick={() => router.push("/admin/cars/create")} className="flex items-center">
-					<Plus className="h-4 w-4" /> Add Car
+					<Plus className="h-4 w-4" /> Добавить машину
 				</Button>
 				<form onSubmit={handleSearchSubmit} className="flex w-full sm:w-auto">
 					<div className="relative flex-1">
@@ -109,7 +109,7 @@ const CarsList = () => {
 							value={search}
 							onChange={(e) => setSearch(e.target.value)}
 							className="pl-9 w-full sm:w-60"
-							placeholder="Search cars..."
+							placeholder="Поиск машин..."
 						/>
 					</div>
 				</form>
@@ -137,13 +137,13 @@ const CarsList = () => {
 					) : (
 						<div className="flex flex-col items-center justify-center py-12 px-4 text-center">
 							<CarIcon className="h-12 w-12 text-gray-300 mb-4" />
-							<h3 className="text-lg font-medium text-gray-900 mb-1">No cars found</h3>
+							<h3 className="text-lg font-medium text-gray-900 mb-1">Машины не найдены</h3>
 							<p className="text-gray-500 mb-4">
 								{search ? "No cars match your search criteria." : "Your inventory is empty. Add some cars to get started."}
 							</p>
 							<Button onClick={() => router.push("/admin/cars/create")}>
 								<Plus className="h-4 w-4 ml-2" />
-								Add Your First Car
+								Добавьте свою первую машину
 							</Button>
 						</div>
 					)}

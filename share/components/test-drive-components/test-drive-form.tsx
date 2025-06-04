@@ -85,7 +85,7 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 
 	useEffect(() => {
 		if (bookingResult && !bookingResult.success && bookingResult.error) {
-			toast.error(typeof bookingResult.error === "string" ? bookingResult.error : "Failed to book test drive")
+			toast.error(typeof bookingResult.error === "string" ? bookingResult.error : "Ошибка бронирования")
 		}
 		if (bookingError) {
 			toast.error(bookingError)
@@ -98,12 +98,10 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 	const selectedDate = watch("date")
 
 	const onSubmit = async (data: TTestDrive) => {
-		console.log(data)
-
 		const selectedSlot = availableTimeSlots.find((slot) => slot.id === data.timeSlot)
 
 		if (!selectedSlot) {
-			toast.error("Selected time slot is not available")
+			toast.error("Выбраны забронированные часы, пожалуйста, выберите другие")
 			return
 		}
 
@@ -117,18 +115,14 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 	}
 
 	const isDayDisabled = (day: Date) => {
-		// Disable past dates
 		if (day < new Date()) {
 			return true
 		}
 
-		// Get day of week
 		const dayOfWeek = format(day, "EEEE").toUpperCase()
 
-		// Find working hours for the day
 		const daySchedule = dealership?.workingHours?.find((schedule) => schedule.dayOfWeek === dayOfWeek)
 
-		// Disable if dealership is closed on this day
 		return !daySchedule || !daySchedule.isOpen
 	}
 
@@ -175,7 +169,7 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 
 	const handleCloseConfirmation = () => {
 		setShowConfirmation(false)
-		router.push(`/cars/${car.id}`)
+		router.push(`/reservations`)
 	}
 
 	return (
@@ -183,7 +177,7 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 			<div className="md:col-span-1">
 				<Card>
 					<CardContent className="p-6">
-						<h2 className="text-xl font-bold mb-4">Car Details</h2>
+						<h2 className="text-xl font-bold mb-4">Детали Машины</h2>
 
 						<div className="aspect-video rounded-lg overflow-hidden relative mb-4">
 							{car.images && car.images.length > 0 ? (
@@ -203,27 +197,27 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 
 						<div className="mt-4 text-sm text-gray-500">
 							<div className="flex justify-between py-1 border-b">
-								<span>Mileage</span>
+								<span>Пробег</span>
 								<span className="font-medium">{car.mileage}</span>
 							</div>
 							<div className="flex justify-between py-1 border-b">
-								<span>Fuel Type</span>
+								<span>Топливо</span>
 								<span className="font-medium">{car.fuelType}</span>
 							</div>
 							<div className="flex justify-between py-1 border-b">
-								<span>Transmission</span>
+								<span>Коробка передач</span>
 								<span className="font-medium">{car.transmission}</span>
 							</div>
 							<div className="flex justify-between py-1 border-b">
-								<span>Body Type</span>
+								<span>Кузов</span>
 								<span className="font-medium">{car.bodyType}</span>
 							</div>
 							<div className="flex justify-between py-1 border-b">
-								<span>Seats</span>
+								<span>Сидений</span>
 								<span className="font-medium">{car.seats}</span>
 							</div>
 							<div className="flex justify-between py-1 border-b">
-								<span>Color</span>
+								<span>Цвет</span>
 								<span className="font-medium">{car.color}</span>
 							</div>
 						</div>
@@ -232,7 +226,7 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 
 				<Card className="mt-6">
 					<CardContent className="p-6">
-						<h2 className="text-xl font-bold mb-4">Dealership Information</h2>
+						<h2 className="text-xl font-bold mb-4">Место тест-драйва</h2>
 						<div className="text-sm ">
 							<p className="font-medium">{dealership?.name || "Miracle Motors"}</p>
 							<p className="text-gray-600 mt-1 ">{dealership?.address || "Address not available"}</p>
@@ -241,7 +235,7 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 								{dealership?.email || "Phone not available"}
 							</p>
 							<p className="text-gray-600">
-								<span className="font-medium">Phone: </span>
+								<span className="font-medium">Телефон: </span>
 								{dealership?.phone || "Phone not available"}
 							</p>
 						</div>
@@ -252,10 +246,10 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 			<div className="md:col-span-2">
 				<Card>
 					<CardContent className="p-6">
-						<h2 className="text-xl font-bold mb-4">Shedule Your Test Drive</h2>
+						<h2 className="text-xl font-bold mb-4">Распиние времени для тест-драйва</h2>
 						<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 							<div className="space-y-2">
-								<label className="block text-sm font-medium">Select a Date</label>
+								<label className="block text-sm font-medium">Выбирите день</label>
 								<Controller
 									name="date"
 									control={control}
@@ -268,7 +262,7 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 														className={cn("w-full justify-start text-left font-normal", !field.value && "text-muted-foreground")}
 													>
 														<CalendarIcon className="mr-2 h-4 w-4" />
-														{field.value ? format(field.value, "PPP") : <span className="text-gray-400">Month, Day, Year</span>}
+														{field.value ? format(field.value, "PPP") : <span className="text-gray-400">Месяц, День, Год</span>}
 													</Button>
 												</PopoverTrigger>
 												<PopoverContent>
@@ -281,7 +275,7 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 								/>
 							</div>
 							<div className="space-y-2">
-								<label className="block text-sm font-medium">Select a Time slot</label>
+								<label className="block text-sm font-medium">Выберите время</label>
 								<Controller
 									name="timeSlot"
 									control={control}
@@ -292,7 +286,7 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 													<SelectValue
 														placeholder={
 															!selectedDate
-																? "Please select a date first"
+																? "Выберите день"
 																: availableTimeSlots.length === 0
 																? "No time slots available on this date"
 																: "Select a time slot"
@@ -314,12 +308,12 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 							</div>
 
 							<div className="space-y-2">
-								<label className="block text-sm font-medium">Additional Notes (Optional)</label>
+								<label className="block text-sm font-medium">Добавите комментарий (по желанию)</label>
 								<Controller
 									name="notes"
 									control={control}
 									render={({ field }) => (
-										<Textarea {...field} placeholder="Any specific questions or requests for your test drive ?" className="min-h-24" />
+										<Textarea {...field} placeholder="Если у вас есть какие-либо вопросы, напишите их здесь" className="min-h-24" />
 									)}
 								/>
 							</div>
@@ -328,27 +322,28 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 								{bookingInProgress ? (
 									<>
 										<Loader2 className="mr-2 h-4 w-4 animate-spin" />
-										Booking Your Test Drive
+										Идет бронировние...
 									</>
 								) : (
-									"Book Test Drive"
+									"Забронировать тест-драйв"
 								)}
 							</Button>
 						</form>
 
 						<div className="mt-8 bg-gray-50 p-4 rounded-lg">
-							<h3 className="font-medium mb-2">What to expect</h3>
+							<h3 className="font-medium mb-2">Чего ожидать</h3>
 							<ul className="space-y-2 text-sm text-gray-600">
 								<li className="flex items-start">
 									<CheckCircle2 className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
-									Bring your driver`s license for verification
+									Возьмите с собой свой паспорт для проверки
 								</li>
 								<li className="flex items-start">
 									<CheckCircle2 className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
-									Test drives typically last 30-60 minutes
+									Тест драйв длится 30 - 60 минут.
 								</li>
 								<li className="flex items-start">
-									<CheckCircle2 className="h-4 w-4 text-green-500 mr-2 mt-0.5" />A dealership representative will accompany you
+									<CheckCircle2 className="h-4 w-4 text-green-500 mr-2 mt-0.5" />
+									Дилер встретит вас в офисе
 								</li>
 							</ul>
 						</div>
@@ -361,44 +356,46 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 					<DialogHeader>
 						<DialogTitle className="flex items-center gap-2 text-center mx-auto">
 							<CheckCircle2 className="h-4 w-4  text-green-500" />
-							<p>Test Drive Booked Successfully</p>
+							<p>Бронь успешно создана</p>
 						</DialogTitle>
-						<DialogDescription className="text-center">Your test drive has been confirmed with the following details:</DialogDescription>
+						<DialogDescription className="text-center">Ваша бронь была успешно создана с такими деталями:</DialogDescription>
 					</DialogHeader>
 
 					{bookingDetails && (
 						<div className="py-4">
 							<div className="space-y-3">
 								<div className="flex justify-between">
-									<span>Car: </span>
+									<span>Машина: </span>
 									<span className="font-medium">
 										{car.make} {car.model} {car.year}
 									</span>
 								</div>
 								<div className="flex justify-between">
-									<span>Date:</span>
+									<span>Дата:</span>
 									<span className="font-medium">{bookingDetails?.date?.toLocaleDateString()}</span>
 								</div>
 								<div className="flex justify-between">
-									<span>Time Slot:</span>
+									<span>Время:</span>
 									<span className="font-medium">{bookingDetails.timeSlot} </span>
 								</div>
 								<div className="flex justify-between">
-									<span>Company:</span>
+									<span>Дилер:</span>
 									<span className="font-medium">{dealership?.name || "Mira Rent"} </span>
 								</div>
 								<div className="flex justify-between">
-									<span>Address:</span>
+									<span>Адрес:</span>
 									<span className="font-medium">{dealership?.address} </span>
 								</div>
 							</div>
 
-							<div className="mt-4 bg-blue-50 p-3 rounded text-sm text-blue-700 text-center">Please arrive 10 minutes before the scheduled time.</div>
+							<div className="mt-4 bg-blue-50 p-3 rounded text-sm text-blue-700 text-center">
+								Пожалуйста приезжайте за 10 минут от указанного времени.
+							</div>
 						</div>
 					)}
 
 					<div className="flex justify-end">
-						<Button onClick={handleCloseConfirmation}>Done</Button>
+						<Button onClick={handleCloseConfirmation}>Xорошо</Button>
 					</div>
 				</DialogContent>
 			</Dialog>

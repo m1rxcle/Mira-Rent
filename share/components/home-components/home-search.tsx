@@ -46,16 +46,14 @@ const HomeSearch = () => {
 		[searchTerm]
 	)
 
-	useClickAway(ref, (event) => {
-		console.log("Click outside detected!")
-		console.log(event.target) // Print the element that was clicked
+	useClickAway(ref, () => {
 		setFocused(false)
 	})
 
 	const handleTextSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
 		if (!searchTerm.trim()) {
-			toast.error("Please enter a search term")
+			toast.error("Пожалуйста, введите поисковую фразу")
 			return
 		}
 		router.push(`/cars?search=${encodeURIComponent(searchTerm)}`)
@@ -63,7 +61,7 @@ const HomeSearch = () => {
 	const handleImageSearch = async (e: React.FormEvent) => {
 		e.preventDefault()
 		if (!searchImage) {
-			toast.error("Please upload an image")
+			toast.error("Загрузите картинку")
 			return
 		}
 
@@ -72,7 +70,7 @@ const HomeSearch = () => {
 
 	useEffect(() => {
 		if (processError) {
-			toast.error("Failed to analyze image: " + (processError || "Unknown error"))
+			toast.error("Ошибка анализа картинки: " + (processError || "Unknown error"))
 		}
 	}, [processError])
 
@@ -104,12 +102,12 @@ const HomeSearch = () => {
 			reader.onloadend = () => {
 				setImagePreview(reader.result as string)
 				setIsUpLoading(false)
-				toast.success("Image uploaded successfully")
+				toast.success("Картинка загружена успешно")
 			}
 
 			reader.onerror = () => {
 				setIsUpLoading(false)
-				toast.error("Error uploading image")
+				toast.error("Ошибка загрузки картинки")
 			}
 
 			reader.readAsDataURL(file)
@@ -144,7 +142,7 @@ const HomeSearch = () => {
 						value={searchTerm}
 						className="pl-10 pr-12 py-6 w-full rounded-full border-gray-300 bg-white/95 backdrop-blur-sm placeholder:text-gray-300 md:placeholder:text-gray-600"
 						type="text"
-						placeholder="Enter make, model, or use AI Image Search..."
+						placeholder="Введите марку, модель, год или загрузите картинку при помощи ИИ..."
 					/>
 					{getCars.length > 0 && focused && (
 						<div
@@ -182,7 +180,7 @@ const HomeSearch = () => {
 						/>
 					</div>
 					<Button type="submit" className="absolute right-2 rounded-full">
-						Search
+						Поиск
 					</Button>
 				</div>
 			</form>
@@ -203,7 +201,7 @@ const HomeSearch = () => {
 											toast.info("Image removed")
 										}}
 									>
-										Remove Image
+										Удалить изображение
 									</Button>
 								</div>
 							) : (
