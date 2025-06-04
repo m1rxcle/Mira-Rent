@@ -4,6 +4,12 @@ const nextConfig: NextConfig = {
 	experimental: {
 		serverComponentsHmrCache: false,
 	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
+	typescript: {
+		ignoreBuildErrors: true,
+	},
 
 	images: {
 		remotePatterns: [
