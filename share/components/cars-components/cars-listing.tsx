@@ -9,6 +9,7 @@ import { Alert, AlertDescription, AlertTitle, Button } from "@/share/ui/index"
 import { Info, InfoIcon } from "lucide-react"
 import Link from "next/link"
 import { CarCard } from "@/share/components/index"
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/share/ui/"
 
 const CarsListing = () => {
 	const searchParams = useSearchParams()
@@ -42,6 +43,24 @@ const CarsListing = () => {
 			limit,
 		})
 	}, [search, make, bodyType, fuelType, transmission, minPrice, maxPrice, sortBy, page])
+
+	useEffect(() => {
+		if (currentPage !== page) {
+			const params = new URLSearchParams(searchParams)
+			params.set("page", currentPage.toString())
+			router.push(`?${params.toString()}`)
+		}
+	}, [currentPage, router, searchParams, page])
+
+	const handlePageChange = (pageNum: number) => {
+		setCurrentPage(pageNum)
+	}
+
+	const getPaginationUrl = (pageNum: number) => {
+		const params = new URLSearchParams(searchParams)
+		params.set("page", pageNum.toString())
+		return `?${params.toString()}`
+	}
 
 	if (loading && !result) {
 		return <CarListingsLoading />
@@ -80,6 +99,49 @@ const CarsListing = () => {
 		)
 	}
 
+	const paginationItems = []
+	const visiblePageNumbers = []
+
+	visiblePageNumbers.push(1)
+
+	for (let i = Math.max(2, page - 1); i <= Math.min(pagination.pages - 1, page + 1); i++) {
+		visiblePageNumbers.push(i)
+	}
+
+	if (pagination.pages > 1) {
+		visiblePageNumbers.push(pagination.pages)
+	}
+
+	const uniquePageNumbers = [...new Set(visiblePageNumbers)].sort((a, b) => a - b)
+
+	let lastPageNumber = 0
+	uniquePageNumbers.forEach((pageNumber) => {
+		if (pageNumber - lastPageNumber > 1) {
+			paginationItems.push(
+				<PaginationItem key={`elipsis-${pageNumber}`}>
+					<PaginationEllipsis />
+				</PaginationItem>
+			)
+		}
+
+		paginationItems.push(
+			<PaginationItem key={pageNumber}>
+				<PaginationLink
+					href={getPaginationUrl(pageNumber)}
+					isActive={pageNumber === page}
+					onClick={(e) => {
+						e.preventDefault()
+						handlePageChange(pageNumber)
+					}}
+				>
+					{pageNumber}
+				</PaginationLink>
+			</PaginationItem>
+		)
+
+		lastPageNumber = pageNumber
+	})
+
 	return (
 		<div>
 			<div className="flex items-center justify-between mb-6">
@@ -96,6 +158,39 @@ const CarsListing = () => {
 					<CarCard key={car.id} car={car} />
 				))}
 			</div>
+			{pagination.pages > 1 && (
+				<Pagination className="mt-10">
+					<PaginationContent>
+						<PaginationItem>
+							<PaginationPrevious
+								onClick={(e) => {
+									e.preventDefault()
+									if (page > 1) {
+										handlePageChange(page - 1)
+									}
+								}}
+								href={getPaginationUrl(page - 1)}
+								className={page <= 1 ? "pointer-events-none opacity-50 cursor-not-allowed" : ""}
+							/>
+						</PaginationItem>
+
+						{paginationItems}
+
+						<PaginationItem>
+							<PaginationNext
+								href={getPaginationUrl(page + 1)}
+								onClick={(e) => {
+									e.preventDefault()
+									if (page < pagination.pages) {
+										handlePageChange(page + 1)
+									}
+								}}
+								className={page >= pagination.pages ? "pointer-events-none opacity-50 cursor-not-allowed" : ""}
+							/>
+						</PaginationItem>
+					</PaginationContent>
+				</Pagination>
+			)}
 		</div>
 	)
 }
