@@ -1,4 +1,13 @@
-const MainLayout = ({ children }: { children: React.ReactNode }) => {
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+	title: "Miracle Rent",
+	description: "Find you dream Car.",
+	keywords: "Cars, Rent, buy car, best cars",
+	icons: "/logo-white.png",
+}
+
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<>
 			<main className="min-h-screen mt-20">{children}</main>
@@ -10,4 +19,4 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
 		</>
 	)
 }
-export default MainLayout
+export default RootLayout

@@ -16,7 +16,7 @@ const CarsListing = () => {
 	const searchParams = useSearchParams()
 	const router = useRouter()
 	const currentPage = useCurrentPage()
-	const setCurrentPage = setCurrentPageFn()
+
 	const limit = useLimit()
 
 	const search = searchParams.get("search") || ""
@@ -55,7 +55,7 @@ const CarsListing = () => {
 	}, [currentPage, router, searchParams, page])
 
 	const handlePageChange = (pageNum: number) => {
-		setCurrentPage(pageNum)
+		setCurrentPageFn(pageNum)
 	}
 
 	const getPaginationUrl = (pageNum: number) => {

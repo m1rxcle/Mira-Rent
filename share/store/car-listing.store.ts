@@ -27,5 +27,5 @@ const useCarListingStore = create<ICarFiltersState>()(carListing)
 // Селекторы
 
 export const useCurrentPage = () => useCarListingStore((state) => state.currentPage)
-export const setCurrentPageFn = () => useCarListingStore.getState().setCurrentPage
+export const setCurrentPageFn = (pageNum: number) => useCarListingStore.getState().setCurrentPage(pageNum)
 export const useLimit = () => useCarListingStore((state) => state.limit)

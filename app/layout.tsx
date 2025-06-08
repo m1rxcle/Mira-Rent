@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import Header from "@/share/components/header"
@@ -7,12 +6,7 @@ import { Toaster } from "sonner"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata: Metadata = {
-	title: "M1ra Rent",
-	description: "Find you dream Car.",
-}
-
-export default function RootLayout({
+export default function AppLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode
