@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚗 M1ra-Rent — покупка и аренда автомобилей
+Обзор проекта
+M1ra-Rent представляет собой современный web-сервис, предназначенный для комфортного поиска, сравнения и заказа автомобилей для личного пользования или аренды.
 
-## Getting Started
+Основные возможности платформы
+🔍 Простой и быстрый поиск авто по марке, модели, типу кузова, цвету и цене.
+💳 Безопасные способы оплаты и бронирование выбранного транспорта.
+📍 Возможность фильтрации предложений по местоположению и доступности.
+⭐ Персонализация рекомендаций на основе предыдущих запросов и предпочтений пользователя.
+🛠️ Гибкая настройка фильтров и возможность сохранения избранных объявлений.
+Используемые технологии
+Next.js: Фреймворк для построения приложения
+Tailwind CSS: Инструментарий для быстрой верстки
+TypeScript: Типизация и повышение надежности кода
+Zustand: Менеджер глобального состояния приложения
+Clerk: Сервис авторизации и аутентификации
+ArcJet: Платформа для интеграции API-first подхода
+Lucide: Набор высококачественных иконок
+ShadCN UI: Компонентная библиотека для интерфейса
+React Use: Библиотека реактивных хуков
+zod: Средство для проверки и обработки данных
+react-hook-form: Универсальная библиотека для работы с формами
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Участие в развитии
+Мы открыты для ваших идей и улучшений! Вы можете внести вклад в развитие проекта, создав Pull Request или открыв Issue.
