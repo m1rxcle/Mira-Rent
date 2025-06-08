@@ -167,3 +167,43 @@ export interface initialDataAndUserProps {
 	createdAt: string
 	updatedAt: string
 }
+
+export interface bookingProps {
+	id: string
+	carId: string
+	car: {
+		id: string
+		price: number
+		createdAt: Date
+		updatedAt: Date
+		wishlisted: boolean
+		model: string
+		status: $Enums.CarStatus
+		make: string
+		year: number
+		mileage: number
+		color: string
+		fuelType: string
+		transmission: string
+		bodyType: string
+		seats: number | null
+		description: string
+		featured: boolean
+		images: string[]
+	}
+	userId?: string
+	user?: {
+		id: string
+		email: string
+		name: string | null
+		imageUrl: string | null
+		phone: string | null
+	}
+	bookingDate: string
+	startTime: string
+	endTime: string
+	status: $Enums.BookingStatus
+	notes: string | null
+	createdAt: string
+	updatedAt: string
+}

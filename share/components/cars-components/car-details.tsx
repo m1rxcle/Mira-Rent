@@ -6,7 +6,7 @@ import { formatCarPrice } from "@/share/constants/data"
 import useFetch from "@/share/hooks/use-fetch"
 
 import { useAuth } from "@clerk/nextjs"
-import { Calendar, Car, Currency, Fuel, Gauge, Heart, LocateFixed, MessageSquare, Share2, Users2 } from "lucide-react"
+import { Calendar, Car, Currency, Fuel, Gauge, Heart, Loader2, LocateFixed, MessageSquare, Share2, Users2 } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
@@ -132,8 +132,14 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 							onClick={handleSaveCar}
 							disabled={savingCar}
 						>
-							<Heart className={`h-5 w-5 ${isWishlisted ? "fill-red-500" : ""}`} />
-							{isWishlisted ? "Добавленно" : "Добавить"}
+							{savingCar ? (
+								<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+							) : (
+								<>
+									<Heart className={`h-5 w-5 ${isWishlisted ? "fill-red-500" : ""}`} />
+									{isWishlisted ? "Добавленно" : "Добавить"}
+								</>
+							)}
 						</Button>
 						<Button variant="outline" className={`flex items-center gap-2 flex-1 `} onClick={handleShare}>
 							<Share2 className={`h-5 w-5 `} />

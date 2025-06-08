@@ -1,6 +1,6 @@
 "use client"
 
-import { $Enums } from "@/lib/generated/prisma"
+import { bookingProps } from "@/@types"
 import { cn } from "@/lib/utils"
 import { formatTimeForTestDrive } from "@/share/constants/data"
 import { Badge, Button, Card, Dialog, DialogDescription, DialogHeader, DialogTitle, DialogContent, DialogFooter } from "@/share/ui"
@@ -9,46 +9,6 @@ import { ArrowRight, Calendar, Car, Clock, Loader2, User } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
-
-interface bookingProps {
-	id: string
-	carId: string
-	car: {
-		id: string
-		price: number
-		createdAt: Date
-		updatedAt: Date
-		wishlisted: boolean
-		model: string
-		status: $Enums.CarStatus
-		make: string
-		year: number
-		mileage: number
-		color: string
-		fuelType: string
-		transmission: string
-		bodyType: string
-		seats: number | null
-		description: string
-		featured: boolean
-		images: string[]
-	}
-	userId?: string
-	user?: {
-		id: string
-		email: string
-		name: string | null
-		imageUrl: string | null
-		phone: string | null
-	}
-	bookingDate: string
-	startTime: string
-	endTime: string
-	status: $Enums.BookingStatus
-	notes: string | null
-	createdAt: string
-	updatedAt: string
-}
 
 const getStatusBadgeForTestDrive = (status: string) => {
 	switch (status) {
