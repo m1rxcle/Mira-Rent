@@ -246,7 +246,7 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 			<div className="md:col-span-2">
 				<Card>
 					<CardContent className="p-6">
-						<h2 className="text-xl font-bold mb-4">Распиние времени для тест-драйва</h2>
+						<h2 className="text-xl font-bold mb-4">Расписание времени для тест-драйва</h2>
 						<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 							<div className="space-y-2">
 								<label className="block text-sm font-medium">Выбирите день</label>

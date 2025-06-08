@@ -4,7 +4,7 @@ export const metadata: Metadata = {
 	title: "Miracle Rent",
 	description: "Find you dream Car.",
 	keywords: "Cars, Rent, buy car, best cars",
-	icons: "/logo-white.png",
+	icons: "/logo.png",
 }
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
