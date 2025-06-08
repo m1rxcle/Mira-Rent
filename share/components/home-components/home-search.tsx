@@ -172,7 +172,7 @@ const HomeSearch = () => {
 						<Camera
 							size={35}
 							onClick={() => setIsImageSearchActive(!isImageSearchActive)}
-							className="cursor-pointer rounded-xl p-1.5"
+							className="cursor-pointer rounded-xl p-1.5 transition-all duration-200 hover:scale-110"
 							style={{
 								background: isImageSearchActive ? "black" : "",
 								color: isImageSearchActive ? " white" : "",
@@ -210,7 +210,7 @@ const HomeSearch = () => {
 									<div className="flex flex-col items-center">
 										<Upload className="h-12 w-12 text-gray-400 mb-2" />
 										<p className="text-gray-500 mb-2">
-											{isDragActive && !isDragReject ? "Leave the file here to upload" : "Drag 'n' drop some files here, or click to select files"}
+											{isDragActive && !isDragReject ? "Leave the file here to upload" : "Перетащите файл сюда или нажмите что бы выбрать файлы"}
 										</p>
 										{isDragReject && <p className="text-red-500 mb-2">Invalid image type</p>}
 										<p className="text-gray-500 text-sm">Supports: JPG, PNG (max 5MB)</p>
@@ -221,7 +221,7 @@ const HomeSearch = () => {
 
 						{imagePreview && (
 							<Button type="submit" className="w-full mt-4" disabled={isUploading || isProcessing}>
-								{isUploading ? "Uploading..." : isProcessing ? "Analysing Image..." : "Search with this Image"}
+								{isUploading ? "Загрузка..." : isProcessing ? "Анализ..." : "Поиск с картинки"}
 							</Button>
 						)}
 					</form>
