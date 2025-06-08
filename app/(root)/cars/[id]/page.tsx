@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 		title: `${car?.year} ${car?.make} ${car?.model} | Mira-Rent`,
 		description: car?.description.substring(0, 160),
 		openGraph: {
-			images: car?.images?.[0] ? [car.images[0]] : [],
+			images: car?.images ? car.images[0] : [],
 		},
 	}
 }
