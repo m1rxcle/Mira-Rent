@@ -63,7 +63,9 @@ const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFil
 						step={100}
 						value={priceRange}
 						onValueChange={(value) => {
-							onFilterChange("priceRange", priceRange)
+							console.log("[onValueChange] value:", value)
+
+							onFilterChange("priceRange", value)
 						}}
 					/>
 				</div>

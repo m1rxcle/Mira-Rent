@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { Filter, Sliders, X } from "lucide-react"
 import CarFilterControls from "./car-filter-controls"
 import { CurrentFiltersProps, FiltersProps } from "@/@types"
@@ -41,6 +41,7 @@ const CarsFilters = ({ filters }: FiltersProps) => {
 	const router = useRouter()
 	const pathname = usePathname()
 	const searchParams = useSearchParams()
+	const didInit = useRef(false)
 
 	const currentMake = searchParams.get("make") || ""
 	const currentBodyType = searchParams.get("bodyType") || ""
@@ -67,13 +68,17 @@ const CarsFilters = ({ filters }: FiltersProps) => {
 	const setIsSheetOpen = setIsSheetOpenFn()
 
 	useEffect(() => {
-		setMake(currentMake)
-		setBodyType(currentBodyType)
-		setFuelType(currentFuelType)
-		setTransmission(currentTransmission)
-		setPriceRange([currentMinPrice, currentMaxPrice])
-		setSortBy(currentSortBy)
-	}, [currentMake, currentBodyType, currentFuelType, currentTransmission, currentMinPrice, currentMaxPrice, currentSortBy])
+		console.log("[useEffect] initializing filters from URL")
+		if (!didInit.current) {
+			setMake(currentMake)
+			setBodyType(currentBodyType)
+			setFuelType(currentFuelType)
+			setTransmission(currentTransmission)
+			setPriceRange([currentMinPrice, currentMaxPrice])
+			setSortBy(currentSortBy)
+			didInit.current = true
+		}
+	}, [])
 
 	const activeFilterCount = [
 		make,
@@ -88,7 +93,7 @@ const CarsFilters = ({ filters }: FiltersProps) => {
 		bodyType,
 		fuelType,
 		transmission,
-		priceRange: [filters.priceRange.min, filters.priceRange.max],
+		priceRange,
 	}
 
 	const handleFilterChange = (filterName: string, value: any) => {

@@ -44,22 +44,22 @@ const сarFilters: StateCreator<ICarFiltersState> = (set) => ({
 	setIsSheetOpen: (value: boolean) => set({ isSheetOpen: value }),
 })
 
-const useCarFilters = create<ICarFiltersState>()(сarFilters)
+const useCarFiltersStore = create<ICarFiltersState>()(сarFilters)
 
 // Селекторы
 
-export const useMake = () => useCarFilters((state) => state.make)
-export const useBodyType = () => useCarFilters((state) => state.bodyType)
-export const useFuelType = () => useCarFilters((state) => state.fuelType)
-export const useTransmission = () => useCarFilters((state) => state.transmission)
-export const usePriceRange = () => useCarFilters((state) => state.priceRange)
-export const useSortBy = () => useCarFilters((state) => state.sortBy)
-export const useIsSheetOpen = () => useCarFilters((state) => state.isSheetOpen)
+export const useMake = () => useCarFiltersStore((state) => state.make)
+export const useBodyType = () => useCarFiltersStore((state) => state.bodyType)
+export const useFuelType = () => useCarFiltersStore((state) => state.fuelType)
+export const useTransmission = () => useCarFiltersStore((state) => state.transmission)
+export const usePriceRange = () => useCarFiltersStore((state) => state.priceRange)
+export const useSortBy = () => useCarFiltersStore((state) => state.sortBy)
+export const useIsSheetOpen = () => useCarFiltersStore((state) => state.isSheetOpen)
 
-export const setMakeFn = () => useCarFilters.getState().setMake
-export const setBodyTypeFn = () => useCarFilters.getState().setBodyType
-export const setFuelTypeFn = () => useCarFilters.getState().setFuelType
-export const setTransmissionFn = () => useCarFilters.getState().setTransmission
-export const setPriceRangeFn = () => useCarFilters.getState().setPriceRange
-export const setSortByFn = () => useCarFilters.getState().setSortBy
-export const setIsSheetOpenFn = () => useCarFilters.getState().setIsSheetOpen
+export const setMakeFn = () => useCarFiltersStore.getState().setMake
+export const setBodyTypeFn = () => useCarFiltersStore.getState().setBodyType
+export const setFuelTypeFn = () => useCarFiltersStore.getState().setFuelType
+export const setTransmissionFn = () => useCarFiltersStore.getState().setTransmission
+export const setPriceRangeFn = () => useCarFiltersStore.getState().setPriceRange
+export const setSortByFn = () => useCarFiltersStore.getState().setSortBy
+export const setIsSheetOpenFn = () => useCarFiltersStore.getState().setIsSheetOpen
