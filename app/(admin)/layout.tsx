@@ -3,7 +3,6 @@ import { Sidebar } from "@/share/components/index"
 import Header from "@/share/components/header"
 import { notFound } from "next/navigation"
 
-//НЕ ЗАБЫТЬ ДОБАВИТЬ MD:: ДЛЯ MAIN
 const AdminLayout = async ({ children }: { children: React.ReactNode }) => {
 	const admin = await getAdmin()
 

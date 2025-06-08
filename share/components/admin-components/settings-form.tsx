@@ -154,7 +154,7 @@ const SettingsForm = () => {
 						<Clock className="mr-2 h-4 w-4" /> Рабочие часы
 					</TabsTrigger>
 					<TabsTrigger value="admins">
-						<Shield className="mr-2 h-4 w-4" /> Администраторы и пользователи
+						<Shield className="mr-2 h-4 w-4" /> Пользователи
 					</TabsTrigger>
 				</TabsList>
 				<TabsContent value="hours" className="space-y-6 mt-6">
