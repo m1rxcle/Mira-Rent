@@ -18,7 +18,7 @@ import { ActivityIcon, BadgeCheck, CarIcon, Eye, ImagesIcon, List, Star, StarOff
 import { formatCarPrice } from "@/share/constants/data"
 import Image from "next/image"
 import { CarProps } from "@/@types"
-import React, { SetStateAction } from "react"
+import React from "react"
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
 
 interface TableForListOfCarsProps {
@@ -42,8 +42,8 @@ interface TableForListOfCarsProps {
 	formatStatusBadge: (status: string | undefined) => React.ReactNode
 	handleToggleFeatured: (car: CarProps) => Promise<void>
 	handleToggleStatus: (newStatus: CarProps["status"], car: CarProps) => Promise<void>
-	setCarToDelete: React.Dispatch<SetStateAction<CarProps | null>>
-	setDeleteDialogOpen: React.Dispatch<SetStateAction<boolean>>
+	setCarToDelete: (value: CarProps | null) => void
+	setDeleteDialogOpen: (value: boolean) => void
 }
 
 const TableForListOfCars: React.FC<TableForListOfCarsProps> = ({
@@ -76,16 +76,9 @@ const TableForListOfCars: React.FC<TableForListOfCarsProps> = ({
 				{fetchingResult?.data?.map((car: CarProps) => {
 					return (
 						<TableRow key={car.id}>
-							<TableCell className="w-10 h-10 rounded-md overflow-hidden">
+							<TableCell className="w-15 h-15 rounded-md overflow-hidden">
 								{car.images && car.images.length > 0 ? (
-									<Image
-										src={car.images[0]}
-										alt={`${car.make} ${car.model}`}
-										height={40}
-										width={40}
-										className="w-full h-full object-cover"
-										priority
-									/>
+									<Image src={car.images[0]} alt={`${car.make} ${car.model}`} height={50} width={50} className="w-15 h-15 object-contain" priority />
 								) : (
 									<div className="w-full h-full bg-gray-200 flex items-center justify-center">
 										<CarIcon className="h-6 w-6 text-gray-400" />

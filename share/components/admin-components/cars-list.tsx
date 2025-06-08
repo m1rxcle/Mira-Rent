@@ -2,7 +2,7 @@
 
 import { CarProps } from "@/@types"
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 import { useRouter } from "next/navigation"
 
@@ -16,11 +16,16 @@ import { DeleteCarDialog, TableForListOfCars } from "./index"
 
 import { Button, Card, CardContent, Input, Badge } from "@/share/ui/index"
 import useFetch from "@/share/hooks/use-fetch"
+import { setCarToDeleteFn, setDeleteDialogOpenFn, setSearchFn, useCarToDelete, useDeleteDialogOpen, useSearch } from "@/share/store/car-list.store"
 
 const CarsList = () => {
-	const [search, setSearch] = useState("")
-	const [carToDelete, setCarToDelete] = useState<CarProps | null>(null)
-	const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
+	const search = useSearch()
+	const carToDelete = useCarToDelete()
+	const deleteDialogOpen = useDeleteDialogOpen()
+
+	const setSearch = setSearchFn()
+	const setCarToDelete = setCarToDeleteFn()
+	const setDeleteDialogOpen = setDeleteDialogOpenFn()
 
 	const router = useRouter()
 

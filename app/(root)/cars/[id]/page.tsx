@@ -3,7 +3,7 @@ import { CarDetails } from "@/share/components/index"
 import { notFound } from "next/navigation"
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
-	const { id } = params
+	const { id } = await params
 	const result = await getCarById(id)
 
 	if (!result.success) {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 }
 
 const CarPage = async ({ params }: { params: { id: string } }) => {
-	const { id } = params
+	const { id } = await params
 	const result = await getCarById(id)
 
 	if (!result.success) notFound()

@@ -15,7 +15,7 @@ const ReservationsList: React.FC<{ initialData: initialDataProps[] }> = ({ initi
 
 	const handleCancelBooking = async (bookingId: string) => {
 		await cancelBookingFn(bookingId)
-		toast.success("Booking cancelled successfully")
+		toast.success("Бронирование отменено успешно")
 	}
 
 	const upcomingBookings = initialData.filter((booking) => ["PENDING", "CONFIRMED"].includes(booking.status))

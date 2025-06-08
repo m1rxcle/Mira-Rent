@@ -133,7 +133,7 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 							disabled={savingCar}
 						>
 							<Heart className={`h-5 w-5 ${isWishlisted ? "fill-red-500" : ""}`} />
-							{isWishlisted ? "Saved" : "Save Car"}
+							{isWishlisted ? "Добавленно" : "Добавить"}
 						</Button>
 						<Button variant="outline" className={`flex items-center gap-2 flex-1 `} onClick={handleShare}>
 							<Share2 className={`h-5 w-5 `} />
@@ -195,7 +195,7 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 						<CardContent className="p-4">
 							<div className="flex items-center gap-2 text-lg font-medium mb-2">
 								<MessageSquare className="h-5 w-5 text-blue-600" />
-								<h3>Have Questios?</h3>
+								<h3>Остались вопросы ?</h3>
 							</div>
 							<p className="text-sm text-gray-600 mb-3">Наши специалисты всегда готовы помочь</p>
 							<a href="mailto:den_novikov_2000@mail.ru">

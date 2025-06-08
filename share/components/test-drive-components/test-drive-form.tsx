@@ -101,7 +101,7 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 		const selectedSlot = availableTimeSlots.find((slot) => slot.id === data.timeSlot)
 
 		if (!selectedSlot) {
-			toast.error("Выбраны забронированные часы, пожалуйста, выберите другие")
+			toast.error("Выберите время, чтобы забронировать машину")
 			return
 		}
 
@@ -318,7 +318,7 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 								/>
 							</div>
 
-							<Button type="submit" className="w-full" disabled={bookingInProgress}>
+							<Button type="submit" className="w-full" disabled={bookingInProgress || !selectedDate || availableTimeSlots.length === 0}>
 								{bookingInProgress ? (
 									<>
 										<Loader2 className="mr-2 h-4 w-4 animate-spin" />

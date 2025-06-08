@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, Tabs, TabsContent, TabsList, TabsTrigger } from "@/share/ui/index"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -17,14 +17,20 @@ import { useRouter } from "next/navigation"
 import { carFormSchema, TCarFormSchema } from "@/share/constants/zodSchemas/carFormSchema"
 import ManualEntry from "./manual-entry"
 import AiUpload from "./ai-upload"
+import { useAdminStore } from "@/share/store/admin.store"
 
 const AddCarForm = () => {
-	const [activeTab, setActiveTab] = useState("ai")
-	const [imagePreview, setImagePreview] = useState<string | null>(null)
-	const [uploadedAiImage, setUploadedAiImage] = useState<File | null>(null)
+	const activeTab = useAdminStore((state) => state.activeTab)
+	const imagePreivew = useAdminStore((state) => state.imagePreivew)
+	const uploadedAiImage = useAdminStore((state) => state.uploadedAiImage)
+	const uploadedImages = useAdminStore((state) => state.uploadedImages)
+	const imageError = useAdminStore((state) => state.imageError)
 
-	const [uploadedImages, setUploadedImages] = useState<string[]>([])
-	const [imageError, setImageError] = useState("")
+	const setActiveTab = useAdminStore((state) => state.setActiveTab)
+	const setImagePreview = useAdminStore((state) => state.setImagePreview)
+	const setUploadedImages = useAdminStore((state) => state.setUploadedImages)
+	const setUploadedAiImage = useAdminStore((state) => state.setUploadedAiImage)
+	const setImageError = useAdminStore((state) => state.setImageError)
 
 	const { loading, fn, data, error } = useFetch(processCarImageWithAi)
 
@@ -67,7 +73,7 @@ const AddCarForm = () => {
 
 	const onSubmit = async (data: CarPropsForSubmit) => {
 		if (uploadedImages.length === 0) {
-			setImageError("Пожалуйста загрузите хотя бы одну картинку")
+			toast.error("Пожалуйста загрузите хотя бы одну картинку")
 			return
 		}
 
@@ -83,7 +89,8 @@ const AddCarForm = () => {
 	}
 
 	const removeImage = (index: number) => {
-		setUploadedImages((prev) => prev.filter((_, i) => i !== index))
+		setUploadedImages((prev: string[]) => prev.filter((_, i) => i !== index))
+		toast.success("Картинка удалена успешно")
 	}
 
 	const onMultiImagesDrop = (acceptedFiles: File[]) => {
@@ -107,7 +114,6 @@ const AddCarForm = () => {
 
 				if (newImages.length === validFiles.length) {
 					setUploadedImages((prev) => [...prev, ...newImages])
-					setImageError("")
 					toast.success(`Успешно загружено ${validFiles.length} картинок`)
 				}
 			}
@@ -159,7 +165,7 @@ const AddCarForm = () => {
 
 	const processWithAi = async () => {
 		if (!uploadedAiImage) {
-			toast.error("Пожалуйста загрузите картинку")
+			setImageError("Пожалуйста загрузите картинку")
 			return
 		}
 
@@ -249,7 +255,7 @@ const AddCarForm = () => {
 							<AiUpload
 								getAiInputProps={getAiInputProps}
 								getAiRootProps={getAiRootProps}
-								imagePreview={imagePreview}
+								imagePreview={imagePreivew}
 								loading={loading}
 								processWithAi={processWithAi}
 								setUploadedAiImage={setUploadedAiImage}

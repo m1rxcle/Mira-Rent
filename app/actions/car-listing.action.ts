@@ -206,7 +206,7 @@ export async function toggleSavedCar(carId: Car["id"]) {
 			return {
 				success: true,
 				saved: false,
-				message: "Car removed from favorites",
+				message: "Машина удалена из избранных",
 			}
 		}
 
@@ -221,7 +221,7 @@ export async function toggleSavedCar(carId: Car["id"]) {
 		return {
 			success: true,
 			saved: true,
-			message: "Car added to favorites",
+			message: "Машина добавлена в избранные",
 		}
 	} catch (error) {
 		throw new Error(`Error saving car: ${error}`)
@@ -304,7 +304,7 @@ export async function getCarById(carId: Car["id"]) {
 				carId,
 				userId: dbUser?.id,
 				status: {
-					in: ["PENDING", "CONFIRMED", "COMPLETED"],
+					in: ["PENDING", "CONFIRMED"],
 				},
 			},
 			orderBy: {

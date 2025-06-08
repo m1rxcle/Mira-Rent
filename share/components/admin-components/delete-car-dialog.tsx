@@ -1,14 +1,13 @@
 import { CarProps } from "@/@types"
 import { Button, Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/share/ui/index"
 import { Loader2 } from "lucide-react"
-import { SetStateAction } from "react"
 
 interface DeleteCarDialogProps {
 	deleteDialogOpen: boolean
 	carToDelete: CarProps | null
 	isDeletingCars: boolean
 
-	setDeleteDialogOpen: React.Dispatch<SetStateAction<boolean>>
+	setDeleteDialogOpen: (value: boolean) => void
 	handleDeleteCar: () => Promise<void>
 }
 

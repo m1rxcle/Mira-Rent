@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Filter, Sliders, X } from "lucide-react"
 import CarFilterControls from "./car-filter-controls"
 import { CurrentFiltersProps, FiltersProps } from "@/@types"
@@ -20,6 +20,22 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from "@/share/ui"
+import {
+	setBodyTypeFn,
+	setFuelTypeFn,
+	setIsSheetOpenFn,
+	setMakeFn,
+	setPriceRangeFn,
+	setSortByFn,
+	setTransmissionFn,
+	useBodyType,
+	useFuelType,
+	useIsSheetOpen,
+	useMake,
+	usePriceRange,
+	useSortBy,
+	useTransmission,
+} from "@/share/store/car-filters.store"
 
 const CarsFilters = ({ filters }: FiltersProps) => {
 	const router = useRouter()
@@ -34,13 +50,21 @@ const CarsFilters = ({ filters }: FiltersProps) => {
 	const currentMaxPrice = searchParams.get("maxPrice") ? parseInt(searchParams.get("maxPrice") || "0") : filters.priceRange.max
 	const currentSortBy = searchParams.get("sortBy") || "newest"
 
-	const [make, setMake] = useState(currentMake)
-	const [bodyType, setBodyType] = useState(currentBodyType)
-	const [fuelType, setFuelType] = useState(currentFuelType)
-	const [transmission, setTransmission] = useState(currentTransmission)
-	const [priceRange, setPriceRange] = useState([currentMinPrice, currentMaxPrice])
-	const [sortBy, setSortBy] = useState(currentSortBy)
-	const [isSheetOpen, setIsSheetOpen] = useState(false)
+	const make = useMake()
+	const bodyType = useBodyType()
+	const fuelType = useFuelType()
+	const transmission = useTransmission()
+	const priceRange = usePriceRange()
+	const sortBy = useSortBy()
+	const isSheetOpen = useIsSheetOpen()
+
+	const setMake = setMakeFn()
+	const setBodyType = setBodyTypeFn()
+	const setFuelType = setFuelTypeFn()
+	const setTransmission = setTransmissionFn()
+	const setPriceRange = setPriceRangeFn()
+	const setSortBy = setSortByFn()
+	const setIsSheetOpen = setIsSheetOpenFn()
 
 	useEffect(() => {
 		setMake(currentMake)

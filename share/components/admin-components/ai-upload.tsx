@@ -2,13 +2,14 @@ import { Camera, Loader2 } from "lucide-react"
 import { Button } from "@/share/ui/index"
 import { DropzoneInputProps } from "react-dropzone"
 import React from "react"
+import { cn } from "@/lib/utils"
 
 interface AiUploadProps {
 	imagePreview: string | null
 	loading: boolean
 
-	setUploadedAiImage: React.Dispatch<React.SetStateAction<File | null>>
-	setImagePreview: React.Dispatch<React.SetStateAction<string | null>>
+	setUploadedAiImage: (value: File | null) => void
+	setImagePreview: (value: string | null) => void
 	processWithAi: () => Promise<void>
 	getAiRootProps: <T extends DropzoneInputProps>(props?: T) => T
 	getAiInputProps: <T extends DropzoneInputProps>(props?: T) => T
@@ -28,7 +29,7 @@ const AiUpload: React.FC<AiUploadProps> = ({
 			<div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:bg-gray-50 transition">
 				{imagePreview ? (
 					<div className="flex flex-col items-center">
-						<img src={imagePreview} alt="Uploaded Car" className="max-h-56 max-w-full object-contain mb-4" />
+						<img src={imagePreview} alt="Uploaded Car" className={cn("max-h-56 max-w-full object-contain mb-4", loading ? "opacity-50" : "")} />
 
 						<div className="flex gap-2">
 							<Button

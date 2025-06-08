@@ -7,7 +7,7 @@ export const metadata = {
 
 const TestDrivePage = () => {
 	return (
-		<div className="p-6">
+		<div className="p-6 mb-20">
 			<h1 className="text-2xl font-bold mb-6">Управление тест-драйвами</h1>
 			<TestDriveList />
 		</div>

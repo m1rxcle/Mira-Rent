@@ -1,53 +1,27 @@
 "use client"
 
-import { useState } from "react"
-import { Alert, AlertDescription, AlertTitle, Card, CardContent, CardHeader, CardTitle, Tabs, TabsContent, TabsList, TabsTrigger } from "@/share/ui"
-import { Calendar, Car, CheckCircle, Clock, DollarSign, Info, LineChart, TrendingUp, XCircle } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle, Tabs, TabsContent, TabsList, TabsTrigger } from "@/share/ui"
+import { Calendar, Car, CheckCircle, Clock, DollarSign, LineChart, TrendingUp, XCircle } from "lucide-react"
+import { useDashboardStore } from "@/share/store/dashboard.store"
+import useFetch from "@/share/hooks/use-fetch"
+import { getDashboardData } from "@/app/actions/admin.actions"
+import { useEffect } from "react"
+import SkeletonDashboard from "../skeletons/skeleton-dashboard"
 
-type DashboardProps =
-	| {
-			success: boolean
-			data: {
-				cars: {
-					total: number
-					available: number
-					sold: number
-					unavailable: number
-					featured: number
-				}
-				testDrives: {
-					total: number
-					pending: number
-					confirmed: number
-					completed: number
-					cancelled: number
-					noShow: number
-					conversionRate: number
-				}
-			}
-			error?: undefined
-	  }
-	| {
-			success: boolean
-			error: unknown
-			data?: undefined
-	  }
-const Dashboard = ({ initialData }: { initialData: DashboardProps }) => {
-	const [activeTab, setActiveTab] = useState("overview")
+const Dashboard = () => {
+	const activeTab = useDashboardStore((state) => state.activeTab)
+	const setActiveTab = useDashboardStore((state) => state.setActiveTab)
+	const { data, loading, fn } = useFetch(getDashboardData)
 
-	if (!initialData || !initialData.success) {
-		return (
-			<Alert>
-				<Info className="h-4 w-4" />
-				<AlertTitle>Ошибка</AlertTitle>
-				<AlertDescription>{String(initialData?.error) || "Что-то пошло не так"}</AlertDescription>
-			</Alert>
-		)
-	}
+	useEffect(() => {
+		fn()
+	}, [])
 
-	if (!initialData.data) return null
+	if (loading) return <SkeletonDashboard />
 
-	const { cars, testDrives } = initialData.data
+	if (!data?.data) return null
+
+	const { cars, testDrives } = data.data
 
 	return (
 		<div>

@@ -1,5 +1,5 @@
 export { default as CarDetails } from "./car-details"
-export { default as CarListingsLoading } from "./car-listings-loading"
+export { default as CarListingsLoading } from "../skeletons/car-listings-loading"
 export { default as CarFilterControls } from "./car-filter-controls"
 export { default as CarsFilters } from "./cars-filters"
 export { default as CarsListing } from "./cars-listing"

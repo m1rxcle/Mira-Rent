@@ -51,12 +51,12 @@ const TestDriveList = () => {
 
 	useEffect(() => {
 		if (updateResult?.success) {
-			toast.success("Status updated successfully")
+			toast.success("Статус обновлен успешно")
 			fetchTestDrives({ search, status: statusFilter })
 		}
 
 		if (cancelResult?.success) {
-			toast.success(" Booking cancelled successfully")
+			toast.success("Бронь отменена успешно")
 			fetchTestDrives({ search, status: statusFilter })
 		}
 	}, [updateResult, cancelResult])
@@ -80,7 +80,7 @@ const TestDriveList = () => {
 			<div className="flex flex-col sm:flex-row gap-4 w-full items-start sm:items-center justify-between">
 				<Select value={statusFilter} onValueChange={(value) => setStatusFilter(value as BookingStatus)}>
 					<SelectTrigger className={fetchingTestDrives ? "opacity-50 pointer-events-none" : ""}>
-						<SelectValue placeholder="Select status" />
+						<SelectValue placeholder="Выберите статус" />
 					</SelectTrigger>
 					<SelectContent>
 						<SelectItem value={null as unknown as string}>Все статусы</SelectItem>

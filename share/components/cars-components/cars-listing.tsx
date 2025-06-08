@@ -3,19 +3,21 @@
 import { getCars } from "@/app/actions/car-listing.action"
 import useFetch from "@/share/hooks/use-fetch"
 import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
-import CarListingsLoading from "./car-listings-loading"
+import { useEffect } from "react"
+import CarListingsLoading from "../skeletons/car-listings-loading"
 import { Alert, AlertDescription, AlertTitle, Button } from "@/share/ui/index"
 import { Info, InfoIcon } from "lucide-react"
 import Link from "next/link"
 import { CarCard } from "@/share/components/index"
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/share/ui/"
+import { setCurrentPageFn, useCurrentPage, useLimit } from "@/share/store/car-listing.store"
 
 const CarsListing = () => {
 	const searchParams = useSearchParams()
 	const router = useRouter()
-	const [currentPage, setCurrentPage] = useState(1)
-	const limit = 6
+	const currentPage = useCurrentPage()
+	const setCurrentPage = setCurrentPageFn()
+	const limit = useLimit()
 
 	const search = searchParams.get("search") || ""
 	const make = searchParams.get("make") || ""

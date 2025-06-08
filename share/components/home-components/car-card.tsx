@@ -42,8 +42,6 @@ const CarCard = ({ car }: { car: CarProps }) => {
 			return
 		}
 
-		if (isToggling) return
-
 		await toggleSaveCarFn(car.id)
 	}
 	return (
