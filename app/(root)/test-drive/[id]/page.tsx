@@ -10,7 +10,7 @@ export async function generateMetadata() {
 }
 
 const TestDrivePage = async ({ params }: { params: { id: string } }) => {
-	const { id } = params
+	const { id } = await params
 
 	const result = await getCarById(id)
 

@@ -20,19 +20,34 @@ const nextConfig: NextConfig = {
 		],
 	},
 
-	async headers() {
+	// Прочитать про HEADERS.
+	/* async headers() {
 		return [
+			// 🟢 Открытая главная страница "/"
 			{
-				source: "/embed",
+				source: "/",
 				headers: [
 					{
 						key: "Content-Security-Policy",
-						value: "frame-src 'self' https://m1ra-rent-waitlist.created.app",
+						value: [
+							"default-src 'self';",
+							"img-src * data: blob:;",
+							"script-src 'self' 'unsafe-inline' https:;",
+							"style-src 'self' 'unsafe-inline' https:;",
+							"frame-src *;",
+							"frame-ancestors *;",
+							"connect-src *;",
+							"font-src * data:;",
+							"object-src 'none';",
+							"base-uri 'self';",
+						].join(" "),
 					},
 				],
 			},
+
+			// 🔒 Все остальные маршруты (приватные)
 		]
-	},
+	}, */
 }
 
 export default nextConfig
