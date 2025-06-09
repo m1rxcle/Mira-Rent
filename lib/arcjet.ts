@@ -1,4 +1,4 @@
-import arcjet, { tokenBucket } from "@arcjet/next"
+/* import arcjet, { tokenBucket } from "@arcjet/next"
 
 const aj = arcjet({
 	key: process.env.ARCJET_KEY!,
@@ -13,4 +13,4 @@ const aj = arcjet({
 	],
 })
 
-export default aj
+export default aj */

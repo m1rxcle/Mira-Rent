@@ -1,4 +1,4 @@
-import arcjet, { createMiddleware, detectBot, shield } from "@arcjet/next"
+/* import arcjet, { createMiddleware, detectBot, shield } from "@arcjet/next"
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server"
 import { NextResponse } from "next/server"
 
@@ -29,7 +29,7 @@ const clerk = clerkMiddleware(async (auth, req) => {
 	return NextResponse.next()
 })
 
-export default createMiddleware(aj, clerk)
+export default createMiddleware(aj, clerk) */
 
 export const config = {
 	matcher: [

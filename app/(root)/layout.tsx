@@ -1,9 +1,26 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-	title: "Miracle Rent | Главная",
-	description: "Найдите свой лучший автомобиль.",
+	title: "Miracle Rent",
+	description: "Сайт для покупки и аренды автомобилей.",
 	keywords: "Cars, Rent, buy car, best cars",
+	creator: "m1rxcle",
+	openGraph: {
+		title: "Miracle Rent – аренда авто",
+		description: "Найдите свой лучший автомобиль.",
+		url: "https://mira-rent.vercel.app",
+		siteName: "Miracle Rent",
+		images: [
+			{
+				url: "https://mira-rent.vercel.app/main-logo.webp",
+				width: 1200,
+				height: 630,
+				alt: "Miracle Rent – превью",
+			},
+		],
+		locale: "ru_RU",
+		type: "website",
+	},
 }
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
