@@ -4,6 +4,23 @@ export const metadata: Metadata = {
 	title: "Miracle Rent | Главная",
 	description: "Найдите свой лучший автомобиль.",
 	keywords: "Cars, Rent, buy car, best cars",
+
+	openGraph: {
+		title: "Miracle Rent – аренда авто",
+		description: "Найдите свой лучший автомобиль.",
+		url: "https://mira-rent.vercel.app",
+		siteName: "Miracle Rent",
+		images: [
+			{
+				url: "https://mira-rent.vercel.app/main-logo.webp",
+				width: 1200,
+				height: 630,
+				alt: "Miracle Rent – превью",
+			},
+		],
+		locale: "ru_RU",
+		type: "website",
+	},
 }
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
