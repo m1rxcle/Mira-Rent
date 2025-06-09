@@ -1,9 +1,9 @@
 "use server"
 
-/* import aj from "@/lib/arcjet" */
+import aj from "@/lib/arcjet"
 import prisma from "@/prisma/prisma"
 import { fileToBase64, serializedCarData } from "@/share/constants/data"
-/* import { request } from "@arcjet/next" */
+import { request } from "@arcjet/next"
 import { GoogleGenerativeAI } from "@google/generative-ai"
 
 export async function getFeaturedCars(limit = 3) {
@@ -29,7 +29,7 @@ export async function processImageSearch(file: File) {
 	try {
 		//Rate limit
 
-		/* const req = await request()
+		const req = await request()
 
 		const decision = await aj.protect(req, {
 			requested: 1,
@@ -51,7 +51,7 @@ export async function processImageSearch(file: File) {
 			}
 
 			throw new Error("Requst blocked")
-		} */
+		}
 
 		if (!process.env.GEMINI_API_KEY) throw new Error("Gemini API key is not set")
 
