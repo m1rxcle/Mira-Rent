@@ -1,6 +1,4 @@
 import Footer from "@/share/components/footer"
-import { Button } from "@/share/ui"
-import { ArrowUpIcon } from "lucide-react"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
