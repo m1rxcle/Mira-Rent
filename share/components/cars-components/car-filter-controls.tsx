@@ -14,7 +14,7 @@ interface CarFilterControlProps {
 		}
 	}
 	currentFilters: CurrentFiltersProps
-	onFilterChange: (filterName: string, value: any) => void
+	onFilterChange: (filterName: string, value: string | number[]) => void
 	onClearFilter: (filterName: string) => void
 }
 
@@ -63,8 +63,6 @@ const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFil
 						step={100}
 						value={priceRange}
 						onValueChange={(value) => {
-							console.log("[onValueChange] value:", value)
-
 							onFilterChange("priceRange", value)
 						}}
 					/>

@@ -96,22 +96,42 @@ const CarsFilters = ({ filters }: FiltersProps) => {
 		priceRange,
 	}
 
-	const handleFilterChange = (filterName: string, value: any) => {
+	const handleFilterChange = (filterName: string, value: string | number[]) => {
 		switch (filterName) {
 			case "make":
-				setMake(value)
+				if (typeof value === "string") {
+					setMake(value)
+				} else {
+					console.error("Invalid make value:", value)
+				}
 				break
 			case "bodyType":
-				setBodyType(value)
+				if (typeof value === "string") {
+					setBodyType(value)
+				} else {
+					console.error("Invalid bodyType value:", value)
+				}
 				break
 			case "fuelType":
-				setFuelType(value)
+				if (typeof value === "string") {
+					setFuelType(value)
+				} else {
+					console.error("Invalid fuelType value:", value)
+				}
 				break
 			case "transmission":
-				setTransmission(value)
+				if (typeof value === "string") {
+					setTransmission(value)
+				} else {
+					console.error("Invalid transmission value:", value)
+				}
 				break
 			case "priceRange":
-				setPriceRange(value)
+				if (Array.isArray(value)) {
+					setPriceRange(value)
+				} else {
+					console.error("Invalid priceRange value:", value)
+				}
 				break
 		}
 	}

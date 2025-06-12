@@ -17,26 +17,12 @@ import {
 import { ActivityIcon, BadgeCheck, CarIcon, Eye, ImagesIcon, List, Star, StarOff, Trash2 } from "lucide-react"
 import { formatCarPrice } from "@/share/constants/data"
 import Image from "next/image"
-import { CarProps } from "@/@types"
+import { CarProps, TFetchingResultReturnTypes } from "@/@types"
 import React from "react"
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
 
 interface TableForListOfCarsProps {
-	fetchingResult:
-		| {
-				success: boolean
-				data: any[]
-				error?: undefined
-				message?: undefined
-		  }
-		| {
-				success: boolean
-				error: string
-				message: string
-				data?: undefined
-		  }
-		| undefined
-
+	fetchingResult: TFetchingResultReturnTypes
 	isUpdatingCars: boolean
 	router: AppRouterInstance
 	formatStatusBadge: (status: string | undefined) => React.ReactNode
@@ -73,7 +59,7 @@ const TableForListOfCars: React.FC<TableForListOfCarsProps> = ({
 				</TableRow>
 			</TableHeader>
 			<TableBody>
-				{fetchingResult?.data?.map((car: CarProps) => {
+				{fetchingResult?.data.map((car: CarProps) => {
 					return (
 						<TableRow key={car.id}>
 							<TableCell className="w-15 h-15 rounded-md overflow-hidden">

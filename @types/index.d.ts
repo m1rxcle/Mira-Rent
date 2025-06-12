@@ -1,3 +1,4 @@
+import { updateCar } from "@/app/actions/cars.actions"
 import { Omit } from "typescript"
 
 export interface CarProps {
@@ -206,4 +207,11 @@ export interface bookingProps {
 	notes: string | null
 	createdAt: string
 	updatedAt: string
+}
+
+type TUpdateCar = typeof updateCar
+type TUpdateCarArgs = Parameters<TUpdateCar>
+
+interface TFetchingResultReturnTypes {
+	data: CarProps[]
 }

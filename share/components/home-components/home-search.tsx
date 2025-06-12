@@ -42,7 +42,7 @@ const HomeSearch = () => {
 				console.log(error)
 			}
 		},
-		250,
+		400,
 		[searchTerm]
 	)
 
@@ -122,10 +122,6 @@ const HomeSearch = () => {
 		maxFiles: 1,
 	})
 
-	const currentCar = getCars.map((car) => {
-		if (car.make) return car.make.toLowerCase()
-	})
-
 	const onClickTerm = () => {
 		setSearchTerm("")
 		setGetCars([])
@@ -144,19 +140,19 @@ const HomeSearch = () => {
 						type="text"
 						placeholder="Введите марку, модель, год или загрузите картинку при помощи ИИ..."
 					/>
-					{getCars.length > 0 && focused && (
+					{focused && (
 						<div
 							className={cn(
-								"absolute w-full bg-white rounded-md py-2 top-14 shadow-md transition-all duration-300 invisible opacity-0 z-30",
-								currentCar.includes(searchTerm.toLowerCase()) && "visible opacity-100 top-13 "
+								"absolute w-full bg-white rounded-md pt-2 top-14 shadow-md transition-all duration-300 invisible opacity-0 z-30",
+								"visible opacity-100 top-13 "
 							)}
 						>
-							{getCars.map((car) => (
+							{getCars?.map((car) => (
 								<div key={car.id}>
 									<Link
 										onClick={onClickTerm}
 										href={`/cars/${car.id}`}
-										className="flex items-center gap-2 px-5 mb-2 mt-2 text-center hover:bg-gray-100 h-[40px]  "
+										className="flex items-center gap-2 px-5 mb-2 mt-2 text-center hover:bg-blue-100 h-[40px]  "
 									>
 										<Image src={car.images[0]} alt={`${car.make} ${car.model}`} width={50} height={60} className="object-cover" />
 										<span className="font-medium ">
