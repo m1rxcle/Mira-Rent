@@ -30,7 +30,7 @@ const Header = async ({ isAdminPage = false }: { isAdminPage: boolean }) => {
 							<Link href="/saved-cars">
 								<Button>
 									<Heart size={18} />
-									<span className="hidden md:inline">Избранные автомобили</span>
+									<span className="hidden md:inline">Избранное</span>
 								</Button>
 							</Link>
 

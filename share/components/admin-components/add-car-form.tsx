@@ -17,20 +17,31 @@ import { useRouter } from "next/navigation"
 import { carFormSchema, TCarFormSchema } from "@/share/constants/zodSchemas/carFormSchema"
 import ManualEntry from "./manual-entry"
 import AiUpload from "./ai-upload"
-import { useAdminStore } from "@/share/store/admin.store"
+import {
+	setActiveTabFn,
+	setImageErrorFn,
+	setImagePreviewFn,
+	setUploadedAiImageFn,
+	setUploadedImagesFn,
+	useActiveTab,
+	useImageError,
+	useImagePreview,
+	useUploadedAiImage,
+	useUploadedImages,
+} from "@/share/store/admin.store"
 
 const AddCarForm = () => {
-	const activeTab = useAdminStore((state) => state.activeTab)
-	const imagePreivew = useAdminStore((state) => state.imagePreivew)
-	const uploadedAiImage = useAdminStore((state) => state.uploadedAiImage)
-	const uploadedImages = useAdminStore((state) => state.uploadedImages)
-	const imageError = useAdminStore((state) => state.imageError)
+	const activeTab = useActiveTab()
+	const imagePreivew = useImagePreview()
+	const uploadedAiImage = useUploadedAiImage()
+	const uploadedImages = useUploadedImages()
+	const imageError = useImageError()
 
-	const setActiveTab = useAdminStore((state) => state.setActiveTab)
-	const setImagePreview = useAdminStore((state) => state.setImagePreview)
-	const setUploadedImages = useAdminStore((state) => state.setUploadedImages)
-	const setUploadedAiImage = useAdminStore((state) => state.setUploadedAiImage)
-	const setImageError = useAdminStore((state) => state.setImageError)
+	const setActiveTab = setActiveTabFn()
+	const setImagePreview = setImagePreviewFn()
+	const setUploadedImages = setUploadedImagesFn()
+	const setUploadedAiImage = setUploadedAiImageFn()
+	const setImageError = setImageErrorFn()
 
 	const { loading, fn, data, error } = useFetch(processCarImageWithAi)
 

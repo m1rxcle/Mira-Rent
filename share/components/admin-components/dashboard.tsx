@@ -2,15 +2,15 @@
 
 import { Card, CardContent, CardHeader, CardTitle, Tabs, TabsContent, TabsList, TabsTrigger } from "@/share/ui"
 import { Calendar, Car, CheckCircle, Clock, DollarSign, LineChart, TrendingUp, XCircle } from "lucide-react"
-import { useDashboardStore } from "@/share/store/dashboard.store"
 import useFetch from "@/share/hooks/use-fetch"
 import { getDashboardData } from "@/app/actions/admin.actions"
 import { useEffect } from "react"
 import SkeletonDashboard from "../skeletons/skeleton-dashboard"
+import { setDashBoardActiveTabFn, useDashBoardActiveTab } from "@/share/store/admin.store"
 
 const Dashboard = () => {
-	const activeTab = useDashboardStore((state) => state.activeTab)
-	const setActiveTab = useDashboardStore((state) => state.setActiveTab)
+	const activeTab = useDashBoardActiveTab()
+	const setActiveTab = setDashBoardActiveTabFn()
 	const { data, loading, fn } = useFetch(getDashboardData)
 
 	useEffect(() => {
@@ -133,7 +133,6 @@ const Dashboard = () => {
 					</Card>
 				</TabsContent>
 				{/* Test Drives Tab */}
-
 				<TabsContent value="test-drives" className="space-y-6">
 					<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
 						<Card>

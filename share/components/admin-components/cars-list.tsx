@@ -16,7 +16,7 @@ import { DeleteCarDialog, TableForListOfCars } from "./index"
 
 import { Button, Card, CardContent, Input, Badge } from "@/share/ui/index"
 import useFetch from "@/share/hooks/use-fetch"
-import { setCarToDeleteFn, setDeleteDialogOpenFn, setSearchFn, useCarToDelete, useDeleteDialogOpen, useSearch } from "@/share/store/car-list.store"
+import { setCarToDeleteFn, setDeleteDialogOpenFn, setSearchFn, useCarToDelete, useDeleteDialogOpen, useSearch } from "@/share/store/car.store"
 
 const CarsList = () => {
 	const search = useSearch()

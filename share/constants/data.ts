@@ -1,8 +1,8 @@
 import { Car as CarPrisma } from "@/lib/generated/prisma"
 import { format, parseISO } from "date-fns"
-import { Calendar, Car, Cog, LayoutDashboard } from "lucide-react"
+import { Calendar, Car, Cog, LayoutDashboard, LucideIcon } from "lucide-react"
 
-export const carMakes = [
+export const carMakes: { id: number; name: string; image: string }[] = [
 	{ id: 1, name: "Hyundai", image: "/make/hyundai.webp" },
 	{ id: 2, name: "Honda", image: "/make/honda.webp" },
 	{ id: 3, name: "BMW", image: "/make/bmw.webp" },
@@ -11,14 +11,14 @@ export const carMakes = [
 	{ id: 6, name: "Ford", image: "/make/ford.webp" },
 ]
 
-export const bodyTypes = [
+export const bodyTypes: { id: number; name: string; image: string }[] = [
 	{ id: 1, name: "SUV", image: "/body/suv.webp" },
 	{ id: 2, name: "Sedan", image: "/body/sedan.webp" },
 	{ id: 3, name: "Hatchback", image: "/body/hatchback.webp" },
 	{ id: 4, name: "Convertible", image: "/body/convertible.webp" },
 ]
 
-export const faqItems = [
+export const faqItems: { question: string; answer: string }[] = [
 	{
 		question: "Как мне найти машину, которую хочу купить?",
 		answer: "Просто выберите марку, модель, год выпуска и другие характеристики, чтобы найти подходящую машину.",
@@ -37,7 +37,7 @@ export const faqItems = [
 	},
 ]
 
-export const routes = [
+export const routes: { label: string; icon: LucideIcon; href: string }[] = [
 	{
 		label: "Панель ",
 		icon: LayoutDashboard,
@@ -60,14 +60,14 @@ export const routes = [
 	},
 ]
 
-export const days = [
-	{ value: "MONDAY", label: "Monday" },
-	{ value: "TUESDAY", label: "Tuesday" },
-	{ value: "WEDNESDAY", label: "Wednesday" },
-	{ value: "THURSDAY", label: "Thursday" },
-	{ value: "FRIDAY", label: "Friday" },
-	{ value: "SATURDAY", label: "Saturday" },
-	{ value: "SUNDAY", label: "Sunday" },
+export const days: { value: string; label: string }[] = [
+	{ value: "MONDAY", label: "Понедельник" },
+	{ value: "TUESDAY", label: "Вторник" },
+	{ value: "WEDNESDAY", label: "Среда" },
+	{ value: "THURSDAY", label: "Четверг" },
+	{ value: "FRIDAY", label: "Пятница" },
+	{ value: "SATURDAY", label: "Суббота" },
+	{ value: "SUNDAY", label: "Воскресенье" },
 ]
 
 export async function fileToBase64(file: File): Promise<string> {
@@ -79,11 +79,11 @@ export async function fileToBase64(file: File): Promise<string> {
 
 export const fuelType: string[] = ["Petrol", "Diesel", "Electric", "Hybrid", "Plug-in Hybrid"]
 
-export const transmissions = ["Automatic", "Manual", "Semi-Automatic"]
+export const transmissions: string[] = ["Automatic", "Manual", "Semi-Automatic"]
 
-export const bodyType = ["SUV", "Sedan", "Hatchback", "Coupe", "Convertible", "Wagon", "Pickup"]
+export const bodyType: string[] = ["SUV", "Sedan", "Hatchback", "Coupe", "Convertible", "Wagon", "Pickup"]
 
-export const carStatuses = ["AVAILABLE", "UNAVAILABLE", "SOLD"]
+export const carStatuses: string[] = ["AVAILABLE", "UNAVAILABLE", "SOLD"]
 
 export const serializedCarData = (car: CarPrisma, wishlisted = false) => {
 	return {
@@ -104,10 +104,10 @@ export const formatCarPrice = (price: number): string => {
 	}).format(price)
 }
 
-export const formatTimeForTestDrive = (timeString) => {
+export const formatTimeForTestDrive = (timeString: string) => {
 	try {
 		return format(parseISO(`2022-01-01T${timeString}`), "HH:mm")
-	} catch (error) {
+	} catch {
 		return timeString
 	}
 }

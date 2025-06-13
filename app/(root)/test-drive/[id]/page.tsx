@@ -1,8 +1,9 @@
 import { getCarById } from "@/app/actions/car-listing.action"
 import { TestDriveForm } from "@/share/components/index"
+import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
 	return {
 		title: `Book Test Drive | Mira-Rent`,
 		description: "Book a test drive for a car on Mira-Rent",

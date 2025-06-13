@@ -3,14 +3,14 @@
 import { getCars } from "@/app/actions/car-listing.action"
 import useFetch from "@/share/hooks/use-fetch"
 import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect } from "react"
+import { JSX, useEffect } from "react"
 import CarListingsLoading from "../skeletons/car-listings-loading"
 import { Alert, AlertDescription, AlertTitle, Button } from "@/share/ui/index"
 import { Info, InfoIcon } from "lucide-react"
 import Link from "next/link"
 import { CarCard } from "@/share/components/index"
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/share/ui/"
-import { setCurrentPageFn, useCurrentPage, useLimit } from "@/share/store/car-listing.store"
+import { setCurrentPageFn, useCurrentPage, useLimit } from "@/share/store/car.store"
 
 const CarsListing = () => {
 	const searchParams = useSearchParams()
@@ -99,7 +99,7 @@ const CarsListing = () => {
 		)
 	}
 
-	const paginationItems = []
+	const paginationItems: JSX.Element[] = []
 	const visiblePageNumbers = []
 
 	visiblePageNumbers.push(1)

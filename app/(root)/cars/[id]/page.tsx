@@ -1,8 +1,9 @@
 import { getCarById } from "@/app/actions/car-listing.action"
 import { CarDetails } from "@/share/components/index"
+import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
 	const { id } = await params
 	const result = await getCarById(id)
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { CarProps, TestDriveBookingProps } from "@/@types"
+import { CarProps, IAvailabeSlot, TestDriveBookingProps } from "@/@types"
 import { testDriveSchema, TTestDrive } from "@/share/constants/zodSchemas/testDriveSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
@@ -36,14 +36,7 @@ import {
 const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: TestDriveBookingProps }) => {
 	const router = useRouter()
 
-	const [availableTimeSlots, setAvailableTimeSlots] = useState<
-		{
-			id: string
-			label: string
-			startTime: string
-			endTime: string
-		}[]
-	>([])
+	const [availableTimeSlots, setAvailableTimeSlots] = useState<IAvailabeSlot[]>([])
 
 	const [showConfirmation, setShowConfirmation] = useState(false)
 	const [bookingDetails, setBookingDetails] = useState<TTestDrive | null>(null)
@@ -54,7 +47,7 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 		watch,
 		setValue,
 		reset,
-		formState: { errors, isValid },
+		formState: { errors },
 	} = useForm<TTestDrive>({
 		resolver: zodResolver(testDriveSchema),
 		defaultValues: {
@@ -141,7 +134,7 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 		const openHour = parseInt(daySchedule.openTime.split(":")[0])
 		const closeHour = parseInt(daySchedule.closeTime.split(":")[0])
 
-		const slots = []
+		const slots: IAvailabeSlot[] = []
 
 		for (let hour = openHour; hour <= closeHour; hour++) {
 			const startTime = `${hour.toString().padStart(2, "0")}:00`

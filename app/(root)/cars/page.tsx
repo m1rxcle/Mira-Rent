@@ -1,7 +1,8 @@
 import { getCarFilters } from "@/app/actions/car-listing.action"
 import { CarsFilters, CarsListing } from "@/share/components/index"
+import { Metadata } from "next"
 
-export const metadata = {
+export const metadata: Metadata = {
 	title: "Cars | Mira-Rent",
 	description: "Find you dream Car.",
 }

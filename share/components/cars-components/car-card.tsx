@@ -33,6 +33,11 @@ const CarCard = ({ car }: { car: CarProps }) => {
 		}
 	}, [toggleError])
 
+	useEffect(() => {
+		router.prefetch("/sign-in")
+		router.prefetch(`/cars/${car.id}`)
+	}, [])
+
 	const handleToggleSave = async (e: React.FormEvent) => {
 		e.preventDefault()
 

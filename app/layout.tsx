@@ -1,9 +1,10 @@
 import { Inter } from "next/font/google"
 import "./globals.css"
 import Header from "@/share/components/header"
-import { ClerkProvider } from "@clerk/nextjs"
 import { Toaster } from "sonner"
 import NextTopLoader from "nextjs-toploader"
+import { ClerkProvider } from "@clerk/nextjs"
+import { Suspense } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -16,7 +17,9 @@ export default function AppLayout({
 		<html lang="en">
 			<body className={`${inter.className}`}>
 				<ClerkProvider>
-					<Header />
+					<Suspense>
+						<Header />
+					</Suspense>
 					{children}
 					<Toaster richColors />
 					<NextTopLoader />

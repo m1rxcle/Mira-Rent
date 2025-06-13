@@ -38,6 +38,37 @@ export interface CarListProps {
 	limit: number
 }
 
+export type SavedCarsListProps =
+	| {
+			success: boolean
+			data: {
+				id: string
+				price: number
+				createdAt: Date
+				updatedAt: Date
+				wishlisted: boolean
+				model: string
+				make: string
+				year: number
+				mileage: number
+				color: string
+				fuelType: string
+				transmission: string
+				bodyType: string
+				seats: number | null
+				description: string
+				status: $Enums.CarStatus
+				featured: boolean
+				images: string[]
+			}[]
+			error?: undefined
+	  }
+	| {
+			success: boolean
+			error: string
+			data?: undefined
+	  }
+
 export interface FiltersProps {
 	filters: {
 		makes: string[]
@@ -210,8 +241,15 @@ export interface bookingProps {
 }
 
 type TUpdateCar = typeof updateCar
-type TUpdateCarArgs = Parameters<TUpdateCar>
+type TUpdateCarArgs = Parameters<typeof updateCar>
 
 interface TFetchingResultReturnTypes {
 	data: CarProps[]
+}
+
+export interface IAvailabeSlot {
+	id: string
+	label: string
+	startTime: string
+	endTime: string
 }

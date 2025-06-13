@@ -83,9 +83,7 @@ const Footer = () => {
 				</div>
 			</div>
 
-			<div className="border-t border-white text-center text-black/70 text-sm py-4">
-				© 2025 Miracle-Rent. Все права защищены<span className="animate-ping">❤️</span>.
-			</div>
+			<div className="border-t border-white text-center text-black/70 text-sm py-4">© 2025 Miracle-Rent. Все права защищены ❤️.</div>
 		</footer>
 	)
 }

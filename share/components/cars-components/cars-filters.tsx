@@ -35,7 +35,7 @@ import {
 	usePriceRange,
 	useSortBy,
 	useTransmission,
-} from "@/share/store/car-filters.store"
+} from "@/share/store/car.store"
 
 const CarsFilters = ({ filters }: FiltersProps) => {
 	const router = useRouter()

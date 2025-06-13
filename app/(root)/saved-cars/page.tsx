@@ -1,9 +1,10 @@
 import { getSavedCars } from "@/app/actions/car-listing.action"
 import { SavedCarsList } from "@/share/components/index"
 import { auth } from "@clerk/nextjs/server"
+import { Metadata } from "next"
 import { redirect } from "next/navigation"
 
-export const metadata = {
+export const metadata: Metadata = {
 	title: "Saved Cars | Mira-Rent",
 	description: "View your saved cars.",
 }

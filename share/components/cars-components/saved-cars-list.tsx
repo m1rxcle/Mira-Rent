@@ -1,40 +1,9 @@
-import { $Enums } from "@/lib/generated/prisma"
 import { Button } from "@/share/ui/index"
 import { Heart } from "lucide-react"
 import Link from "next/link"
 import React from "react"
 import { CarCard } from "@/share/components/index"
-
-type SavedCarsListProps =
-	| {
-			success: boolean
-			data: {
-				id: string
-				price: number
-				createdAt: Date
-				updatedAt: Date
-				wishlisted: boolean
-				model: string
-				make: string
-				year: number
-				mileage: number
-				color: string
-				fuelType: string
-				transmission: string
-				bodyType: string
-				seats: number | null
-				description: string
-				status: $Enums.CarStatus
-				featured: boolean
-				images: string[]
-			}[]
-			error?: undefined
-	  }
-	| {
-			success: boolean
-			error: string
-			data?: undefined
-	  }
+import { SavedCarsListProps } from "@/@types"
 
 const SavedCarsList = ({ initialData }: { initialData: SavedCarsListProps }) => {
 	if (!initialData.data || initialData.data.length === 0) {
@@ -53,7 +22,7 @@ const SavedCarsList = ({ initialData }: { initialData: SavedCarsListProps }) => 
 	}
 
 	return (
-		<div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+		<div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
 			{initialData.data.map((car) => (
 				<CarCard key={car.id} car={{ ...car, wishlisted: true }} />
 			))}

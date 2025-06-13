@@ -1,9 +1,10 @@
 import { getUserTestDrives } from "@/app/actions/test-drive.actions"
 import { ReservationsList } from "@/share/components/index"
 import { auth } from "@clerk/nextjs/server"
+import { Metadata } from "next"
 import { redirect } from "next/navigation"
 
-export const metadata = {
+export const metadata: Metadata = {
 	title: "Reservations | Mira-Rent",
 	description: "Manage reservations in your marketplace",
 }
