@@ -4,7 +4,7 @@ import { CarProps, IAvailabeSlot, TestDriveBookingProps } from "@/@types"
 import { testDriveSchema, TTestDrive } from "@/share/constants/zodSchemas/testDriveSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo } from "react"
 import { Controller, useForm } from "react-hook-form"
 import { CalendarIcon, Car, CheckCircle2, Loader2 } from "lucide-react"
 import { format, parseISO } from "date-fns"
@@ -32,14 +32,26 @@ import {
 	SelectValue,
 	Textarea,
 } from "@/share/ui"
+import {
+	setAvailableTimeSlotsFn,
+	setBookingDetailsFn,
+	setShowConfirmationFn,
+	useAvailableTimeSlots,
+	useBookingDetails,
+	useShowConfirmation,
+} from "@/share/store/test-drive.store"
 
 const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: TestDriveBookingProps }) => {
 	const router = useRouter()
 
-	const [availableTimeSlots, setAvailableTimeSlots] = useState<IAvailabeSlot[]>([])
+	const availableTimeSlots = useAvailableTimeSlots()
+	const setAvailableTimeSlots = setAvailableTimeSlotsFn()
 
-	const [showConfirmation, setShowConfirmation] = useState(false)
-	const [bookingDetails, setBookingDetails] = useState<TTestDrive | null>(null)
+	const showConfirmation = useShowConfirmation()
+	const setShowConfirmation = setShowConfirmationFn()
+
+	const bookingDetails = useBookingDetails()
+	const setBookingDetails = setBookingDetailsFn()
 
 	const {
 		control,

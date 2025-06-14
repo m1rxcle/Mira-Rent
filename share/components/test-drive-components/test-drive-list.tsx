@@ -19,15 +19,20 @@ import {
 	SelectValue,
 } from "@/share/ui"
 import { CalendarRange, Loader2, Search } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import TestDriveCard from "./test-drive-card"
 import { toast } from "sonner"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+import { setStatusFilterFn, useStatusFilter } from "@/share/store/test-drive.store"
+import { setSearchFn, useSearch } from "@/share/store/car.store"
 
 const TestDriveList = () => {
-	const [search, setSearch] = useState("")
-	const [statusFilter, setStatusFilter] = useState<BookingStatus>()
+	const search = useSearch()
+	const setSearch = setSearchFn()
+
+	const statusFilter = useStatusFilter()
+	const setStatusFilter = setStatusFilterFn()
 
 	const { loading: fetchingTestDrives, fn: fetchTestDrives, data: testDrivesData, error: testDrivesError } = useFetch(getAdminTestDrive)
 	const { loading: updatingStatus, fn: updateStatusFn, data: updateResult, error: updateError } = useFetch(updateTestDriveStatus)

@@ -3,12 +3,12 @@
 import { bookingProps } from "@/@types"
 import { cn } from "@/lib/utils"
 import { formatTimeForTestDrive } from "@/share/constants/data"
+import { setCancelDialogOpenFn, useCancelDialogOpen } from "@/share/store/test-drive.store"
 import { Badge, Button, Card, Dialog, DialogDescription, DialogHeader, DialogTitle, DialogContent, DialogFooter } from "@/share/ui"
 import { format } from "date-fns"
 import { ArrowRight, Calendar, Car, Clock, Loader2, User } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
 
 const TestDriveCard = ({
 	booking,
@@ -29,7 +29,8 @@ const TestDriveCard = ({
 	onCancle?: (bookingId: string) => Promise<void>
 	renderStatustSelector?: () => React.ReactNode
 }) => {
-	const [cancelDialogOpen, setCanceDialogOpen] = useState(false)
+	const cancelDialogOpen = useCancelDialogOpen()
+	const setCanceDialogOpen = setCancelDialogOpenFn()
 
 	const handleCancel = async () => {
 		if (!onCancle) return
