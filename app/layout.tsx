@@ -5,6 +5,7 @@ import { Toaster } from "sonner"
 import NextTopLoader from "nextjs-toploader"
 import { ClerkProvider } from "@clerk/nextjs"
 import { Suspense } from "react"
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -21,6 +22,7 @@ export default function AppLayout({
 						<Header />
 					</Suspense>
 					{children}
+					<Analytics />
 					<Toaster richColors />
 					<NextTopLoader />
 				</ClerkProvider>

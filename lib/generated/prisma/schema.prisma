@@ -109,8 +109,8 @@ model TestDriveBooking {
   userId      String
   user        User          @relation(fields: [userId], references: [id])
   bookingDate DateTime      @db.Date
-  startTime   DateTime
-  endTime     DateTime
+  startTime   String
+  endTime     String
   status      BookingStatus @default(PENDING)
   notes       String?
   createdAt   DateTime      @default(now())
