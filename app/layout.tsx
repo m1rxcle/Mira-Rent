@@ -1,11 +1,9 @@
 import { Inter } from "next/font/google"
-import "./globals.css"
+
 import Header from "@/share/components/header"
-import { Toaster } from "sonner"
-import NextTopLoader from "nextjs-toploader"
-import { ClerkProvider } from "@clerk/nextjs"
-import { Suspense } from "react"
-import { Analytics } from "@vercel/analytics/next"
+import { Providers } from "@/share/components/providers"
+
+import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -17,15 +15,10 @@ export default function AppLayout({
 	return (
 		<html lang="en">
 			<body className={`${inter.className}`}>
-				<ClerkProvider>
-					<Suspense>
-						<Header />
-					</Suspense>
+				<Providers>
+					<Header />
 					{children}
-					<Analytics />
-					<Toaster richColors />
-					<NextTopLoader />
-				</ClerkProvider>
+				</Providers>
 			</body>
 		</html>
 	)

@@ -62,7 +62,12 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 		await toggleSaveCarFn(car.id)
 	}, [isSignedIn, savingCar, car.id, router])
 
-	const shareUrl = useMemo(() => window.location.href, [])
+	const shareUrl: string = useMemo(() => {
+		if (typeof window !== "undefined") {
+			return window.location.href
+		}
+		return ""
+	}, [])
 
 	const handleShare = () => {
 		if (navigator.share) {
@@ -102,7 +107,14 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 				<div className="w-full lg:w-7/12">
 					<div className="aspect-video rounded-lg overflow-hidden relative mb-4">
 						{car.images && car.images.length > 0 ? (
-							<Image src={car.images[currentImageIndex]} alt={car.model} fill className="object-cover" priority />
+							<Image
+								src={car.images[currentImageIndex]}
+								alt={car.model}
+								fill
+								sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+								className="object-cover"
+								priority
+							/>
 						) : (
 							<div className="w-full h-full bg-gray-200 flex items-center">
 								<Car className="h-24 w-24 text-gray-400" />
@@ -121,7 +133,14 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 									key={index}
 									onClick={() => setCurrentImageIndex(index)}
 								>
-									<Image fill className="object-cover" src={image} alt={`${car.model} ${car.make} ${car.year} - view ${index + 1}`} />
+									<Image
+										fill
+										priority
+										className="object-cover"
+										sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+										src={image}
+										alt={`${car.model} ${car.make} ${car.year} - view ${index + 1}`}
+									/>
 								</div>
 							))}
 						</div>

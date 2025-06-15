@@ -5,14 +5,14 @@ import { Button } from "../ui/button"
 import { ArrowLeft, CarFront, Heart, Layout } from "lucide-react"
 import { checkUser } from "@/prisma/checkUser"
 
-const Header = async ({ isAdminPage = false }: { isAdminPage: boolean }) => {
+const Header = async ({ isAdminPage = false }: { isAdminPage?: boolean }) => {
 	const user = await checkUser()
 
 	const isAdmin = user?.role === "ADMIN"
 
 	return (
 		<header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b">
-			<nav className="mx-auto p-4 flex items-center justify-between ">
+			<nav className="mx-auto p-4 py-5 flex items-center justify-between ">
 				<Link href={isAdminPage ? "/admin" : "/"} className="flex">
 					<Image
 						src={"/newLogo.png"}
