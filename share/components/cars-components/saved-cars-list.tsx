@@ -1,7 +1,7 @@
 import { Button } from "@/share/ui/index"
 import { Heart } from "lucide-react"
 import Link from "next/link"
-import React from "react"
+import React, { memo } from "react"
 import { CarCard } from "@/share/components/index"
 import { SavedCarsListProps } from "@/@types"
 
@@ -29,4 +29,4 @@ const SavedCarsList = ({ initialData }: { initialData: SavedCarsListProps }) => 
 		</div>
 	)
 }
-export default SavedCarsList
+export default memo(SavedCarsList)

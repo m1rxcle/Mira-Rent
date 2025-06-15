@@ -9,7 +9,7 @@ import { useAuth } from "@clerk/nextjs"
 import { Calendar, Car, Currency, Fuel, Gauge, Heart, Loader2, LocateFixed, MessageSquare, Share2, Users2 } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { memo, useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { toast } from "sonner"
 
 import EMICalculator from "./emi-calculator"
@@ -358,4 +358,4 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 		</div>
 	)
 }
-export default memo(CarDetails)
+export default CarDetails

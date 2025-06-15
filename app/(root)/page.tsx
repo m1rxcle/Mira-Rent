@@ -77,7 +77,13 @@ export default async function Home() {
 								href={`/cars?make=${make.name}`}
 							>
 								<div className="h-16 w-auto mx-auto mb-2 relative">
-									<Image src={make.image} alt={make.name} fill style={{ objectFit: "contain" }} />
+									<Image
+										src={make.image}
+										alt={make.name}
+										fill
+										sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+										style={{ objectFit: "contain" }}
+									/>
 								</div>
 							</Link>
 						))}
@@ -137,7 +143,13 @@ export default async function Home() {
 						{BODY_TYPES_OBJECTS.map((type) => (
 							<Link className="relative group cursor-pointer" key={type.name} href={`/cars?bodyType=${type.name}`}>
 								<div className="overflow-hidden rounded-lg flex justify-end h-18 md:h-28 mb-4 relative">
-									<Image src={type.image} alt={type.name} fill className="object-contain group-hover:scale-105 transition duration-300" />
+									<Image
+										src={type.image}
+										alt={type.name}
+										fill
+										sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+										className="object-contain group-hover:scale-105 transition duration-300"
+									/>
 								</div>
 								<div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg flex items-end">
 									<h3 className="text-white text-xl font-bold pl-4">{type.name}</h3>

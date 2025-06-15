@@ -4,7 +4,7 @@ import Image from "next/image"
 import { Card, CardContent } from "../../ui/card"
 import { CarIcon, Heart, Loader2 } from "lucide-react"
 import { Button } from "../../ui/button"
-import { memo, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Badge } from "../../ui/badge"
 import { useRouter } from "next/navigation"
 import { CarProps } from "@/@types"
@@ -55,7 +55,15 @@ const CarCard = ({ car }: { car: CarProps }) => {
 			<div className="relative h-48">
 				{car.images && car.images.length > 0 ? (
 					<div className="relative w-full h-full">
-						<Image src={car.images[0]} alt={`${car.make} ${car.model}`} fill className="object-cover group-hover:scale-105 transition duration-300" />
+						<Image
+							src={car.images[0]}
+							alt={`${car.make} ${car.model}`}
+							fill
+							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+							priority
+							fetchPriority="high"
+							className="object-cover group-hover:scale-105 transition duration-300"
+						/>
 					</div>
 				) : (
 					<div className="w-full h-full bg-gray-200 flex items-center justify-center">
@@ -111,4 +119,4 @@ const CarCard = ({ car }: { car: CarProps }) => {
 		</Card>
 	)
 }
-export default memo(CarCard)
+export default CarCard

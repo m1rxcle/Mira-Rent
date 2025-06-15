@@ -3,7 +3,7 @@
 import { getCars } from "@/app/actions/car-listing.action"
 import useFetch from "@/share/hooks/use-fetch"
 import { useRouter, useSearchParams } from "next/navigation"
-import { JSX, useEffect } from "react"
+import { JSX, useCallback, useEffect } from "react"
 import CarListingsLoading from "../skeletons/car-listings-loading"
 import { Alert, AlertDescription, AlertTitle, Button } from "@/share/ui/index"
 import { Info, InfoIcon } from "lucide-react"
@@ -54,15 +54,18 @@ const CarsListing = () => {
 		}
 	}, [currentPage, router, searchParams, page])
 
-	const handlePageChange = (pageNum: number) => {
+	const handlePageChange = useCallback((pageNum: number) => {
 		setCurrentPageFn(pageNum)
-	}
+	}, [])
 
-	const getPaginationUrl = (pageNum: number) => {
-		const params = new URLSearchParams(searchParams)
-		params.set("page", pageNum.toString())
-		return `?${params.toString()}`
-	}
+	const getPaginationUrl = useCallback(
+		(pageNum: number) => {
+			const params = new URLSearchParams(searchParams)
+			params.set("page", pageNum.toString())
+			return `?${params.toString()}`
+		},
+		[searchParams]
+	)
 
 	if (loading && !result) {
 		return <CarListingsLoading />
