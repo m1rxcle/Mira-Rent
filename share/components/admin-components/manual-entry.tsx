@@ -5,7 +5,7 @@ import { DropzoneInputProps, DropzoneRootProps } from "react-dropzone"
 import { FieldErrors, UseFormGetValues, UseFormHandleSubmit, UseFormRegister, UseFormSetValue, UseFormWatch } from "react-hook-form"
 import { TCarFormSchema } from "@/share/constants/zodSchemas/carFormSchema"
 import { Button, Checkbox, Input, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea } from "@/share/ui"
-import { bodyType, carStatuses, fuelType, transmissions } from "@/share/constants/data"
+import { BODY_TYPES, CAR_STATUSES, FUEL_TYPES, TRANSMISSIONS } from "@/share/constants/data"
 
 interface ManualEntryProps {
 	addCarLoading: boolean
@@ -79,7 +79,7 @@ const ManualEntry: React.FC<ManualEntryProps> = ({
 							<SelectValue placeholder="Выберите тип топлива" />
 						</SelectTrigger>
 						<SelectContent>
-							{fuelType.map((fuel, index) => (
+							{FUEL_TYPES.map((fuel, index) => (
 								<SelectItem key={index} value={fuel}>
 									{fuel}
 								</SelectItem>
@@ -95,7 +95,7 @@ const ManualEntry: React.FC<ManualEntryProps> = ({
 							<SelectValue placeholder="Выберите тип коробки передач" />
 						</SelectTrigger>
 						<SelectContent>
-							{transmissions.map((t, index) => (
+							{TRANSMISSIONS.map((t, index) => (
 								<SelectItem key={index} value={t}>
 									{t}
 								</SelectItem>
@@ -111,7 +111,7 @@ const ManualEntry: React.FC<ManualEntryProps> = ({
 							<SelectValue placeholder="Выберите тип кузова" />
 						</SelectTrigger>
 						<SelectContent>
-							{bodyType.map((b) => (
+							{BODY_TYPES.map((b) => (
 								<SelectItem key={b} value={b}>
 									{b}
 								</SelectItem>
@@ -134,7 +134,7 @@ const ManualEntry: React.FC<ManualEntryProps> = ({
 							<SelectValue placeholder="Выберите статус" />
 						</SelectTrigger>
 						<SelectContent>
-							{carStatuses.map((s, index) => (
+							{CAR_STATUSES.map((s, index) => (
 								<SelectItem key={index} value={s}>
 									{s.charAt(0) + s.slice(1).toLowerCase()}
 								</SelectItem>

@@ -2,7 +2,7 @@ import { Car as CarPrisma } from "@/lib/generated/prisma"
 import { format, parseISO } from "date-fns"
 import { Calendar, Car, Cog, LayoutDashboard, LucideIcon } from "lucide-react"
 
-export const carMakes: { id: number; name: string; image: string }[] = [
+export const CAR_MAKES: { id: number; name: string; image: string }[] = [
 	{ id: 1, name: "Hyundai", image: "/make/hyundai.webp" },
 	{ id: 2, name: "Honda", image: "/make/honda.webp" },
 	{ id: 3, name: "BMW", image: "/make/bmw.webp" },
@@ -11,14 +11,14 @@ export const carMakes: { id: number; name: string; image: string }[] = [
 	{ id: 6, name: "Ford", image: "/make/ford.webp" },
 ]
 
-export const bodyTypes: { id: number; name: string; image: string }[] = [
+export const BODY_TYPES_OBJECTS: { id: number; name: string; image: string }[] = [
 	{ id: 1, name: "SUV", image: "/body/suv.webp" },
 	{ id: 2, name: "Sedan", image: "/body/sedan.webp" },
 	{ id: 3, name: "Hatchback", image: "/body/hatchback.webp" },
 	{ id: 4, name: "Convertible", image: "/body/convertible.webp" },
 ]
 
-export const faqItems: { question: string; answer: string }[] = [
+export const FAQ_ITEMS: { question: string; answer: string }[] = [
 	{
 		question: "Как мне найти машину, которую хочу купить?",
 		answer: "Просто выберите марку, модель, год выпуска и другие характеристики, чтобы найти подходящую машину.",
@@ -37,7 +37,7 @@ export const faqItems: { question: string; answer: string }[] = [
 	},
 ]
 
-export const routes: { label: string; icon: LucideIcon; href: string }[] = [
+export const ROUTES: { label: string; icon: LucideIcon; href: string }[] = [
 	{
 		label: "Панель ",
 		icon: LayoutDashboard,
@@ -60,7 +60,7 @@ export const routes: { label: string; icon: LucideIcon; href: string }[] = [
 	},
 ]
 
-export const days: { value: string; label: string }[] = [
+export const DAYS: { value: string; label: string }[] = [
 	{ value: "MONDAY", label: "Понедельник" },
 	{ value: "TUESDAY", label: "Вторник" },
 	{ value: "WEDNESDAY", label: "Среда" },
@@ -77,13 +77,13 @@ export async function fileToBase64(file: File): Promise<string> {
 	return buffer.toString("base64")
 }
 
-export const fuelType: string[] = ["Petrol", "Diesel", "Electric", "Hybrid", "Plug-in Hybrid"]
+export const FUEL_TYPES: string[] = ["Petrol", "Diesel", "Electric", "Hybrid", "Plug-in Hybrid"]
 
-export const transmissions: string[] = ["Automatic", "Manual", "Semi-Automatic"]
+export const TRANSMISSIONS: string[] = ["Automatic", "Manual", "Semi-Automatic"]
 
-export const bodyType: string[] = ["SUV", "Sedan", "Hatchback", "Coupe", "Convertible", "Wagon", "Pickup"]
+export const BODY_TYPES: string[] = ["SUV", "Sedan", "Hatchback", "Coupe", "Convertible", "Wagon", "Pickup"]
 
-export const carStatuses: string[] = ["AVAILABLE", "UNAVAILABLE", "SOLD"]
+export const CAR_STATUSES: string[] = ["AVAILABLE", "UNAVAILABLE", "SOLD"]
 
 export const serializedCarData = (car: CarPrisma, wishlisted = false) => {
 	return {

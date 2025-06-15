@@ -9,7 +9,7 @@ import { useAuth } from "@clerk/nextjs"
 import { Calendar, Car, Currency, Fuel, Gauge, Heart, Loader2, LocateFixed, MessageSquare, Share2, Users2 } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { memo, useCallback, useEffect, useMemo, useState } from "react"
 import { toast } from "sonner"
 
 import EMICalculator from "./emi-calculator"
@@ -51,7 +51,7 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 		}
 	}, [toggleError])
 
-	const handleSaveCar = async () => {
+	const handleSaveCar = useCallback(async () => {
 		if (!isSignedIn) {
 			toast.error("Пожалуйста, войдите в свой аккаунт")
 			router.push("/sign-in")
@@ -60,7 +60,9 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 		if (savingCar) return
 
 		await toggleSaveCarFn(car.id)
-	}
+	}, [isSignedIn, savingCar, car.id, router])
+
+	const shareUrl = useMemo(() => window.location.href, [])
 
 	const handleShare = () => {
 		if (navigator.share) {
@@ -68,7 +70,7 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 				.share({
 					title: `${car.year} ${car.make} ${car.model} on Mira-Rent!`,
 					text: `Check out tihs ${car.year} ${car.make} ${car.model} on Mira-Rent!`,
-					url: window.location.href,
+					url: shareUrl,
 				})
 				.catch((error) => {
 					console.log("Error sharing: ", error)
@@ -80,7 +82,7 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 	}
 
 	const copyToClipboard = () => {
-		navigator.clipboard.writeText(window.location.href)
+		navigator.clipboard.writeText(shareUrl)
 		toast.success("Ссылка скопирована в буфер обмена")
 	}
 
@@ -356,4 +358,4 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 		</div>
 	)
 }
-export default CarDetails
+export default memo(CarDetails)

@@ -4,7 +4,7 @@ import Image from "next/image"
 import { Card, CardContent } from "../../ui/card"
 import { CarIcon, Heart, Loader2 } from "lucide-react"
 import { Button } from "../../ui/button"
-import { useEffect, useState } from "react"
+import { memo, useEffect, useState } from "react"
 import { Badge } from "../../ui/badge"
 import { useRouter } from "next/navigation"
 import { CarProps } from "@/@types"
@@ -49,6 +49,7 @@ const CarCard = ({ car }: { car: CarProps }) => {
 
 		await toggleSaveCarFn(car.id)
 	}
+
 	return (
 		<Card className="overflow-hidden hover:shadow-lg transition group p-0">
 			<div className="relative h-48">
@@ -110,4 +111,4 @@ const CarCard = ({ car }: { car: CarProps }) => {
 		</Card>
 	)
 }
-export default CarCard
+export default memo(CarCard)

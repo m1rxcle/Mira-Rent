@@ -58,6 +58,7 @@ const HomeSearch = () => {
 		}
 		router.push(`/cars?search=${encodeURIComponent(searchTerm)}`)
 	}
+
 	const handleImageSearch = async (e: React.FormEvent) => {
 		e.preventDefault()
 		if (!searchImage) {

@@ -1,13 +1,14 @@
+import { getFeaturedCars } from "../actions/home.actions"
+import { checkUser } from "@/prisma/checkUser"
+
 import Link from "next/link"
 import Image from "next/image"
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } from "@/share/ui/index"
-import { bodyTypes, carMakes, faqItems } from "@/share/constants/data"
 
 import { Calendar, CarIcon, ChevronRight, Shield } from "lucide-react"
 import { CarCard, HomeSearch, ReadyToFind } from "@/share/components/index"
-import { getFeaturedCars } from "../actions/home.actions"
-import { checkUser } from "@/prisma/checkUser"
+import { BODY_TYPES_OBJECTS, CAR_MAKES, FAQ_ITEMS } from "@/share/constants/data"
 
 export default async function Home() {
 	const featuredCars = await getFeaturedCars()
@@ -69,7 +70,7 @@ export default async function Home() {
 						</Button>
 					</div>
 					<div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-						{carMakes.map((make) => (
+						{CAR_MAKES.map((make) => (
 							<Link
 								className="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer"
 								key={make.name}
@@ -133,7 +134,7 @@ export default async function Home() {
 						</Button>
 					</div>
 					<div className="grid grid-cols-2 md:grid-cols-4  gap-4">
-						{bodyTypes.map((type) => (
+						{BODY_TYPES_OBJECTS.map((type) => (
 							<Link className="relative group cursor-pointer" key={type.name} href={`/cars?bodyType=${type.name}`}>
 								<div className="overflow-hidden rounded-lg flex justify-end h-18 md:h-28 mb-4 relative">
 									<Image src={type.image} alt={type.name} fill className="object-contain group-hover:scale-105 transition duration-300" />
@@ -152,7 +153,7 @@ export default async function Home() {
 					<h2 className="text-2xl font-bold text-center mb-8">Часто задаваемые вопросы</h2>
 
 					<Accordion type="single" collapsible className="w-full">
-						{faqItems.map((faq, index) => (
+						{FAQ_ITEMS.map((faq, index) => (
 							<AccordionItem key={index} value={`item-${index}`}>
 								<AccordionTrigger>{faq.question}</AccordionTrigger>
 								<AccordionContent>{faq.answer}</AccordionContent>

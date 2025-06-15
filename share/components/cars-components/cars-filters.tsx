@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useRef } from "react"
+import { useEffect, useMemo, useRef } from "react"
 import { Filter, Sliders, X } from "lucide-react"
 import CarFilterControls from "./car-filter-controls"
 import { CurrentFiltersProps, FiltersProps } from "@/@types"
@@ -88,13 +88,16 @@ const CarsFilters = ({ filters }: FiltersProps) => {
 		currentMinPrice > filters.priceRange.min || currentMaxPrice < filters.priceRange.max,
 	].filter(Boolean).length
 
-	const currentFilters: CurrentFiltersProps = {
-		make,
-		bodyType,
-		fuelType,
-		transmission,
-		priceRange,
-	}
+	const currentFilters: CurrentFiltersProps = useMemo(
+		() => ({
+			make,
+			bodyType,
+			fuelType,
+			transmission,
+			priceRange,
+		}),
+		[make, bodyType, fuelType, transmission, priceRange]
+	)
 
 	const handleFilterChange = (filterName: string, value: string | number[]) => {
 		switch (filterName) {

@@ -1,7 +1,6 @@
 "use client"
 import { getDealerShipInfo, getUsers, saveWorkingHours, updateUserRole } from "@/app/actions/settings.actions"
 import { DayOfWeek, User, WorkingHour } from "@/lib/generated/prisma"
-import { days } from "@/share/constants/data"
 import useFetch from "@/share/hooks/use-fetch"
 import {
 	Button,
@@ -30,10 +29,11 @@ import { useEffect, useState } from "react"
 import { toast } from "sonner"
 
 import Image from "next/image"
+import { DAYS } from "@/share/constants/data"
 
 const SettingsForm = () => {
 	const [workingHours, setWorkingHours] = useState<Omit<WorkingHour, "dealersihpId" | "createdAt" | "updatedAt" | "id">[]>(
-		days.map((day) => ({
+		DAYS.map((day) => ({
 			dayOfWeek: day.value as DayOfWeek,
 			openTime: "09:00",
 			closeTime: "18:00",
@@ -56,7 +56,7 @@ const SettingsForm = () => {
 			const dealership = settingsData.data
 
 			if (dealership.workingHours.length > 0) {
-				const mappedHours = days.map((day) => {
+				const mappedHours = DAYS.map((day) => {
 					const hourData = dealership.workingHours.find((hour) => hour.dayOfWeek === day.value)
 					if (hourData) {
 						return {
@@ -171,7 +171,7 @@ const SettingsForm = () => {
 								</CardHeader>
 								<CardContent>
 									<div className="space-y-4">
-										{days.map((day, index) => (
+										{DAYS.map((day, index) => (
 											<div className="grid grid-cols-11 md:grid-cols-12 gap-4 items-center py-3 px-4 rounded-lg hover:bg-slate-50" key={day.value}>
 												<div className="col-span-3 md:col-span-2">
 													<div className="font-medium">{day.label}</div>

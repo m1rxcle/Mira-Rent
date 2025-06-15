@@ -1,6 +1,7 @@
 import { CurrentFiltersProps } from "@/@types"
 import { Badge, Slider } from "@/share/ui/index"
 import { Check, X } from "lucide-react"
+import { memo, useMemo } from "react"
 
 interface CarFilterControlProps {
 	filters: {
@@ -21,36 +22,39 @@ interface CarFilterControlProps {
 const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFilter }: CarFilterControlProps) => {
 	const { make, bodyType, fuelType, transmission, priceRange } = currentFilters
 
-	const filterSection = [
-		{
-			id: "make",
-			title: "Марка",
-			options: filters.makes.map((make) => ({ value: make, label: make })),
-			currentValue: make,
-			onChange: (value: string) => onFilterChange("make", value),
-		},
-		{
-			id: "bodyType",
-			title: "Кузов",
-			options: filters.bodyTypes.map((bodyType) => ({ value: bodyType, label: bodyType })),
-			currentValue: bodyType,
-			onChange: (value: string) => onFilterChange("bodyType", value),
-		},
-		{
-			id: "fuelType",
-			title: "Топливо",
-			options: filters.fuelTypes.map((fuelType) => ({ value: fuelType, label: fuelType })),
-			currentValue: fuelType,
-			onChange: (value: string) => onFilterChange("fuelType", value),
-		},
-		{
-			id: "transmission",
-			title: "Коробка передач",
-			options: filters.transmissions.map((transmission) => ({ value: transmission, label: transmission })),
-			currentValue: transmission,
-			onChange: (value: string) => onFilterChange("transmission", value),
-		},
-	]
+	const filterSection = useMemo(
+		() => [
+			{
+				id: "make",
+				title: "Марка",
+				options: filters.makes.map((make) => ({ value: make, label: make })),
+				currentValue: make,
+				onChange: (value: string) => onFilterChange("make", value),
+			},
+			{
+				id: "bodyType",
+				title: "Кузов",
+				options: filters.bodyTypes.map((bodyType) => ({ value: bodyType, label: bodyType })),
+				currentValue: bodyType,
+				onChange: (value: string) => onFilterChange("bodyType", value),
+			},
+			{
+				id: "fuelType",
+				title: "Топливо",
+				options: filters.fuelTypes.map((fuelType) => ({ value: fuelType, label: fuelType })),
+				currentValue: fuelType,
+				onChange: (value: string) => onFilterChange("fuelType", value),
+			},
+			{
+				id: "transmission",
+				title: "Коробка передач",
+				options: filters.transmissions.map((transmission) => ({ value: transmission, label: transmission })),
+				currentValue: transmission,
+				onChange: (value: string) => onFilterChange("transmission", value),
+			},
+		],
+		[filters, make, bodyType, fuelType, transmission, onFilterChange]
+	)
 
 	return (
 		<div className="space-y-6">
@@ -109,4 +113,4 @@ const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFil
 		</div>
 	)
 }
-export default CarFilterControls
+export default memo(CarFilterControls)
