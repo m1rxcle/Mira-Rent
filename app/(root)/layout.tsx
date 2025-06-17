@@ -1,5 +1,5 @@
-import Footer from "@/share/components/footer"
 import { Metadata } from "next"
+import dynamic from "next/dynamic"
 
 export const metadata: Metadata = {
 	title: "Miracle Rent",
@@ -24,11 +24,13 @@ export const metadata: Metadata = {
 	},
 }
 
+const DynamicFooter = dynamic(() => import("@/share/components/footer").then((mod) => mod.default))
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<>
 			<main className="min-h-screen mt-20">{children}</main>
-			<Footer />
+			<DynamicFooter />
 		</>
 	)
 }

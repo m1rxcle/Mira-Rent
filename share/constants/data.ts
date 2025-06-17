@@ -2,6 +2,25 @@ import { Car as CarPrisma } from "@/lib/generated/prisma"
 import { format, parseISO } from "date-fns"
 import { Calendar, Car, Cog, LayoutDashboard, LucideIcon } from "lucide-react"
 
+export const MENU = [
+	{
+		url: "/",
+		lable: "Главная",
+	},
+	{
+		url: "/cars",
+		lable: "Автомобили",
+	},
+	{
+		url: "/reservations",
+		lable: "Бронирование",
+	},
+	{
+		url: "/saved-cars",
+		lable: "Избранные",
+	},
+]
+
 export const CAR_MAKES: { id: number; name: string; image: string }[] = [
 	{ id: 1, name: "Hyundai", image: "/make/hyundai.webp" },
 	{ id: 2, name: "Honda", image: "/make/honda.webp" },
