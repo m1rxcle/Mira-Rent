@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "next dev --turbopack",
 		"build": "next build",
+		"commit:all": "git add . && cz",
 		"prepare": "husky install",
 		"release": "standard-version && git push --follow-tags origin master",
 		"start": "next start",
@@ -68,7 +69,7 @@
 		"depcheck": "^1.4.7",
 		"eslint": "^9",
 		"eslint-config-next": "15.3.2",
-		"husky": "^9.1.7",
+		"husky": "^8.0.0",
 		"prisma": "^6.8.2",
 		"standard-version": "^9.5.0",
 		"supabase": "^2.22.12",

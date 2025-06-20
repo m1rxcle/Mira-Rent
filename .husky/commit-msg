@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/../node_modules/husky/husky.sh"
+
+npx --no-install commitlint --edit "$1"
