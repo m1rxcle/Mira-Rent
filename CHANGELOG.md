@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/m1rxcle/Mira-Rent/compare/v0.1.9...v0.2.0) (2025-06-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **custom:** теперь админ может спокойно удалять машины которые использовались в тест-драйве
+
+### fix - 🐛 Исправление
+
+* **custom:** исправил ошибку при удаление машины если она была забронирована onDelete: cascade ([7a5aceb](https://github.com/m1rxcle/Mira-Rent/commit/7a5acebddf94e79767335e204e7d946a43945306))
+
+
+### major - 🧨 Мажорные изменения
+
+* **custom:** исправил удаление бронирования со стороны пользователя так же ... ([ed44a44](https://github.com/m1rxcle/Mira-Rent/commit/ed44a448b5a6c3875bda056a381ad91d237bef24))
+
 ### [0.1.9](https://github.com/m1rxcle/Mira-Rent/compare/v0.1.8...v0.1.9) (2025-06-20)
 
 
