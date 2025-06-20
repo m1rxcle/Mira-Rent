@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/m1rxcle/Mira-Rent/compare/v0.1.8...v0.1.9) (2025-06-20)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** fix: исправил текст в footer ([9105cb4](https://github.com/m1rxcle/Mira-Rent/commit/9105cb47bf7e409b7af4c104c74ec00953731746))
+
 ### [0.1.8](https://github.com/m1rxcle/Mira-Rent/compare/v0.1.7...v0.1.8) (2025-06-20)
 
 
