@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.1...v0.2.2) (2025-06-20)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** убрал useAuth в readytofind ([f1b65f2](https://github.com/m1rxcle/Mira-Rent/commit/f1b65f27a29cc2911ad3c935c4e0d7112995e14a))
+
 ### [0.2.1](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.0...v0.2.1) (2025-06-20)
 
 
