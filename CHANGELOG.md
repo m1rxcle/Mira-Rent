@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/m1rxcle/Mira-Rent/compare/v0.1.7...v0.1.8) (2025-06-20)
+
+
+### chore - 🔧 Разное
+
+* **custom:** chore: изменил кофигурацию файлов versionrc \& cz-confing ([c2917c7](https://github.com/m1rxcle/Mira-Rent/commit/c2917c7c51828031c07d935eb27013ce5ecd14b0))
+
 ### [0.1.7](https://github.com/m1rxcle/Mira-Rent/compare/v0.1.6...v0.1.7) (2025-06-20)
 
 
