@@ -32,7 +32,7 @@ const HomeSearch = () => {
 	useDebounce(
 		async () => {
 			try {
-				const response = await getCar(searchTerm)
+				const response = await getCar(searchTerm, 5)
 				if (response.data) {
 					setGetCars(response.data)
 				} else {
@@ -141,31 +141,30 @@ const HomeSearch = () => {
 						type="text"
 						placeholder="Введите марку, модель, год или загрузите картинку при помощи ИИ..."
 					/>
-					{focused && (
-						<div
-							className={cn(
-								"absolute w-full bg-white rounded-md pt-2 top-14 shadow-md transition-all duration-300 invisible opacity-0 z-30",
-								"visible opacity-100 top-13 "
-							)}
-						>
-							{getCars?.map((car) => (
-								<div key={car.id}>
-									<Link
-										onClick={onClickTerm}
-										href={`/cars/${car.id}`}
-										className="flex items-center gap-2 px-5 mb-2 mt-2 text-center hover:bg-blue-100 h-[40px]  "
-									>
-										<Image src={car.images[0]} alt={`${car.make} ${car.model}`} width={50} height={60} className="object-cover" />
-										<span className="font-medium ">
-											{car.make} {car.model} {car.year}
-										</span>
-									</Link>
-									<div className="h-[1px] bg-gray-200"></div>
-								</div>
-							))}
-						</div>
-					)}
-					<div className="absolute right-[100px]">
+					<div
+						className={cn(
+							"absolute w-full bg-white rounded-md pt-2 top-14 shadow-md transition-all duration-300 invisible opacity-0 z-30",
+							focused && "visible opacity-100 top-13 "
+						)}
+					>
+						{getCars?.map((car) => (
+							<div key={car.id}>
+								<Link
+									onClick={onClickTerm}
+									href={`/cars/${car.id}`}
+									className="flex items-center gap-2 px-5 mb-2 mt-2 text-center hover:bg-blue-100 h-[40px]  "
+								>
+									<Image src={car.images[0]} alt={`${car.make} ${car.model}`} width={50} height={60} className="object-cover" />
+									<span className="font-medium ">
+										{car.make} {car.model} {car.year}
+									</span>
+								</Link>
+								<div className="h-[1px] bg-gray-200"></div>
+							</div>
+						))}
+					</div>
+
+					<div className="absolute right-[100px] z-30">
 						<Camera
 							size={35}
 							onClick={() => setIsImageSearchActive(!isImageSearchActive)}

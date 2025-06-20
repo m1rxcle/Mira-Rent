@@ -196,7 +196,7 @@ export async function addCar({ carData, images }: { carData: CarProps; images: F
 	}
 }
 
-export async function getCar(search = "") {
+export async function getCar(search = "", limit?: number) {
 	try {
 		isUserAuthorized()
 
@@ -213,6 +213,7 @@ export async function getCar(search = "") {
 		const cars = await prisma.car.findMany({
 			where,
 			orderBy: { createdAt: "desc" },
+			take: limit,
 		})
 
 		const sirealizedCars = cars.map((car) => serializedCarData(car))
