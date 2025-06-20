@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "next dev --turbopack",
 		"build": "next build",
+		"prepare": "husky install",
 		"release": "standard-version && git push --follow-tags origin master",
 		"start": "next start",
 		"lint": "next lint",
@@ -52,6 +53,8 @@
 		"zustand": "^5.0.5"
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^19.8.1",
+		"@commitlint/config-conventional": "^19.8.1",
 		"@eslint/eslintrc": "^3",
 		"@next/bundle-analyzer": "^15.3.3",
 		"@tailwindcss/postcss": "^4",
@@ -62,6 +65,7 @@
 		"depcheck": "^1.4.7",
 		"eslint": "^9",
 		"eslint-config-next": "15.3.2",
+		"husky": "^9.1.7",
 		"prisma": "^6.8.2",
 		"standard-version": "^9.5.0",
 		"supabase": "^2.22.12",
