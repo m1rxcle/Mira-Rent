@@ -1,15 +1,14 @@
 {
 	"types": [
-		{ "type": "feat", "section": "✨ Новые фичи" },
-		{ "type": "fix", "section": "🐛 Исправления" },
-		{ "type": "major", "section": "🧨 Мажорные изменения" },
-		{ "type": "docs", "section": "📚 Документация" },
-		{ "type": "style", "section": "🎨 Стили и формат" },
-		{ "type": "chore", "section": "🔧 Разное" },
-		{ "type": "test", "section": "✅ Тесты" },
-		{ "type": "refactor", "section": "♻️ Рефакторинг" },
-		{ "type": "ci", "section": "🤖 CI" },
-		{ "type": "build", "section": "🏗️ Сборка" }
+		{ "type": "feat", "section": "feat - ✨ Новая фича" },
+		{ "type": "fix", "section": "fix - 🐛 Исправление" },
+		{ "type": "major", "section": "major - 🧨 Мажорные изменения" },
+		{ "type": "docs", "section": "docs - 📚 Документация" },
+		{ "type": "style", "section": "style - 🎨 Стили" },
+		{ "type": "chore", "section": "chore - 🔧 Разное" },
+		{ "type": "test", "section": "test - ✅ Тесты" },
+		{ "type": "refactor", "section": "refactor - ♻️ Рефакторинг" },
+		{ "type": "build", "section": "build -🏗️ Сборка" }
 	],
 	"releaseRules": [
 		{ "type": "feat", "release": "minor" },
