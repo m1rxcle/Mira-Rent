@@ -1,4 +1,5 @@
 import type { NextConfig } from "next"
+import { version } from "./package.json"
 
 const nextConfig: NextConfig = {
 	experimental: {
@@ -18,6 +19,9 @@ const nextConfig: NextConfig = {
 				hostname: "jywqxdluashbuowurmyt.supabase.co",
 			},
 		],
+	},
+	env: {
+		NEXT_PUBLIC_VERSION: version,
 	},
 
 	// Прочитать про HEADERS.
