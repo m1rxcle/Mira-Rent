@@ -1,8 +1,8 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { Input } from "../../ui/input"
-import { Camera, Upload } from "lucide-react"
+import { Camera, Loader2, Upload } from "lucide-react"
 import { Button } from "../../ui/button"
 import { useDropzone } from "react-dropzone"
 import { toast } from "sonner"
@@ -11,19 +11,28 @@ import useFetch from "@/share/hooks/use-fetch"
 import { processImageSearch } from "@/app/actions/home.actions"
 import Link from "next/link"
 import { useClickAway, useDebounce } from "react-use"
-import { getCar } from "@/app/actions/cars.actions"
-import { CarProps } from "@/@types"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
+import { useHomeStore } from "@/share/store/home.store"
 
 const HomeSearch = () => {
-	const [searchTerm, setSearchTerm] = useState("")
-	const [isImageSearchActive, setIsImageSearchActive] = useState(false)
-	const [imagePreview, setImagePreview] = useState("")
-	const [searchImage, setSearchImage] = useState<null | File>(null)
-	const [isUploading, setIsUpLoading] = useState(false)
-	const [getCars, setGetCars] = useState<CarProps[]>([])
-	const [focused, setFocused] = useState(false)
+	const getCars = useHomeStore((state) => state.getCars)
+	const searchTerm = useHomeStore((state) => state.searchTerm)
+	const isImageSearchActive = useHomeStore((state) => state.isImageSearchActive)
+	const imagePreview = useHomeStore((state) => state.imagePreview)
+	const searchImage = useHomeStore((state) => state.searchImage)
+	const isUploading = useHomeStore((state) => state.isUploading)
+	const focused = useHomeStore((state) => state.focused)
+	const loading = useHomeStore((state) => state.loading)
+
+	const setSearchTerm = useHomeStore((state) => state.setSearchTerm)
+	const setIsImageSearchActive = useHomeStore((state) => state.setIsImageSearchActive)
+	const setImagePreview = useHomeStore((state) => state.setImagePreview)
+	const setSearchImage = useHomeStore((state) => state.setSearchImage)
+	const setIsUpLoading = useHomeStore((state) => state.setIsUpLoading)
+	const setGetCars = useHomeStore((state) => state.setGetCars)
+	const setFocused = useHomeStore((state) => state.setFocused)
+
 	const ref = useRef(null)
 	const router = useRouter()
 
@@ -32,14 +41,10 @@ const HomeSearch = () => {
 	useDebounce(
 		async () => {
 			try {
-				const response = await getCar(searchTerm, 5)
-				if (response.data) {
-					setGetCars(response.data)
-				} else {
-					setGetCars([])
-				}
+				setGetCars(searchTerm, 5)
 			} catch (error) {
 				console.log(error)
+				toast.error(error as string)
 			}
 		},
 		400,
@@ -125,7 +130,7 @@ const HomeSearch = () => {
 
 	const onClickTerm = () => {
 		setSearchTerm("")
-		setGetCars([])
+		setGetCars("")
 		setFocused(false)
 	}
 
@@ -143,25 +148,39 @@ const HomeSearch = () => {
 					/>
 					<div
 						className={cn(
-							"absolute w-full bg-white rounded-md pt-2 top-14 shadow-md transition-all duration-300 invisible opacity-0 z-30",
+							"absolute w-full bg-white rounded-md pt-2 top-14 mt-1 shadow-md transition-all duration-300 invisible opacity-0 z-30",
 							focused && "visible opacity-100 top-13 "
 						)}
 					>
-						{getCars?.map((car) => (
-							<div key={car.id}>
-								<Link
-									onClick={onClickTerm}
-									href={`/cars/${car.id}`}
-									className="flex items-center gap-2 px-5 mb-2 mt-2 text-center hover:bg-blue-100 h-[40px]  "
-								>
-									<Image src={car.images[0]} alt={`${car.make} ${car.model}`} width={50} height={60} className="object-cover" />
-									<span className="font-medium ">
-										{car.make} {car.model} {car.year}
-									</span>
-								</Link>
-								<div className="h-[1px] bg-gray-200"></div>
+						{loading && (
+							<div className="flex items-center justify-center my-4">
+								<Loader2 className="animate-spin w-5 h-5" />
 							</div>
-						))}
+						)}
+						{!loading &&
+							getCars?.map((car) => (
+								<div key={car.id}>
+									<Link
+										onClick={onClickTerm}
+										href={`/cars/${car.id}`}
+										className="flex items-center gap-2 px-5 mb-2 mt-2 text-center hover:bg-blue-100 h-[40px]  "
+									>
+										<Image src={car.images[0]} alt={`${car.make} ${car.model}`} width={50} height={60} className="object-cover" />
+										<span className="font-medium ">
+											{car.make} {car.model} {car.year}
+										</span>
+									</Link>
+									<div className="h-[1px] bg-gray-200"></div>
+								</div>
+							))}
+
+						{!loading && getCars?.length === 0 && (
+							<div className="flex items-center justify-center my-4">
+								<div className="text-center text-gray-500">
+									<p>По вашему запросу ничего не найдено.</p>
+								</div>
+							</div>
+						)}
 					</div>
 
 					<div className="absolute right-[100px] z-30">
