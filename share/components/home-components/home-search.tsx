@@ -1,19 +1,27 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { Input } from "../../ui/input"
-import { Camera, Loader2, Upload } from "lucide-react"
-import { Button } from "../../ui/button"
-import { useDropzone } from "react-dropzone"
-import { toast } from "sonner"
 import { useRouter } from "next/navigation"
-import useFetch from "@/share/hooks/use-fetch"
-import { processImageSearch } from "@/app/actions/home.actions"
 import Link from "next/link"
-import { useClickAway, useDebounce } from "react-use"
-import { cn } from "@/lib/utils"
 import Image from "next/image"
+
+import { useClickAway, useDebounce } from "react-use"
+
 import { useHomeStore } from "@/share/store/home.store"
+import useFetch from "@/share/hooks/use-fetch"
+
+import { useEffect, useRef } from "react"
+
+import { useDropzone } from "react-dropzone"
+
+import { Camera, Loader2, Upload } from "lucide-react"
+
+import { toast } from "sonner"
+
+import { processImageSearch } from "@/app/actions/home.actions"
+
+import { Input } from "../../ui/input"
+import { Button } from "../../ui/button"
+import { cn } from "@/lib/utils"
 
 const HomeSearch = () => {
 	const getCars = useHomeStore((state) => state.getCars)
