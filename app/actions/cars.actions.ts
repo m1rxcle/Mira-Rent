@@ -16,6 +16,7 @@ import { fileToBase64, serializedCarData } from "@/share/constants/data"
 import { createClient } from "@/lib/supabase"
 import { Prisma } from "@/lib/generated/prisma"
 import { isUserAuthorized } from "./admin.actions"
+import { auth } from "@clerk/nextjs/server"
 
 export async function processCarImageWithAi(file: File) {
 	try {
@@ -268,7 +269,17 @@ export async function updateCar(carId: string, { status, featured }: { status: C
 
 export async function deleteCar(carId: string) {
 	try {
-		isUserAuthorized()
+		const { userId } = await auth()
+
+		if (!userId) throw new Error("Unauthorized")
+
+		const user = await prisma.user.findUnique({
+			where: { clerkUserId: userId },
+		})
+
+		if (!user || user.role !== "ADMIN") {
+			throw new Error("Unauthorized access")
+		}
 
 		const car = await prisma.car.findUnique({
 			where: { id: carId.toString() },
