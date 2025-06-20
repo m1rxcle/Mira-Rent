@@ -2,7 +2,7 @@ import { CarProps } from "@/@types"
 import { create, StateCreator } from "zustand"
 import { createJSONStorage, persist } from "zustand/middleware"
 
-interface IInitalState {
+interface IInitialState {
 	//car-filters
 	make: string
 	bodyType: string
@@ -37,9 +37,9 @@ interface IActions {
 	setCurrentPage: (value: number) => void
 }
 
-interface ICarState extends IInitalState, IActions {}
+interface ICarState extends IInitialState, IActions {}
 
-const initialState: IInitalState = {
+const initialState: IInitialState = {
 	//car-filters
 	make: "make",
 	bodyType: "bodyType",

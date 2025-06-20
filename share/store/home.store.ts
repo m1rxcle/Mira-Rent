@@ -2,7 +2,7 @@ import { CarProps } from "@/@types"
 import { getCar } from "@/app/actions/cars.actions"
 import { create, StateCreator } from "zustand"
 
-interface IInitalState {
+interface IInitialState {
 	searchTerm: string
 	isImageSearchActive: boolean
 	imagePreview: string
@@ -25,9 +25,9 @@ interface IActions {
 	setFocused: (value: boolean) => void
 }
 
-interface IHomeState extends IInitalState, IActions {}
+interface IHomeState extends IInitialState, IActions {}
 
-const initialState: IInitalState = {
+const initialState: IInitialState = {
 	searchTerm: "",
 	isImageSearchActive: false,
 	imagePreview: "",
