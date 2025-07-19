@@ -1,3 +1,4 @@
+import { memo } from "react"
 import { Button } from "../../ui/button"
 import Link from "next/link"
 
@@ -14,4 +15,4 @@ const ReadyToFind = () => {
 		</div>
 	)
 }
-export default ReadyToFind
+export default memo(ReadyToFind)

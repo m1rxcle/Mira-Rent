@@ -9,7 +9,7 @@ import { useClickAway, useDebounce } from "react-use"
 import { useHomeStore } from "@/share/store/home.store"
 import useFetch from "@/share/hooks/use-fetch"
 
-import { useEffect, useRef } from "react"
+import { memo, useEffect, useRef } from "react"
 
 import { useDropzone } from "react-dropzone"
 
@@ -173,7 +173,7 @@ const HomeSearch = () => {
 										href={`/cars/${car.id}`}
 										className="flex items-center gap-2 px-5 mb-2 mt-2 text-center hover:bg-blue-100 h-[40px]  "
 									>
-										<Image src={car.images[0]} alt={`${car.make} ${car.model}`} width={50} height={60} className="object-cover" />
+										<Image src={car.images[0]} alt={`${car.make} ${car.model}`} width={50} height={60} className="object-cover w-auto h-auto" />
 										<span className="font-medium ">
 											{car.make} {car.model} {car.year}
 										</span>
@@ -253,4 +253,4 @@ const HomeSearch = () => {
 		</div>
 	)
 }
-export default HomeSearch
+export default memo(HomeSearch)

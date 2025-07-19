@@ -6,7 +6,21 @@ import { formatCarPrice } from "@/share/constants/data"
 import useFetch from "@/share/hooks/use-fetch"
 
 import { useAuth } from "@clerk/nextjs"
-import { Calendar, Car, Currency, Fuel, Gauge, Heart, Loader2, LocateFixed, MessageSquare, Share2, Users2 } from "lucide-react"
+import {
+	BadgeRussianRuble,
+	Calendar,
+	Car,
+	Currency,
+	Fuel,
+	Gauge,
+	Heart,
+	Loader2,
+	LocateFixed,
+	MessageSquare,
+	RussianRuble,
+	Share2,
+	Users2,
+} from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useMemo, useState } from "react"
@@ -99,6 +113,15 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 		}
 
 		router.push(`/test-drive/${car.id}`)
+	}
+
+	const handleBuyCar = () => {
+		if (!isSignedIn) {
+			toast.error("Пожалуйста, войдите в свой аккаунт")
+			router.push("/sign-in")
+			return
+		}
+		router.push(`/purchase/${car.id}`)
 	}
 
 	return (
@@ -241,12 +264,19 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 					)}
 
 					{car.status !== "SOLD" && car.status !== "UNAVAILABLE" && (
-						<Button onClick={handleBookTestDrive} disabled={!!testDriveInfo.userTestDrive} className="w-full py-6 text-lg">
-							<Calendar className="h-5 w-5 mr-2" />
-							{testDriveInfo.userTestDrive
-								? `Запись на ${format(new Date(testDriveInfo.userTestDrive.bookingDate), "EEEE, MMMM d, yyyy")}`
-								: "Записаться на тест-драйв"}
-						</Button>
+						<>
+							<Button onClick={handleBookTestDrive} disabled={!!testDriveInfo.userTestDrive} className="w-full py-6 text-lg mb-2 ">
+								<Calendar className="h-5 w-5 mr-2" />
+								{testDriveInfo.userTestDrive
+									? `Запись на ${format(new Date(testDriveInfo.userTestDrive.bookingDate), "EEEE, MMMM d, yyyy")}`
+									: "Записаться на тест-драйв"}
+							</Button>
+
+							<Button onClick={handleBuyCar} className="w-full py-6 text-lg bg-green-600 hover:bg-green-500 ">
+								<RussianRuble className="h-5 w-5 mr-2" />
+								Приобрести машину
+							</Button>
+						</>
 					)}
 				</div>
 			</div>
