@@ -78,5 +78,6 @@ export async function createOrder(data: buyCarSchemaType) {
 		return paymentUrl
 	} catch (error) {
 		console.log("[Create order error]:", error)
+		throw error
 	}
 }

@@ -182,7 +182,7 @@ export const createPayment = async (details: IYookassaDetailsProps) => {
 		}
 	)
 
-	console.log("Data", data)
+	console.log("Axios Data", data)
 	console.log("Details", details)
 
 	return data
