@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.15](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.14...v0.2.15) (2025-07-20)
+
+
+### major - 🧨 Мажорные изменения
+
+* **custom:** изменил middleware добавил public ([fe67e76](https://github.com/m1rxcle/Mira-Rent/commit/fe67e76dd81afa792d1b87e6232bc67953057e68))
+
 ### [0.2.14](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.13...v0.2.14) (2025-07-20)
 
 
