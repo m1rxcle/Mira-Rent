@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
 				id: order.id,
 			},
 			data: {
-				status: OrderStatuses.SUCCEEDED,
+				status: isSucceeded ? OrderStatuses.SUCCEEDED : OrderStatuses.CANCELLED,
 			},
 		})
 
@@ -52,11 +52,15 @@ export async function POST(req: NextRequest) {
 		const carFuelType = car.fuelType
 		const carPrice = car.price
 
-		await sendEmail(
-			order.email,
-			"Mira Rent | Ваш заказ успешно оплачен !",
-			OrderSuccessTemplate({ carModel, carMake, carYear, carFuelType, carPrice, orderId: order.id })
-		)
+		if (isSucceeded) {
+			await sendEmail(
+				order.email,
+				"Mira Rent | Ваш заказ успешно оплачен !",
+				OrderSuccessTemplate({ carModel, carMake, carYear, carFuelType, carPrice, orderId: order.id })
+			)
+		} else {
+			await sendEmail(order.email, "Mira Rent | Ваш заказ отменен", CancelledOrderTemplate({ orderId: order.id }))
+		}
 	} catch (error) {
 		console.log(`[checkout/callback]`, error)
 		console.error("Error Processing Webhook:", error)
