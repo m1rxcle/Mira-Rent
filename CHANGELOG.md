@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.9](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.8...v0.2.9) (2025-07-20)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** добавил router в credentials ([8dd7e48](https://github.com/m1rxcle/Mira-Rent/commit/8dd7e485f307b0142c468b505ae6b51d00e5d23f))
+
 ### [0.2.8](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.7...v0.2.8) (2025-07-20)
 
 
