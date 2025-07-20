@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.20](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.19...v0.2.20) (2025-07-20)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** изменил prisma.ts ([cfb9b90](https://github.com/m1rxcle/Mira-Rent/commit/cfb9b902c7f8e558252e949945b480f64bce9017))
+
 ### [0.2.19](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.18...v0.2.19) (2025-07-20)
 
 
