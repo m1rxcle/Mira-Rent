@@ -8,6 +8,7 @@ import { buyCarSchema, buyCarSchemaType } from "@/share/constants/zodSchemas/buy
 import { Button, Input, Label } from "@/share/ui"
 import { createOrder } from "@/app/actions/purchase.actions"
 import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 interface Props {
 	carId: string
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export const CredentialsForm: React.FC<Props> = ({ carId, className }) => {
+	const router = useRouter()
 	const [submitting, setSubmitting] = React.useState(false)
 
 	const methods = useForm<buyCarSchemaType>({
@@ -38,7 +40,7 @@ export const CredentialsForm: React.FC<Props> = ({ carId, className }) => {
 			toast.success("Заказ успешно создан ! Переход на оплату...")
 
 			if (url) {
-				location.href = url
+				router.push(url)
 			}
 		} catch (error) {
 			setSubmitting(false)
