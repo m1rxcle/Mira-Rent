@@ -3,15 +3,17 @@
 import React, { memo } from "react"
 import { Button } from "../../ui/button"
 import Link from "next/link"
-import { useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { toast } from "sonner"
 
 const ReadyToFind = () => {
+	const router = useRouter()
 	const searchParams = useSearchParams()
 	React.useEffect(() => {
 		setTimeout(() => {
 			if (searchParams.has("paid")) {
 				toast.success("Оплата прошла успешно! Подробное сообщение о покупке отправлено на вашу почту. Спасибо что воспользовались нашим сервисом 🧡")
+				router.replace("/")
 			}
 		}, 500)
 	}, [])
