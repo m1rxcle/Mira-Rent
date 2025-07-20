@@ -1,6 +1,10 @@
 import { Car as CarPrisma } from "@/lib/generated/prisma"
 import { format, parseISO } from "date-fns"
 import { Calendar, Car, Cog, LayoutDashboard, LucideIcon } from "lucide-react"
+import { Resend } from "resend"
+import axios from "axios"
+import { PaymentData } from "@/@types/yookassa"
+import { IYookassaDetailsProps } from "@/@types"
 
 export const MENU = [
 	{
@@ -129,4 +133,54 @@ export const formatTimeForTestDrive = (timeString: string) => {
 	} catch {
 		return timeString
 	}
+}
+
+export const sendEmail = async (to: string, subject: string, template: React.ReactNode) => {
+	const resend = new Resend(process.env.RESEND_API_KEY)
+
+	const { data, error } = await resend.emails.send({
+		from: "MiraMotors@resend.dev",
+		to,
+		subject,
+		react: template,
+	})
+
+	if (error) {
+		throw error
+	}
+
+	return data
+}
+
+export const createPayment = async (details: IYookassaDetailsProps) => {
+	const { data } = await axios.post<PaymentData>(
+		"https://api.yookassa.ru/v3/payments",
+		{
+			amount: {
+				value: details.amount,
+				currency: "RUB",
+			},
+			capture: true,
+			description: details.description,
+			metadata: {
+				order_id: details.orderId,
+			},
+			confirmation: {
+				type: "redirect",
+				return_url: process.env.YOOKASSA_CALLBACK_URL,
+			},
+		},
+		{
+			auth: {
+				username: process.env.YOOKASSA_SHOP_ID as string,
+				password: process.env.YOOKASSA_API_KEY as string,
+			},
+			headers: {
+				"Content-Type": "application/json",
+				"Idempotence-Key": Math.random().toString(36).substring(7),
+			},
+		}
+	)
+
+	return data
 }

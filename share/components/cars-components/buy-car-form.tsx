@@ -13,9 +13,9 @@ interface Props {
 
 export const BuyCarForm: React.FC<Props> = ({ car, dealership, className }) => {
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-			<div className="md:col-span-1">
-				<Card>
+		<div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
+			<div className="md:col-span-1 relative">
+				<Card className="sticky top-0">
 					<CardContent className="p-6">
 						<h2 className="text-xl font-bold mb-4">Детали Машины</h2>
 
@@ -68,7 +68,7 @@ export const BuyCarForm: React.FC<Props> = ({ car, dealership, className }) => {
 				<Card className="h-full">
 					<CardContent className="p-6">
 						<h2 className="text-xl font-bold mb-4">Оплата и доставка</h2>
-						<CredentialsForm />
+						<CredentialsForm carId={car.id} />
 						<div className="mt-4 bg-gray-100 p-4 rounded-xl">
 							<p className="text-xs text-gray-600 text-center">
 								Нажав оплату вы подтверждаете свою договоренность с нашими условиями и политикой конфиденциальности. Деньги будут списаны с вашей
@@ -78,8 +78,8 @@ export const BuyCarForm: React.FC<Props> = ({ car, dealership, className }) => {
 						</div>
 					</CardContent>
 				</Card>
-				<Card className="mt-6 w-1/2  ">
-					<CardContent className="p-6">
+				<Card className="mt-6 w-full ">
+					<CardContent className="pt-6">
 						<h2 className="text-xl font-bold mb-4">Место покупки</h2>
 						<div className="text-sm ">
 							<p className="font-medium">{dealership?.name || "Miracle Motors"}</p>

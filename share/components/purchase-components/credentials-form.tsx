@@ -7,15 +7,20 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { buyCarSchema, buyCarSchemaType } from "@/share/constants/zodSchemas/buyCarSchema"
 import { Button, Input, Label } from "@/share/ui"
 import { createOrder } from "@/app/actions/purchase.actions"
+import { toast } from "sonner"
 
 interface Props {
+	carId: string
 	className?: string
 }
 
-export const CredentialsForm: React.FC<Props> = ({ className }) => {
+export const CredentialsForm: React.FC<Props> = ({ carId, className }) => {
+	const [submitting, setSubmitting] = React.useState(false)
+
 	const methods = useForm<buyCarSchemaType>({
 		resolver: zodResolver(buyCarSchema),
 		defaultValues: {
+			carId,
 			email: "",
 			phone: "",
 			address: "",
@@ -23,7 +28,24 @@ export const CredentialsForm: React.FC<Props> = ({ className }) => {
 	})
 
 	const onSubmit = async (data: buyCarSchemaType) => {
-		await createOrder(data)
+		try {
+			console.log(data)
+
+			setSubmitting(true)
+			const url = await createOrder(data)
+			console.log(data)
+
+			toast.success("Заказ успешно создан ! Переход на оплату...")
+
+			if (url) {
+				location.href = url
+			}
+		} catch (error) {
+			setSubmitting(false)
+			console.log(error)
+
+			toast.error("Не удалось создать заказ")
+		}
 	}
 	return (
 		<FormProvider<buyCarSchemaType> {...methods}>
@@ -43,7 +65,7 @@ export const CredentialsForm: React.FC<Props> = ({ className }) => {
 				</Label>
 				<Input placeholder="+7 (921) 000-00-00" {...methods.register("phone")} className="mt-1 mb-1" />
 				{methods.formState.errors.phone && <p className="text-xs text-red-500">{methods.formState.errors.phone.message}</p>}
-				<Button type="submit" className="w-full mt-6 bg-green-600 hover:bg-green-500">
+				<Button disabled={submitting} type="submit" className="w-full mt-6 bg-green-600 hover:bg-green-500">
 					Оплатить
 				</Button>
 			</form>

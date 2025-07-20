@@ -10,7 +10,10 @@ interface Props {
 export const AddressInput: React.FC<Props> = ({ onChange }) => {
 	return (
 		<AddressSuggestions
-			inputProps={{ style: { borderRadius: 8, borderColor: "#d1d5db", height: 35, outline: "none", boxShadow: "none" } }}
+			inputProps={{
+				style: { borderRadius: 8, borderColor: "#d1d5db", height: 35, outline: "none", boxShadow: "none" },
+				placeholder: "г. Москва, ул. Пушкинская, д. 1",
+			}}
 			token="b9b7404d9c87dd2718c6b1d4351f1bf4e72118a7"
 			onChange={(data) => onChange?.(data?.value)}
 		/>

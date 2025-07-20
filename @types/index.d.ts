@@ -253,3 +253,9 @@ export interface IAvailabeSlot {
 	startTime: string
 	endTime: string
 }
+
+export interface IYookassaDetailsProps {
+	amount: number
+	description: string
+	orderId: number
+}
