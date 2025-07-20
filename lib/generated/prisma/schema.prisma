@@ -142,7 +142,7 @@ model TestDriveBooking {
 
 enum OrderStatuses {
   PENDING
-  SUCCESS
+  SUCCEEDED
   CANCELLED
 }
 
