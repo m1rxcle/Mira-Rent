@@ -1,11 +1,11 @@
 "use server"
 
-import { OrderStatuses } from "@/lib/generated/prisma"
 import prisma from "@/prisma/prisma"
 import { PayOrderTemplate } from "@/share/components/email-templates/pay-order"
 import { createPayment, sendEmail } from "@/share/constants/data"
 import { buyCarSchemaType } from "@/share/constants/zodSchemas/buyCarSchema"
 import { auth } from "@clerk/nextjs/server"
+import { OrderStatuses } from "@prisma/client"
 
 export async function createOrder(data: buyCarSchemaType) {
 	try {
