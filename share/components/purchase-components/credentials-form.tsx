@@ -33,12 +33,14 @@ export const CredentialsForm: React.FC<Props> = ({ carId, className }) => {
 		try {
 			setSubmitting(true)
 			const url = await createOrder(data)
-			console.log(data)
-			console.log(url)
+			console.log("Data on submit", data)
+			console.log("URl", url)
 
 			toast.success("Заказ успешно создан ! Переход на оплату...")
 
 			if (url) {
+				console.log("url", url)
+
 				router.push(url)
 			}
 		} catch (error) {

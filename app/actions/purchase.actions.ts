@@ -9,6 +9,8 @@ import { auth } from "@clerk/nextjs/server"
 
 export async function createOrder(data: buyCarSchemaType) {
 	try {
+		console.log("Creating order...", data)
+
 		const { userId } = await auth()
 		if (!userId) throw new Error("User not authenticated")
 
@@ -35,6 +37,8 @@ export async function createOrder(data: buyCarSchemaType) {
 				status: OrderStatuses.PENDING,
 			},
 		})
+
+		console.log("Order created:", order)
 
 		if (!order) {
 			throw new Error("Failed to create order")
