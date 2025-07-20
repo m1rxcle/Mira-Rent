@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.25](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.24...v0.2.25) (2025-07-20)
+
+
+### major - 🧨 Мажорные изменения
+
+* **custom:** добавил сообщение об успешной оплате на главной ([42cd9dd](https://github.com/m1rxcle/Mira-Rent/commit/42cd9ddbc1be6f902e13d5b3e835e597f65efcbb))
+
 ### [0.2.24](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.23...v0.2.24) (2025-07-20)
 
 
