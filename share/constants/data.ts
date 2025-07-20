@@ -167,9 +167,11 @@ export const createPayment = async (details: IYookassaDetailsProps) => {
 			},
 			confirmation: {
 				type: "redirect",
-				return_url: process.env.YOOKASSA_CALLBACK_URL,
+
+				return_url: process.env.YOOKASSA_RETURN_URL,
 			},
 		},
+
 		{
 			auth: {
 				username: process.env.YOOKASSA_SHOP_ID as string,
@@ -181,6 +183,7 @@ export const createPayment = async (details: IYookassaDetailsProps) => {
 			},
 		}
 	)
+	console.log("Return URL:", process.env.YOOKASSA_RETURN_URL)
 
 	return data
 }
