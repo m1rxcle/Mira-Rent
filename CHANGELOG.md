@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.22](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.21...v0.2.22) (2025-07-20)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** удалил generated ([d08b5ab](https://github.com/m1rxcle/Mira-Rent/commit/d08b5abc927c57bb85f23a4b5c5194f9f280fb6d))
+
 ### [0.2.21](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.20...v0.2.21) (2025-07-20)
 
 
