@@ -31,11 +31,10 @@ export const CredentialsForm: React.FC<Props> = ({ carId, className }) => {
 
 	const onSubmit = async (data: buyCarSchemaType) => {
 		try {
-			console.log(data)
-
 			setSubmitting(true)
 			const url = await createOrder(data)
 			console.log(data)
+			console.log(url)
 
 			toast.success("Заказ успешно создан ! Переход на оплату...")
 

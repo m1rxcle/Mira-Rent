@@ -46,6 +46,8 @@ export async function createOrder(data: buyCarSchemaType) {
 			description: `Оплата заказа №` + order.id,
 		})
 
+		console.log("Payment Data:", paymentData) // Логируем полученные данные
+
 		if (!paymentData) {
 			throw new Error("Failed to create payment")
 		}
@@ -60,6 +62,8 @@ export async function createOrder(data: buyCarSchemaType) {
 		})
 
 		const paymentUrl = paymentData.confirmation.confirmation_url
+
+		console.log("Payment URL:", paymentUrl)
 
 		await sendEmail(
 			data.email,

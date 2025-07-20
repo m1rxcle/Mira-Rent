@@ -182,5 +182,8 @@ export const createPayment = async (details: IYookassaDetailsProps) => {
 		}
 	)
 
+	console.log(data)
+	console.log(details)
+
 	return data
 }
