@@ -27,9 +27,6 @@ const clerk = clerkMiddleware(async (auth, req) => {
 		return redirectToSignIn()
 	}
 
-	// 🟢 Добавь лог — чтобы проверить, доходит ли
-	console.log("[Middleware] Allowing access to:", pathname)
-
 	return NextResponse.next()
 })
 

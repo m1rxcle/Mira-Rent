@@ -1,8 +1,21 @@
-import { memo } from "react"
+"use client"
+
+import React, { memo } from "react"
 import { Button } from "../../ui/button"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
+import { toast } from "sonner"
 
 const ReadyToFind = () => {
+	const searchParams = useSearchParams()
+	React.useEffect(() => {
+		setTimeout(() => {
+			if (searchParams.has("paid")) {
+				toast.success("Оплата прошла успешно! Подробное сообщение о покупке отправлено на вашу почту. Спасибо что воспользовались нашим сервисом 🧡")
+			}
+		}, 500)
+	}, [])
+
 	return (
 		<div className="container mx-auto px-4 text-center">
 			<h2 className="text-3xl font-bold  mb-4">Готовы найти машину мечты?</h2>

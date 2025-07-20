@@ -33,8 +33,6 @@ export const CredentialsForm: React.FC<Props> = ({ carId, className }) => {
 		try {
 			setSubmitting(true)
 			const url = await createOrder(data)
-			console.log("Data on submit", data)
-			console.log("URl", url)
 
 			toast.success("Заказ успешно создан ! Переход на оплату...")
 
@@ -45,7 +43,6 @@ export const CredentialsForm: React.FC<Props> = ({ carId, className }) => {
 			}
 		} catch (error) {
 			setSubmitting(false)
-			console.log(error)
 
 			toast.error("Не удалось создать заказ")
 		}

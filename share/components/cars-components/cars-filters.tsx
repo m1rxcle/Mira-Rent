@@ -68,7 +68,6 @@ const CarsFilters = ({ filters }: FiltersProps) => {
 	const setIsSheetOpen = setIsSheetOpenFn()
 
 	useEffect(() => {
-		console.log("[useEffect] initializing filters from URL")
 		if (!didInit.current) {
 			setMake(currentMake)
 			setBodyType(currentBodyType)

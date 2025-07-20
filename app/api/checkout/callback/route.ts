@@ -6,16 +6,9 @@ import { sendEmail } from "@/share/constants/data"
 import { OrderStatuses } from "@prisma/client"
 import { NextRequest, NextResponse } from "next/server"
 
-export async function GET(req: NextRequest) {
-	console.log("Test logging endpoint!")
-	return new Response("Method GET is allowed")
-}
-
 export async function POST(req: NextRequest) {
 	try {
-		console.log("YooKassa Callback Hit")
 		const body = (await req.json()) as PaymentCallbackData
-		console.log("YooKassa Callback Body:", body)
 
 		const order = await prisma.order.findFirst({
 			where: {
@@ -38,8 +31,6 @@ export async function POST(req: NextRequest) {
 			},
 		})
 
-		console.log(`Order ${order.id} updated to: ${isSucceeded ? "SUCCEEDED" : "CANCELLED"}`)
-
 		const car = await prisma.car.findUnique({
 			where: {
 				id: order.carId,
@@ -50,18 +41,8 @@ export async function POST(req: NextRequest) {
 			return NextResponse.json({ error: "Car not found" })
 		}
 
-		const carMake = car.make
-		const carYear = car.year
-		const carModel = car.model
-		const carFuelType = car.fuelType
-		const carPrice = car.price
-
 		if (isSucceeded) {
-			await sendEmail(
-				order.email,
-				"Mira Rent | Ваш заказ успешно оплачен !",
-				OrderSuccessTemplate({ carModel, carMake, carYear, carFuelType, carPrice, orderId: order.id })
-			)
+			await sendEmail(order.email, "Mira Rent | Ваш заказ успешно оплачен !", OrderSuccessTemplate({ car: car, orderId: order.id }))
 		} else {
 			await sendEmail(order.email, "Mira Rent | Ваш заказ отменен", CancelledOrderTemplate({ orderId: order.id }))
 		}

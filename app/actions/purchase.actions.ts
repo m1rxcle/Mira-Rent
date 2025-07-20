@@ -9,8 +9,6 @@ import { OrderStatuses } from "@prisma/client"
 
 export async function createOrder(data: buyCarSchemaType) {
 	try {
-		console.log("Creating order...", data)
-
 		const { userId } = await auth()
 		if (!userId) throw new Error("User not authenticated")
 
@@ -38,8 +36,6 @@ export async function createOrder(data: buyCarSchemaType) {
 			},
 		})
 
-		console.log("Order created:", order)
-
 		if (!order) {
 			throw new Error("Failed to create order")
 		}
@@ -49,8 +45,6 @@ export async function createOrder(data: buyCarSchemaType) {
 			orderId: order.id,
 			description: `Оплата заказа №` + order.id,
 		})
-
-		console.log("Payment Data:", paymentData) // Логируем полученные данные
 
 		if (!paymentData) {
 			throw new Error("Failed to create payment")
@@ -66,8 +60,6 @@ export async function createOrder(data: buyCarSchemaType) {
 		})
 
 		const paymentUrl = paymentData.confirmation.confirmation_url
-
-		console.log("Payment URL:", paymentUrl)
 
 		await sendEmail(
 			data.email,
