@@ -19,8 +19,11 @@ const aj = arcjet({
 
 const clerk = clerkMiddleware(async (auth, req) => {
 	const { userId } = await auth()
+	const publicRoutes = ["/", "/api/checkout/callback"]
 
-	if (!userId && isProtectedRoute(req)) {
+	const isPublic = publicRoutes.some((route) => req.nextUrl.pathname.startsWith(route))
+
+	if (!userId && isProtectedRoute(req) && !isPublic) {
 		const { redirectToSignIn } = await auth()
 
 		return redirectToSignIn()
