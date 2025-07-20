@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.26](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.25...v0.2.26) (2025-07-20)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** добавил router для перетерания ссылки paid ([52348b9](https://github.com/m1rxcle/Mira-Rent/commit/52348b9db07ce74615884b63f483d8842a893f52))
+
 ### [0.2.25](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.24...v0.2.25) (2025-07-20)
 
 
