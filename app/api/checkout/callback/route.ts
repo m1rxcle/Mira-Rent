@@ -13,7 +13,9 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
 	try {
+		console.log("YooKassa Callback Hit")
 		const body = (await req.json()) as PaymentCallbackData
+		console.log("YooKassa Callback Body:", body)
 
 		const order = await prisma.order.findFirst({
 			where: {
@@ -35,6 +37,8 @@ export async function POST(req: NextRequest) {
 				status: isSucceeded ? OrderStatuses.SUCCEEDED : OrderStatuses.CANCELLED,
 			},
 		})
+
+		console.log(`Order ${order.id} updated to: ${isSucceeded ? "SUCCEEDED" : "CANCELLED"}`)
 
 		const car = await prisma.car.findUnique({
 			where: {
@@ -61,6 +65,8 @@ export async function POST(req: NextRequest) {
 		} else {
 			await sendEmail(order.email, "Mira Rent | Ваш заказ отменен", CancelledOrderTemplate({ orderId: order.id }))
 		}
+
+		return NextResponse.json({ status: "ok" })
 	} catch (error) {
 		console.log(`[checkout/callback]`, error)
 		console.error("Error Processing Webhook:", error)
