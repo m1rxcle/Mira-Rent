@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.11](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.10...v0.2.11) (2025-07-20)
+
+
+### major - 🧨 Мажорные изменения
+
+* **custom:** добавил больше логов ([6144016](https://github.com/m1rxcle/Mira-Rent/commit/614401696fccf84cdd76fee3450b307dd925ced9))
+
 ### [0.2.10](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.9...v0.2.10) (2025-07-20)
 
 
