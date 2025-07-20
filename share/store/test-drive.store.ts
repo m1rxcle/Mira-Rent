@@ -1,7 +1,7 @@
 import { IAvailabeSlot } from "@/@types"
 import { create, StateCreator } from "zustand"
 import { TTestDrive } from "../constants/zodSchemas/testDriveSchema"
-import { BookingStatus } from "@/lib/generated/prisma"
+import { BookingStatus } from "@prisma/client"
 
 interface IInitialState {
 	// test-drive-card

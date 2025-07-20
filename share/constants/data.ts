@@ -1,4 +1,4 @@
-import { Car as CarPrisma } from "@/lib/generated/prisma"
+import { Car as CarPrisma } from "@prisma/client"
 import { format, parseISO } from "date-fns"
 import { Calendar, Car, Cog, LayoutDashboard, LucideIcon } from "lucide-react"
 import { Resend } from "resend"

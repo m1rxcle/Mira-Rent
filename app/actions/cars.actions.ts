@@ -14,9 +14,9 @@ import { v4 as uuidv4 } from "uuid"
 import { fileToBase64, serializedCarData } from "@/share/constants/data"
 
 import { createClient } from "@/lib/supabase"
-import { Prisma } from "@/lib/generated/prisma"
 import { isUserAuthorized } from "./admin.actions"
 import { auth } from "@clerk/nextjs/server"
+import { Prisma } from "@prisma/client"
 
 export async function processCarImageWithAi(file: File) {
 	try {

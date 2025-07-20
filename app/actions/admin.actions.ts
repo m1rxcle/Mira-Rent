@@ -1,9 +1,9 @@
 "use server"
 
-import { $Enums, Prisma } from "@/lib/generated/prisma"
 import prisma from "@/prisma/prisma"
 import { serializedCarData } from "@/share/constants/data"
 import { auth } from "@clerk/nextjs/server"
+import { $Enums, Prisma } from "@prisma/client"
 import { revalidatePath } from "next/cache"
 
 export async function isUserAuthorized() {

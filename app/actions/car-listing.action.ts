@@ -1,10 +1,10 @@
 "use server"
 
 import { CarListProps } from "@/@types"
-import { Car, Prisma } from "@/lib/generated/prisma"
 import prisma from "@/prisma/prisma"
 import { serializedCarData } from "@/share/constants/data"
 import { auth } from "@clerk/nextjs/server"
+import { Car, Prisma } from "@prisma/client"
 import { revalidatePath } from "next/cache"
 
 export async function getCarFilters() {
@@ -344,7 +344,7 @@ export async function getCarById(carId: Car["id"]) {
 									createdAt: hour.createdAt.toISOString(),
 									updatedAt: hour.updatedAt.toISOString(),
 								})),
-						  }
+							}
 						: null,
 				},
 			},

@@ -2,9 +2,9 @@
 
 import prisma from "@/prisma/prisma"
 import { isUserAuthorized } from "./admin.actions"
-import { User, WorkingHour } from "@/lib/generated/prisma"
 import { auth } from "@clerk/nextjs/server"
 import { revalidatePath } from "next/cache"
+import { User, WorkingHour } from "@prisma/client"
 
 export async function getDealerShipInfo() {
 	try {

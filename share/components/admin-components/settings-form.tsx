@@ -1,6 +1,5 @@
 "use client"
 import { getDealerShipInfo, getUsers, saveWorkingHours, updateUserRole } from "@/app/actions/settings.actions"
-import { DayOfWeek, User, WorkingHour } from "@/lib/generated/prisma"
 import useFetch from "@/share/hooks/use-fetch"
 import {
 	Button,
@@ -30,6 +29,7 @@ import { toast } from "sonner"
 
 import Image from "next/image"
 import { DAYS } from "@/share/constants/data"
+import { DayOfWeek, User, WorkingHour } from "@prisma/client"
 
 const SettingsForm = () => {
 	const [workingHours, setWorkingHours] = useState<Omit<WorkingHour, "dealersihpId" | "createdAt" | "updatedAt" | "id">[]>(
@@ -131,7 +131,7 @@ const SettingsForm = () => {
 	const filterUsers = usersData?.success
 		? usersData.data.filter(
 				(user) => user.name?.toLocaleLowerCase().includes(search.toLowerCase()) || user.email?.toLowerCase().includes(search.toLowerCase())
-		  )
+			)
 		: []
 
 	const handleRemoveAdmin = async (user: User) => {

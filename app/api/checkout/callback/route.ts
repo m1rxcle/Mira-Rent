@@ -1,9 +1,9 @@
 import { PaymentCallbackData } from "@/@types/yookassa"
-import { OrderStatuses } from "@/lib/generated/prisma"
 import prisma from "@/prisma/prisma"
 import { CancelledOrderTemplate } from "@/share/components/email-templates/cancelled-payment"
 import { OrderSuccessTemplate } from "@/share/components/email-templates/success-payment"
 import { sendEmail } from "@/share/constants/data"
+import { OrderStatuses } from "@prisma/client"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function GET(req: NextRequest) {

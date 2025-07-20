@@ -2,7 +2,6 @@
 
 import { getAdminTestDrive, updateTestDriveStatus } from "@/app/actions/admin.actions"
 import { cancelTestDrive } from "@/app/actions/test-drive.actions"
-import { BookingStatus } from "@/lib/generated/prisma"
 import useFetch from "@/share/hooks/use-fetch"
 import {
 	Button,
@@ -26,6 +25,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { setStatusFilterFn, useStatusFilter } from "@/share/store/test-drive.store"
 import { setSearchFn, useSearch } from "@/share/store/car.store"
+import { BookingStatus } from "@prisma/client"
 
 const TestDriveList = () => {
 	const search = useSearch()

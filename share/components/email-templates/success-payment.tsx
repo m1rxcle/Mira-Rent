@@ -1,4 +1,4 @@
-import { Car } from "@/lib/generated/prisma"
+import { Car } from "@prisma/client"
 import React from "react"
 
 interface Props {
