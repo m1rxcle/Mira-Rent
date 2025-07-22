@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.28](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.27...v0.2.28) (2025-07-22)
+
+
+### major - 🧨 Мажорные изменения
+
+* **custom:** добавил отображения заказов для пользователя и админа ([6675404](https://github.com/m1rxcle/Mira-Rent/commit/6675404bec4f9d9fc191760e0af6b877d9fe976c))
+
 ### [0.2.27](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.26...v0.2.27) (2025-07-20)
 
 
