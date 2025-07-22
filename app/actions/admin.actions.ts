@@ -163,6 +163,84 @@ export async function updateTestDriveStatus(bookingId: string, newStatus: $Enums
 	}
 }
 
+export async function getAllPurchase() {
+	try {
+		const { userId } = await auth()
+
+		if (!userId) throw new Error("Unauthorized")
+
+		const user = await prisma.user.findUnique({
+			where: { clerkUserId: userId },
+		})
+
+		if (!user || user.role !== "ADMIN") {
+			throw new Error("Unauthorized access")
+		}
+
+		const purchase = await prisma.order.findMany({
+			include: {
+				car: true,
+				user: true,
+			},
+			orderBy: {
+				createdAt: "desc",
+			},
+		})
+
+		const formattedPurchase = purchase.map((order) => ({
+			id: order.id,
+			carId: order.carId,
+			car: serializedCarData(order.car),
+			status: order.status,
+			amount: order.amount.toString(),
+			phone: order.phone,
+			user: order.user,
+			email: order.email,
+			address: order.address,
+			createdAt: order.createdAt.toISOString(),
+			updatedAt: order.updatedAt.toISOString(),
+		}))
+
+		return {
+			data: formattedPurchase,
+		}
+	} catch (error) {
+		return {
+			success: false,
+			error: "Error getting all purchase",
+		}
+	}
+}
+
+export async function deletePurchase(orderId: number) {
+	try {
+		const { userId } = await auth()
+
+		if (!userId) throw new Error("Unauthorized")
+
+		const user = await prisma.user.findUnique({
+			where: { clerkUserId: userId },
+		})
+
+		if (!user || user.role !== "ADMIN") {
+			throw new Error("Unauthorized access")
+		}
+
+		await prisma.order.delete({
+			where: { id: orderId },
+		})
+
+		revalidatePath("/admin/purchase")
+
+		return {
+			success: true,
+			message: "Purchase deleted successfully",
+		}
+	} catch (error) {
+		console.error("Error deleting purchase", error)
+	}
+}
+
 export async function getDashboardData() {
 	try {
 		const { userId } = await auth()
@@ -177,7 +255,7 @@ export async function getDashboardData() {
 			throw new Error("Unauthorized access")
 		}
 
-		const [cars, testDrives] = await Promise.all([
+		const [cars, testDrives, orders] = await Promise.all([
 			prisma.car.findMany({
 				select: {
 					id: true,
@@ -193,11 +271,20 @@ export async function getDashboardData() {
 					carId: true,
 				},
 			}),
+
+			prisma.order.findMany({
+				select: {
+					id: true,
+					status: true,
+					carId: true,
+				},
+			}),
 		])
 
 		const totalCars = cars.length
 		const availableCars = cars.filter((car) => car.status === "AVAILABLE").length
-		const soldCars = cars.filter((car) => car.status === "SOLD").length
+		const soldCars = orders.filter((order) => order.status === "SUCCEEDED").length
+
 		const unavailableCars = cars.filter((car) => car.status === "UNAVAILABLE").length
 		const featuredCars = cars.filter((car) => car.featured === true).length
 

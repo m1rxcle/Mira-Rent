@@ -1,6 +1,6 @@
 import { Car as CarPrisma } from "@prisma/client"
 import { format, parseISO } from "date-fns"
-import { Calendar, Car, Cog, LayoutDashboard, LucideIcon } from "lucide-react"
+import { BadgeRussianRuble, Calendar, Car, Cog, LayoutDashboard, LucideIcon } from "lucide-react"
 import { Resend } from "resend"
 import axios from "axios"
 import { PaymentData } from "@/@types/yookassa"
@@ -75,6 +75,11 @@ export const ROUTES: { label: string; icon: LucideIcon; href: string }[] = [
 		label: "Бронирование",
 		icon: Calendar,
 		href: "/admin/test-drives",
+	},
+	{
+		label: "Продажи",
+		icon: BadgeRussianRuble,
+		href: "/admin/sales",
 	},
 	{
 		label: "Настройки",
@@ -186,4 +191,41 @@ export const createPayment = async (details: IYookassaDetailsProps) => {
 	console.log("Return URL:", process.env.YOOKASSA_RETURN_URL)
 
 	return data
+}
+
+export const formatPhoneNumber = (value: string) => {
+	let cleanedValue = value.replace(/[\D]/g, "").replace(/^([7]+)/, "$1")
+	if (cleanedValue.length > 0 && cleanedValue.charAt(0) !== "7") {
+		cleanedValue = "7" + cleanedValue
+	}
+
+	const numberLength = cleanedValue.length
+	switch (numberLength) {
+		case 0:
+			return ""
+		case 1:
+			return "+7 "
+		case 2:
+			return `+7 (${cleanedValue.substring(1, 2)}`
+		case 3:
+			return `+7 (${cleanedValue.substring(1, 3)}`
+		case 4:
+			return `+7 (${cleanedValue.substring(1, 4)}) `
+		case 5:
+			return `+7 (${cleanedValue.substring(1, 4)}) ${cleanedValue.substring(4, 5)}`
+		case 6:
+			return `+7 (${cleanedValue.substring(1, 4)}) ${cleanedValue.substring(4, 6)}`
+		case 7:
+			return `+7 (${cleanedValue.substring(1, 4)}) ${cleanedValue.substring(4, 7)}-`
+		case 8:
+			return `+7 (${cleanedValue.substring(1, 4)}) ${cleanedValue.substring(4, 7)}-${cleanedValue.substring(7, 8)}`
+		case 9:
+			return `+7 (${cleanedValue.substring(1, 4)}) ${cleanedValue.substring(4, 7)}-${cleanedValue.substring(7, 9)}`
+		case 10:
+			return `+7 (${cleanedValue.substring(1, 4)}) ${cleanedValue.substring(4, 7)}-${cleanedValue.substring(7, 9)}-${cleanedValue.substring(9, 10)}`
+		case 11:
+			return `+7 (${cleanedValue.substring(1, 4)}) ${cleanedValue.substring(4, 7)}-${cleanedValue.substring(7, 9)}-${cleanedValue.substring(9, 11)}`
+		default:
+			return cleanedValue
+	}
 }

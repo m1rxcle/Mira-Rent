@@ -293,8 +293,8 @@ const TestDriveForm = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: T
 															!selectedDate
 																? "Выберите день"
 																: availableTimeSlots.length === 0
-																? "No time slots available on this date"
-																: "Select a time slot"
+																	? "No time slots available on this date"
+																	: "Select a time slot"
 														}
 													/>
 												</SelectTrigger>

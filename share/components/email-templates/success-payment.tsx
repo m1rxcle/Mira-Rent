@@ -1,3 +1,4 @@
+import { formatCarPrice } from "@/share/constants/data"
 import { Car } from "@prisma/client"
 import React from "react"
 
@@ -8,7 +9,7 @@ interface Props {
 
 export function OrderSuccessTemplate({ car, orderId }: Props) {
 	return (
-		<div>
+		<div className="flex justify-center items-center flex-col text-center">
 			<h1>
 				Спасибо за покупку автомобиля{" "}
 				<span className="font-bold italic">
@@ -18,7 +19,7 @@ export function OrderSuccessTemplate({ car, orderId }: Props) {
 			<hr />
 			<h2>Ваш заказ №{orderId} оплачен.</h2>
 			<h3>Детали вашего автомобиля:</h3>
-			<img src={car.images[0]} alt={car.make + " " + car.model} />
+			<img className="w-[400px] h-[350px]" src={car.images[0]} alt={car.make + " " + car.model} />
 			<ul>
 				<li>Марка: {car.make},</li>
 				<li>Модель: {car.model},</li>
@@ -26,7 +27,7 @@ export function OrderSuccessTemplate({ car, orderId }: Props) {
 				<li>Двигатель: {car.fuelType},</li>
 				<li>Цвет: {car.color}.</li>
 			</ul>
-			<h3>Ваша покупка вышла на ${car.price.toString()}.</h3>
+			<h3>Ваша покупка вышла на {formatCarPrice(car.price.toNumber())}.</h3>
 		</div>
 	)
 }

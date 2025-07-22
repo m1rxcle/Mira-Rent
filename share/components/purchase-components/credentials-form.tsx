@@ -9,6 +9,7 @@ import { Button, Input, Label } from "@/share/ui"
 import { createOrder } from "@/app/actions/purchase.actions"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
+import { formatPhoneNumber } from "@/share/constants/data"
 
 interface Props {
 	carId: string
@@ -57,13 +58,25 @@ export const CredentialsForm: React.FC<Props> = ({ carId, className }) => {
 				<Label className="mt-4" htmlFor="email">
 					Ваш Email:
 				</Label>
-				<Input placeholder="alan.turing@gmail.com" {...methods.register("email")} className="mt-1 mb-1" />
+				<Input id="email" placeholder="alan.turing@gmail.com" {...methods.register("email")} className="mt-1 mb-1" />
 				{methods.formState.errors.email && <p className="text-xs text-red-500">{methods.formState.errors.email.message}</p>}
 
 				<Label htmlFor="phone" className="mt-4">
 					Ваш телефон:
 				</Label>
-				<Input placeholder="+7 (921) 000-00-00" {...methods.register("phone")} className="mt-1 mb-1" />
+				<Input
+					prefix="+"
+					type="tel"
+					id="phone"
+					placeholder="+7 (921) 000-00-00"
+					{...methods.register("phone")}
+					onChange={(e) => {
+						const formattedValue = formatPhoneNumber(e.target.value)
+						methods.setValue("phone", formattedValue)
+					}}
+					className="mt-1 mb-1"
+				/>
+
 				{methods.formState.errors.phone && <p className="text-xs text-red-500">{methods.formState.errors.phone.message}</p>}
 				<Button disabled={submitting} type="submit" className="w-full mt-6 bg-green-600 hover:bg-green-500">
 					Оплатить

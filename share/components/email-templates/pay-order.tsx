@@ -1,3 +1,4 @@
+import { formatCarPrice } from "@/share/constants/data"
 import React from "react"
 
 interface Props {
@@ -11,9 +12,9 @@ export function PayOrderTemplate({ orderId, totalAmount, paymentUrl }: Props) {
 		<div>
 			<h1>Заказ №{orderId}</h1>
 
-			<p>
-				Оплатите заказ на сумму ${totalAmount}. Перейдите <a href={paymentUrl}>по этой ссылке</a> для оплаты заказа.
-			</p>
+			<h3>
+				Оплатите заказ на сумму {formatCarPrice(totalAmount)}. Перейдите <a href={paymentUrl}>по этой ссылке</a> для оплаты заказа.
+			</h3>
 		</div>
 	)
 }

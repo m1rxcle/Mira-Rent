@@ -274,7 +274,7 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 
 							<Button onClick={handleBuyCar} className="w-full py-6 text-lg bg-green-600 hover:bg-green-500 ">
 								<RussianRuble className="h-5 w-5 mr-2" />
-								Приобрести машину
+								Купить автомобиль
 							</Button>
 						</>
 					)}
@@ -398,7 +398,7 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 												<span className="text-gray-600">{day}</span>
 												<span>{index < 5 ? "9:00 - 18:00" : index === 5 ? "10:00 - 16:00" : "Закрыто"}</span>
 											</div>
-									  ))}
+										))}
 							</div>
 						</div>
 					</div>

@@ -45,9 +45,9 @@ export async function processCarImageWithAi(file: File) {
             6. Mileage 
             7. Fuel type (Gasoline, Diesel, Electric, Hybrid, etc., your best guess)
             8. Transmission type (your best guess)
-            9. Price (your best guess)(without a $ sign and without a comma, it should be a number)
+            9. Price (your best guess)(without a sign and without a comma, it should be a number)
             10. Short description as to be added to a car listing(Make it full sentence and not just a few words describing the car.)
-
+		You must respond in Russian language except for the price, it must be in Dollars.
         Make sure you dont miss anything and provide the most accurate information possible(you can imagine some fields, if they are missing).
         Format your response as a clean JSON object with these fields:
          {

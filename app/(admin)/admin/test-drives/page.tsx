@@ -1,3 +1,4 @@
+import { getAllPurchase } from "@/app/actions/admin.actions"
 import { TestDriveList } from "@/share/components"
 
 export const metadata = {

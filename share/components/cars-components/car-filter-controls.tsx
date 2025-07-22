@@ -72,8 +72,8 @@ const CarFilterControls = ({ filters, currentFilters, onFilterChange, onClearFil
 					/>
 				</div>
 				<div className="flex items-center justify-between">
-					<div className="font-medium text-sm">$ {priceRange[0]}</div>
-					<div className="font-medium text-sm">$ {priceRange[1]}</div>
+					<div className="font-medium text-sm">${priceRange[0]} </div>
+					<div className="font-medium text-sm">${priceRange[1]} </div>
 				</div>
 			</div>
 

@@ -127,6 +127,56 @@ export async function getUserTestDrives() {
 	}
 }
 
+export async function getUserOrders() {
+	try {
+		const { userId } = await auth()
+		if (!userId) throw new Error("User not authenticated")
+
+		const user = await prisma.user.findUnique({
+			where: { clerkUserId: userId },
+		})
+
+		if (!user) throw new Error("User not found")
+
+		const orders = await prisma.order.findMany({
+			where: {
+				userId: user.id,
+			},
+			include: {
+				car: true,
+			},
+			orderBy: {
+				createdAt: "desc",
+			},
+		})
+
+		const formattedOrder = orders.map((order) => ({
+			id: order.id,
+			carId: order.carId,
+			car: serializedCarData(order.car),
+			email: order.email,
+			phone: order.phone,
+			address: order.address,
+			amount: order.amount.toString(),
+			status: order.status,
+			createdAt: order.createdAt.toISOString(),
+			updatedAt: order.updatedAt.toISOString(),
+		}))
+
+		return {
+			success: true,
+			data: formattedOrder,
+		}
+	} catch (error) {
+		console.error("Error getting user orders:", error)
+
+		return {
+			success: false,
+			error: error || "Failed to get user orders",
+		}
+	}
+}
+
 export async function cancelTestDrive(bookingId: string) {
 	try {
 		const { userId } = await auth()

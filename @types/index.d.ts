@@ -259,3 +259,80 @@ export interface IYookassaDetailsProps {
 	description: string
 	orderId: number
 }
+
+export type TOrdersProps =
+	| {
+			id: number
+			carId: string
+			car: {
+				id: string
+				price: number
+				createdAt: Date
+				updatedAt: Date
+				wishlisted: boolean
+				model: string
+				status: $Enums.CarStatus
+				make: string
+				year: number
+				mileage: number
+				color: string
+				fuelType: string
+				transmission: string
+				bodyType: string
+				seats: number | null
+				description: string
+				featured: boolean
+				images: string[]
+			}
+			email: string
+			phone: string
+			address: string
+			amount: string
+			status: $Enums.OrderStatuses | null
+			createdAt: string
+			updatedAt: string
+	  }
+	| undefined
+
+export interface IPurchaseForAdmin {
+	id: number
+	carId: string
+	car: {
+		id: string
+		price: number
+		createdAt: Date
+		updatedAt: Date
+		wishlisted: boolean
+		model: string
+		status: $Enums.CarStatus
+		make: string
+		year: number
+		mileage: number
+		color: string
+		fuelType: string
+		transmission: string
+		bodyType: string
+		seats: number | null
+		description: string
+		featured: boolean
+		images: string[]
+	}
+	status: $Enums.OrderStatuses | null
+	amount: string
+	user: {
+		name: string | null
+		id: string
+		clerkUserId: string
+		email: string
+		imageUrl: string | null
+		phone: string | null
+		role: $Enums.UserRole
+		createdAt: Date
+		updatedAt: Date
+	}
+	phone: string
+	email: string
+	address: string
+	createdAt: string
+	updatedAt: string
+}
