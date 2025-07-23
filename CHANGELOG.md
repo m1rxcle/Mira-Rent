@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.29](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.28...v0.2.29) (2025-07-23)
+
+
+### build -🏗️ Сборка
+
+* **custom:** add carousel alike cars ([98bd4c8](https://github.com/m1rxcle/Mira-Rent/commit/98bd4c8dcf2a6dc6ff492ad1871a84caedd7268f))
+
 ### [0.2.28](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.27...v0.2.28) (2025-07-22)
 
 
