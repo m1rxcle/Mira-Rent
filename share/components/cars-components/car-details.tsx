@@ -1,26 +1,12 @@
 "use client"
 
 import { CarProps, TestDriveBookingProps } from "@/@types"
-import { toggleSavedCar } from "@/app/actions/car-listing.action"
+import { alikeCars, toggleSavedCar } from "@/app/actions/car-listing.action"
 import { formatCarPrice } from "@/share/constants/data"
 import useFetch from "@/share/hooks/use-fetch"
 
 import { useAuth } from "@clerk/nextjs"
-import {
-	BadgeRussianRuble,
-	Calendar,
-	Car,
-	Currency,
-	Fuel,
-	Gauge,
-	Heart,
-	Loader2,
-	LocateFixed,
-	MessageSquare,
-	RussianRuble,
-	Share2,
-	Users2,
-} from "lucide-react"
+import { Calendar, Car, Currency, Fuel, Gauge, Heart, Loader2, LocateFixed, MessageSquare, RussianRuble, Share2, Users2 } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useMemo, useState } from "react"
@@ -42,6 +28,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/share/ui"
+import { CarouseAlikeCars } from "./carouse-alike-cars"
 
 const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: TestDriveBookingProps }) => {
 	const router = useRouter()
@@ -51,6 +38,8 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 	const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
 	const { loading: savingCar, fn: toggleSaveCarFn, data: toggleResult, error: toggleError } = useFetch(toggleSavedCar)
+
+	const { loading: alikeLoading, fn: alikeFn, data: alikeData } = useFetch(alikeCars)
 
 	useEffect(() => {
 		if (toggleResult?.success && toggleResult.saved !== isWishlisted) {
@@ -64,6 +53,10 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 			toast.error("Ошибка при сохранении автомобиля")
 		}
 	}, [toggleError])
+
+	useEffect(() => {
+		alikeFn(car.make)
+	}, [])
 
 	const handleSaveCar = useCallback(async () => {
 		if (!isSignedIn) {
@@ -82,6 +75,8 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 		}
 		return ""
 	}, [])
+
+	if (!alikeData) return null
 
 	const handleShare = () => {
 		if (navigator.share) {
@@ -123,6 +118,8 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 		}
 		router.push(`/purchase/${car.id}`)
 	}
+
+	const exceptCars = alikeData.data?.filter((item) => item.id !== car.id)
 
 	return (
 		<div>
@@ -404,6 +401,7 @@ const CarDetails = ({ car, testDriveInfo }: { car: CarProps; testDriveInfo: Test
 					</div>
 				</div>
 			</div>
+			{exceptCars && exceptCars?.length > 0 && <CarouseAlikeCars loading={alikeLoading} exceptCars={exceptCars} />}
 		</div>
 	)
 }

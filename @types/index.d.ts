@@ -33,7 +33,7 @@ export interface CarListProps {
 	transmission: string
 	minPrice: number
 	maxPrice: Number.MAX_SAFE_INTEGER
-	sortBy: "newest" | "priceAsc" | "priceDesc" // Options: newest, priceAsc, priceDesc,
+	sortBy: "newest" | "priceAsc" | "priceDesc"
 	page: number
 	limit: number
 }
@@ -336,3 +336,18 @@ export interface IPurchaseForAdmin {
 	createdAt: string
 	updatedAt: string
 }
+
+export interface IExceptCars {
+	id: string
+	make: string
+	model: string
+	year: number
+	price: number
+	fuelType: string
+	transmission: string
+	bodyType: string
+	images: string[]
+	mileage: number
+	color: string
+}
+;[] | undefined

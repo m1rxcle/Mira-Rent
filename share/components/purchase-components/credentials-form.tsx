@@ -38,8 +38,6 @@ export const CredentialsForm: React.FC<Props> = ({ carId, className }) => {
 			toast.success("Заказ успешно создан ! Переход на оплату...")
 
 			if (url) {
-				console.log("url", url)
-
 				router.push(url)
 			}
 		} catch (error) {
@@ -78,7 +76,7 @@ export const CredentialsForm: React.FC<Props> = ({ carId, className }) => {
 				/>
 
 				{methods.formState.errors.phone && <p className="text-xs text-red-500">{methods.formState.errors.phone.message}</p>}
-				<Button disabled={submitting} type="submit" className="w-full mt-6 bg-green-600 hover:bg-green-500">
+				<Button loading={submitting} type="submit" className="w-full mt-6 bg-green-600 hover:bg-green-500">
 					Оплатить
 				</Button>
 			</form>

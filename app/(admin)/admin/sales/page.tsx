@@ -1,6 +1,5 @@
 import { getAllPurchase } from "@/app/actions/admin.actions"
 import { SalesList } from "@/share/components/admin-components/sales-list"
-import { Button } from "@/share/ui"
 
 export const metadata = {
 	title: "Sales | Mira-Rent Admin",

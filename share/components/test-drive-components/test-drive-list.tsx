@@ -26,6 +26,7 @@ import Link from "next/link"
 import { setStatusFilterFn, useStatusFilter } from "@/share/store/test-drive.store"
 import { setSearchFn, useSearch } from "@/share/store/car.store"
 import { BookingStatus } from "@prisma/client"
+import { EmptyTestDrives } from "../empty/empty-test-drives"
 
 const TestDriveList = () => {
 	const search = useSearch()
@@ -113,7 +114,7 @@ const TestDriveList = () => {
 					</Button>
 				</form>
 			</div>
-			{testDrivesData?.data?.length === 0 ? (
+			{testDrivesData?.data?.length !== 0 ? (
 				<Card>
 					<CardHeader>
 						<CardTitle className="flex items-center gap-2">
@@ -123,16 +124,7 @@ const TestDriveList = () => {
 						<CardDescription>Управляйте забронированными тест драйвами</CardDescription>
 					</CardHeader>
 					<CardContent>
-						<div className="flex flex-col items-center justify-center text-center p-8 border rounded-lg bg-gray-50">
-							<div className="bg-gray-100 p-4 rounded-full mb-4">
-								<CalendarRange className="h-8 w-8 text-gray-500" />
-							</div>
-							<h3 className="text-lg font-medium mb-2">Не найдено забронированных тест драйвов</h3>
-							<p className="text-gray-500 mb-6 max-w-md">Нет забронированных тест драйвов. Просмотрите наши автомобили и забронируйте тест драйв</p>
-							<Button asChild variant="default">
-								<Link href="/cars">Поиск машин</Link>
-							</Button>
-						</div>
+						<EmptyTestDrives />
 					</CardContent>
 				</Card>
 			) : (

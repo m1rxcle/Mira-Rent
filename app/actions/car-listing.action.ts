@@ -353,3 +353,53 @@ export async function getCarById(carId: Car["id"]) {
 		throw new Error(`Error getting car: ${error}`)
 	}
 }
+
+export async function alikeCars(carMake: Car["make"]) {
+	try {
+		const { userId } = await auth()
+		let dbUser = null
+
+		if (userId) {
+			dbUser = await prisma.user.findUnique({
+				where: { clerkUserId: userId },
+			})
+		}
+
+		const car = await prisma.car.findMany({
+			where: { make: carMake },
+		})
+
+		if (!car) {
+			return {
+				success: false,
+				error: "Car not found",
+			}
+		}
+
+		const formattedCars = car.map((fcar) => {
+			return {
+				id: fcar.id,
+				make: fcar.make,
+				model: fcar.model,
+				year: fcar.year,
+				price: fcar.price.toNumber(),
+				fuelType: fcar.fuelType,
+				transmission: fcar.transmission,
+				bodyType: fcar.bodyType,
+				images: fcar.images,
+				mileage: fcar.mileage,
+				color: fcar.color,
+			}
+		})
+
+		return {
+			success: true,
+			data: formattedCars,
+		}
+	} catch (error) {
+		return {
+			success: false,
+			error: "Failed to get alike cars",
+		}
+	}
+}

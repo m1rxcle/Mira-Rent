@@ -1,5 +1,6 @@
 import { TOrdersProps } from "@/@types"
 import { getUserOrders, getUserTestDrives } from "@/app/actions/test-drive.actions"
+import { EmptyOrders } from "@/share/components/empty/empty-orders"
 import { ReservationsList } from "@/share/components/index"
 import OrdersList from "@/share/components/test-drive-components/orders-list"
 import { Button, Tabs, TabsContent, TabsList, TabsTrigger } from "@/share/ui"
@@ -47,16 +48,7 @@ const ReservationsPage = async () => {
 				<TabsContent value="orders" className="space-y-6 mt-6 ">
 					{orders === undefined ||
 						(orders.length === 0 ? (
-							<div className="min-h-[400px] mt-20 flex flex-col items-center justify-center text-center p-8 border rounded-lg bg-gray-50">
-								<div className="bg-gray-100 p-4 rounded-full mb-4">
-									<Calendar className="h-8 w-8 text-gray-500" />
-								</div>
-								<h3 className="text-lg font-medium mb-2">Не удалось найти ваши операции</h3>
-								<p className="text-gray-500 mb-6 max-w-md">Вы не приобрели ни одной машины. Пожалуйста выберите машину из нашего списка.</p>
-								<Button asChild variant="default">
-									<Link href="/cars">Найти машину</Link>
-								</Button>
-							</div>
+							<EmptyOrders text="Вы не приобрели ни одной машины, пожалуйста выберите машину из нашего списка" />
 						) : (
 							<>
 								<h2 className="text-2xl font-bold mb-4">Ваши операции</h2>

@@ -12,8 +12,9 @@ import useFetch from "@/share/hooks/use-fetch"
 import { toggleSavedCar } from "@/app/actions/car-listing.action"
 import { useAuth } from "@clerk/nextjs"
 import { toast } from "sonner"
+import { cn } from "@/lib/utils"
 
-const CarCard = ({ car }: { car: CarProps }) => {
+const CarCard = ({ car, className }: { car: CarProps; className?: string }) => {
 	const [isSaved, setIsSaved] = useState(car.wishlisted)
 	const router = useRouter()
 	const { isSignedIn } = useAuth()
@@ -51,7 +52,7 @@ const CarCard = ({ car }: { car: CarProps }) => {
 	}
 
 	return (
-		<Card className="overflow-hidden hover:shadow-lg transition group p-0">
+		<Card className={cn("overflow-hidden hover:shadow-lg transition group p-0", className)}>
 			<div className="relative h-48">
 				{car.images && car.images.length > 0 ? (
 					<div className="relative w-full h-full">

@@ -302,13 +302,13 @@ const SettingsForm = () => {
 																	variant="outline"
 																	size="sm"
 																	onClick={() => handleRemoveAdmin(user)}
-																	disabled={updatingRole}
+																	loading={updatingRole}
 																>
 																	<UserX className="mr-2 h-4 w-4" />
 																	Сделать пользователем
 																</Button>
 															) : (
-																<Button variant="outline" size="sm" onClick={() => handleMakeAdmin(user)} disabled={updatingRole}>
+																<Button variant="outline" size="sm" onClick={() => handleMakeAdmin(user)} loading={updatingRole}>
 																	<Shield className="mr-2 h-4 w-4" />
 																	Сделать администратором
 																</Button>

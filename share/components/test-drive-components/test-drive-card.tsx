@@ -153,7 +153,7 @@ const TestDriveCard = ({
 							</div>
 						</div>
 						<DialogFooter>
-							<Button variant="outline" onClick={() => setCanceDialogOpen(false)} disabled={isCanceling}>
+							<Button variant="outline" onClick={() => setCanceDialogOpen(false)} loading={isCanceling}>
 								Оставить бронирование
 							</Button>
 							<Button variant="destructive" onClick={handleCancel} disabled={isCanceling}>
