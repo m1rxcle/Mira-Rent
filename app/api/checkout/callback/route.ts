@@ -42,9 +42,9 @@ export async function POST(req: NextRequest) {
 		}
 
 		if (isSucceeded) {
-			await sendEmail(order.email, "Mira Rent | Ваш заказ успешно оплачен !", OrderSuccessTemplate({ car: car, orderId: order.id }))
+			await sendEmail(order.email, "🚘 Mira Rent | Ваш заказ успешно оплачен ! ✅", OrderSuccessTemplate({ car: car, orderId: order.id }))
 		} else {
-			await sendEmail(order.email, "Mira Rent | Ваш заказ отменен", CancelledOrderTemplate({ orderId: order.id }))
+			await sendEmail(order.email, "🚘 Mira Rent | Ваш заказ отменен ❌", CancelledOrderTemplate({ orderId: order.id }))
 		}
 
 		return NextResponse.json({ status: "ok" })

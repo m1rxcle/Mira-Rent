@@ -63,7 +63,7 @@ export async function createOrder(data: buyCarSchemaType) {
 
 		await sendEmail(
 			data.email,
-			`Mira Rent  | Оплатите заказ №` + order.id,
+			`🚘 Mira Rent | Оплатите заказ 📝 №` + order.id,
 			PayOrderTemplate({ orderId: order.id, totalAmount: order.amount.toNumber(), paymentUrl })
 		)
 

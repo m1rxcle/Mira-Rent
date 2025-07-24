@@ -15,6 +15,10 @@ export function PayOrderTemplate({ orderId, totalAmount, paymentUrl }: Props) {
 			<h3>
 				Оплатите заказ на сумму {formatCarPrice(totalAmount)}. Перейдите <a href={paymentUrl}>по этой ссылке</a> для оплаты заказа.
 			</h3>
+			<hr />
+			<h4>
+				С уважением <span className="font-bold">© Mira Motors Team</span>
+			</h4>
 		</div>
 	)
 }
