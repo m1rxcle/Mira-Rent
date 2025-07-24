@@ -144,7 +144,7 @@ export const sendEmail = async (to: string, subject: string, template: React.Rea
 	const resend = new Resend(process.env.RESEND_API_KEY)
 
 	const { data, error } = await resend.emails.send({
-		from: "MiraMotors@resend.dev",
+		from: "team@miracle-rent.shop",
 		to,
 		subject,
 		react: template,
@@ -188,7 +188,6 @@ export const createPayment = async (details: IYookassaDetailsProps) => {
 			},
 		}
 	)
-	console.log("Return URL:", process.env.YOOKASSA_RETURN_URL)
 
 	return data
 }
