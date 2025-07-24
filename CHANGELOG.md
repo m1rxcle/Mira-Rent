@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.30](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.29...v0.2.30) (2025-07-24)
+
+
+### major - 🧨 Мажорные изменения
+
+* **custom:** add multiply emails to reserves ([bc2935c](https://github.com/m1rxcle/Mira-Rent/commit/bc2935cb334084bc8e7ffcd042c09e14d291ffb4))
+
 ### [0.2.29](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.28...v0.2.29) (2025-07-23)
 
 
