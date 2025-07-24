@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.31](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.30...v0.2.31) (2025-07-24)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** изменил стиль смс на почту ([2bbf147](https://github.com/m1rxcle/Mira-Rent/commit/2bbf14749f0b5445058aea33bb04d609cbd56a8d))
+
 ### [0.2.30](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.29...v0.2.30) (2025-07-24)
 
 
