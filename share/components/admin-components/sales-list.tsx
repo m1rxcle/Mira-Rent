@@ -20,6 +20,7 @@ interface Props {
 }
 
 export const SalesList: React.FC<Props> = ({ purchase, className }) => {
+	const [orderToDelete, setOrderToDelete] = useState<IPurchaseForAdmin | null>(null)
 	const [openDialog, setOpenDialog] = useState(false)
 	const { loading, fn, data } = useFetch(deletePurchase)
 	const getStatusBadgeForUserOrders = (status: string) => {
@@ -37,6 +38,7 @@ export const SalesList: React.FC<Props> = ({ purchase, className }) => {
 
 	const handleDeleteOrder = async (id: number) => {
 		await fn(id)
+		if (!loading) setOpenDialog(false)
 	}
 
 	const handleOpenDialog = () => {
@@ -120,18 +122,20 @@ export const SalesList: React.FC<Props> = ({ purchase, className }) => {
 													Посмотреть машину <ArrowRight className=" h-4 w-4" />
 												</Link>
 											</Button>
-											<Button loading={loading} onClick={() => handleOpenDialog()} className="w-full" variant="destructive" size="sm">
+											<Button
+												disabled={loading}
+												onClick={() => {
+													handleOpenDialog()
+													setOrderToDelete(purchase)
+												}}
+												className="w-full"
+												variant="destructive"
+												size="sm"
+											>
 												<Trash className="mr-2 h-4 w-4" /> Удалить заказ
 											</Button>
 										</div>
 									</div>
-									<DeleteOrderDialog
-										openDialog={openDialog}
-										setOpenDialog={setOpenDialog}
-										handleDeleteOrder={handleDeleteOrder}
-										loading={loading}
-										purchase={purchase}
-									/>
 								</Card>
 							)
 						})
@@ -140,6 +144,13 @@ export const SalesList: React.FC<Props> = ({ purchase, className }) => {
 					)}
 				</CardContent>
 			</Card>
+			<DeleteOrderDialog
+				openDialog={openDialog}
+				setOpenDialog={setOpenDialog}
+				handleDeleteOrder={handleDeleteOrder}
+				loading={loading}
+				purchase={orderToDelete}
+			/>
 		</div>
 	)
 }

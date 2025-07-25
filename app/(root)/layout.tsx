@@ -9,18 +9,38 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "Miracle Rent – аренда авто",
 		description: "Найдите свой лучший автомобиль.",
-		url: "https://mira-rent.vercel.app",
+		url: "https://miracle-rent.shop",
 		siteName: "Miracle Rent",
 		images: [
 			{
-				url: "https://mira-rent.vercel.app/main-logo.webp",
+				url: "https://miracle-rent.shop/main-logo.webp",
 				width: 1200,
 				height: 630,
 				alt: "Miracle Rent – превью",
 			},
+			{
+				url: "https://miracle-rent.shop/main-logo.webp",
+				width: 600,
+				height: 315,
+				alt: "Miracle Rent – превью мобильная версия",
+			},
+			{
+				url: "https://miracle-rent.shop/main-logo.webp",
+				width: 300,
+				height: 157,
+				alt: "Miracle Rent – маленькое превью",
+			},
 		],
 		locale: "ru_RU",
 		type: "website",
+	},
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+		},
 	},
 }
 

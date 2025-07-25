@@ -23,6 +23,22 @@ const nextConfig: NextConfig = {
 	env: {
 		NEXT_PUBLIC_VERSION: version,
 	},
+	async redirects() {
+		return [
+			{
+				source: "/:path*",
+				has: [
+					{
+						type: "host",
+						value: "miracle-rent.shop",
+					},
+				],
+				destination: "https://www.miracle-rent.shop/:path*",
+				permanent: true,
+				basePath: false,
+			},
+		]
+	},
 
 	// Прочитать про HEADERS.
 	/* async headers() {
