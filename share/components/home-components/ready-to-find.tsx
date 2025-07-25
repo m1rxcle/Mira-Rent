@@ -10,12 +10,20 @@ const ReadyToFind = () => {
 	const router = useRouter()
 	const searchParams = useSearchParams()
 	React.useEffect(() => {
-		setTimeout(() => {
-			if (searchParams.has("paid")) {
-				toast.success("Оплата прошла успешно! Подробное сообщение о покупке отправлено на вашу почту. Спасибо что воспользовались нашим сервисом 🧡")
-				router.replace("/")
-			}
-		}, 500)
+		if (searchParams.has("paid")) {
+			localStorage.setItem("showPaidToast", "true")
+			const current = new URLSearchParams(window.location.search)
+			current.delete("paid")
+			const newPath = window.location.pathname + (current.toString() ? "?" + current.toString() : "")
+			router.replace(newPath)
+		}
+	}, [searchParams])
+
+	React.useEffect(() => {
+		if (localStorage.getItem("showPaidToast") === "true") {
+			toast.success("Оплата прошла успешно! Подробное сообщение о покупке отправлено на вашу почту. Спасибо что воспользовались нашим сервисом 🧡")
+			localStorage.removeItem("showPaidToast")
+		}
 	}, [])
 
 	return (

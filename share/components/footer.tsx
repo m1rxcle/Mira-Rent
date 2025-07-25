@@ -75,8 +75,13 @@ const Footer = () => {
 			</div>
 
 			<div className="border-t border-white text-center text-black/70 text-sm py-4">
-				© 2025 Miracle-Rent. Все права защищены ❤️.{" "}
-				<p className="mt-3 text-gray-600 pointer-events-none">Версия проекта: {process.env.NEXT_PUBLIC_VERSION}</p>
+				© 2025{" "}
+				<a href="https://github.com/m1rxcle/Mira-Rent" className="text-black group " target="_blank" rel="noopener noreferrer">
+					<span className="group-hover:scale-105 inline-block transition duration-150">m1rxcle</span>
+				</a>
+				. Все права защищены ❤️.{" "}
+				<p className="text-gray-600 mt-2">Сайт является пет-проектом, не предназначенным для коммерческого использования и реальных покупок.</p>
+				<p className="text-gray-600 pointer-events-none">Версия проекта: {process.env.NEXT_PUBLIC_VERSION}</p>
 			</div>
 		</footer>
 	)
