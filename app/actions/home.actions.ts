@@ -1,9 +1,7 @@
 "use server"
 
-import aj from "@/lib/arcjet"
 import prisma from "@/prisma/prisma"
 import { fileToBase64, serializedCarData } from "@/share/constants/data"
-import { request } from "@arcjet/next"
 import { GoogleGenerativeAI } from "@google/generative-ai"
 
 export async function getFeaturedCars(limit = 3) {
@@ -28,30 +26,6 @@ export async function getFeaturedCars(limit = 3) {
 export async function processImageSearch(file: File) {
 	try {
 		//Rate limit
-
-		const req = await request()
-
-		const decision = await aj.protect(req, {
-			requested: 1,
-		})
-
-		if (decision.isDenied()) {
-			if (decision.reason.isRateLimit()) {
-				const { remaining, reset } = decision.reason
-
-				console.error({
-					code: "RATE_LIMIT_EXCEEDED",
-					details: {
-						remaining,
-						resetInSeconds: reset,
-					},
-				})
-
-				throw new Error("Too many requests. Please try again later.")
-			}
-
-			throw new Error("Requst blocked")
-		}
 
 		if (!process.env.GEMINI_API_KEY) throw new Error("Gemini API key is not set")
 

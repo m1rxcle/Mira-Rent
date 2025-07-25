@@ -30,7 +30,7 @@ const DeleteOrderDialog: React.FC<DeleteOrderDialogProps> = ({ openDialog, purch
 					</DialogDescription>
 				</DialogHeader>
 				<DialogFooter>
-					<Button variant="outline" onClick={() => setOpenDialog(false)} loading={loading}>
+					<Button variant="outline" onClick={() => setOpenDialog(false)} disabled={loading}>
 						Отмена
 					</Button>
 

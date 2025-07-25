@@ -5,22 +5,8 @@ import { deletePurchase } from "@/app/actions/admin.actions"
 import { cn } from "@/lib/utils"
 import { formatCarPrice } from "@/share/constants/data"
 import useFetch from "@/share/hooks/use-fetch"
-import {
-	Badge,
-	Button,
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-} from "@/share/ui"
-import { ArrowRight, Calendar, Car, Eye, Loader2, Trash } from "lucide-react"
+import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/share/ui"
+import { ArrowRight, Car, Eye, Trash } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import React, { useEffect, useState } from "react"
@@ -35,7 +21,7 @@ interface Props {
 
 export const SalesList: React.FC<Props> = ({ purchase, className }) => {
 	const [openDialog, setOpenDialog] = useState(false)
-	const { loading, fn, data, error } = useFetch(deletePurchase)
+	const { loading, fn, data } = useFetch(deletePurchase)
 	const getStatusBadgeForUserOrders = (status: string) => {
 		switch (status) {
 			case "PENDING":

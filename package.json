@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "next dev --turbopack",
 		"build": "next build",
+		"postbuild": "next-sitemap",
 		"commit:all": "git add . && cz",
 		"prepare": "husky install",
 		"release": "standard-version && git push --follow-tags origin master",
@@ -40,6 +41,7 @@
 		"embla-carousel-react": "^8.6.0",
 		"lucide-react": "^0.510.0",
 		"next": "^15.3.2",
+		"next-sitemap": "^4.2.3",
 		"next-themes": "^0.4.6",
 		"nextjs-toploader": "^3.8.16",
 		"react": "19.1.0",

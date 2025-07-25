@@ -230,7 +230,7 @@ export async function deletePurchase(orderId: number) {
 			where: { id: orderId },
 		})
 
-		revalidatePath("/admin/purchase")
+		revalidatePath("/admin/sales")
 
 		return {
 			success: true,
