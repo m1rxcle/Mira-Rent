@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.32](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.31...v0.2.32) (2025-07-25)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** добавил next-sitemap ([f9e757b](https://github.com/m1rxcle/Mira-Rent/commit/f9e757b2ed780dc930d98503ed5e9c599aca69e5))
+
 ### [0.2.31](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.30...v0.2.31) (2025-07-24)
 
 
