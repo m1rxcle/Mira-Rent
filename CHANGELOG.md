@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.33](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.32...v0.2.33) (2025-07-25)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** добавил redirects, изменил seo, исправил deleteOrders ([00c7996](https://github.com/m1rxcle/Mira-Rent/commit/00c7996d0c42ed87d79f0f11999c5ff266233292))
+
 ### [0.2.32](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.31...v0.2.32) (2025-07-25)
 
 
