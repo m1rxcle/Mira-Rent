@@ -56,6 +56,8 @@ const TestDriveCard = ({
 		}
 	}
 
+	console.log("booking", booking)
+
 	return (
 		<>
 			<Card className={cn(`overflow-hidden ${isPast ? "opacity-80 hover:opacity-100 transition-opacity" : ""}`, className)}>

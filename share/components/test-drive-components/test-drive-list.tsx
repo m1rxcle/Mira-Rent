@@ -28,6 +28,8 @@ import { BookingStatus } from "@prisma/client"
 import { EmptyTestDrives } from "../empty/empty-test-drives"
 
 const TestDriveList = () => {
+	console.log("[TestDriveList] render")
+
 	const search = useSearch()
 	const setSearch = setSearchFn()
 
@@ -37,6 +39,8 @@ const TestDriveList = () => {
 	const { loading: fetchingTestDrives, fn: fetchTestDrives, data: testDrivesData, error: testDrivesError } = useFetch(getAdminTestDrive)
 	const { loading: updatingStatus, fn: updateStatusFn, data: updateResult, error: updateError } = useFetch(updateTestDriveStatus)
 	const { loading: cancelling, fn: cancelTestDriveFn, data: cancelResult, error: cancelError } = useFetch(cancelTestDrive)
+
+	console.log("[TestDriveList] testDrivesData:", testDrivesData)
 
 	useEffect(() => {
 		fetchTestDrives({ search, status: statusFilter })
@@ -113,7 +117,7 @@ const TestDriveList = () => {
 					</Button>
 				</form>
 			</div>
-			{testDrivesData?.data?.length !== 0 ? (
+			{testDrivesData?.data?.length === 0 ? (
 				<Card>
 					<CardHeader>
 						<CardTitle className="flex items-center gap-2">
