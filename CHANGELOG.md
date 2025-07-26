@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.35](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.34...v0.2.35) (2025-07-26)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** исправил ошибку в отображении test-drive ([b2d119b](https://github.com/m1rxcle/Mira-Rent/commit/b2d119b7da3ee3f2aa3470c487d298883290ccc8))
+
 ### [0.2.34](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.33...v0.2.34) (2025-07-25)
 
 
