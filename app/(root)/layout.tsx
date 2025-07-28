@@ -43,6 +43,9 @@ export const metadata: Metadata = {
 			follow: true,
 		},
 	},
+	verification: {
+		yandex: "91af6efd4cc869cd",
+	},
 }
 
 const DynamicFooter = dynamic(() => import("@/share/components/footer").then((mod) => mod.default))
@@ -50,9 +53,6 @@ const DynamicFooter = dynamic(() => import("@/share/components/footer").then((mo
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<>
-			<Head>
-				<meta name="yandex-verification" content="91af6efd4cc869cd" />
-			</Head>
 			<main className="min-h-screen mt-20">{children}</main>
 			<DynamicFooter />
 		</>
