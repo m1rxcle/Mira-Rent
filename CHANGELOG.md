@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.38](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.37...v0.2.38) (2025-07-28)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** перенет head от яндекстся в root ([9a15ca2](https://github.com/m1rxcle/Mira-Rent/commit/9a15ca25c19f8f1d4c0c3c04b98b008a98e6213b))
+
 ### [0.2.37](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.36...v0.2.37) (2025-07-28)
 
 
