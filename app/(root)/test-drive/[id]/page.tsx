@@ -7,6 +7,14 @@ export async function generateMetadata(): Promise<Metadata> {
 	return {
 		title: `Book Test Drive | Mira-Rent`,
 		description: "Book a test drive for a car on Mira-Rent",
+		robots: {
+			index: true,
+			follow: true,
+			googleBot: {
+				index: true,
+				follow: true,
+			},
+		},
 	}
 }
 

@@ -4,8 +4,20 @@ import Header from "@/share/components/header"
 import { Providers } from "@/share/components/providers"
 
 import "./globals.css"
+import { Metadata } from "next"
 
 const inter = Inter({ subsets: ["latin"] })
+
+export const metadata: Metadata = {
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+		},
+	},
+}
 
 export default function AppLayout({
 	children,

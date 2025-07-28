@@ -8,6 +8,14 @@ export async function generateMetadata(): Promise<Metadata> {
 	return {
 		title: "Покупка автомобиля | Mira-Rent",
 		description: "Покупка автомобиля",
+		robots: {
+			index: true,
+			follow: true,
+			googleBot: {
+				index: true,
+				follow: true,
+			},
+		},
 	}
 }
 

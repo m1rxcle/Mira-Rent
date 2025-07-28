@@ -141,3 +141,20 @@
 		@apply hidden;
 	}
 }
+.mask {
+	mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+}
+
+@keyframes infinite-scroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(calc(-100% - 50px));
+	}
+}
+
+/* Новый класс анимации */
+.infinite-scroll {
+	animation: infinite-scroll 30s linear infinite;
+}

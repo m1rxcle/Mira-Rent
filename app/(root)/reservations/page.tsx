@@ -13,6 +13,14 @@ import { redirect } from "next/navigation"
 export const metadata: Metadata = {
 	title: "Reservations | Mira-Rent",
 	description: "Manage reservations in your marketplace",
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+		},
+	},
 }
 
 const ReservationsPage = async () => {

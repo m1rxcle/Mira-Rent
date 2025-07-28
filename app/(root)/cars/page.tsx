@@ -5,6 +5,14 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
 	title: "Cars | Mira-Rent",
 	description: "Find you dream Car.",
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+		},
+	},
 }
 
 const CarsPage = async () => {

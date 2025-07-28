@@ -7,6 +7,14 @@ import { redirect } from "next/navigation"
 export const metadata: Metadata = {
 	title: "Saved Cars | Mira-Rent",
 	description: "View your saved cars.",
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+		},
+	},
 }
 
 const SavedCars = async () => {

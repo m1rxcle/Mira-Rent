@@ -7,8 +7,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Button } 
 
 import { Calendar, CarIcon, ChevronRight, Shield } from "lucide-react"
 import { CarCard, HomeSearch } from "@/share/components/index"
-import { BODY_TYPES_OBJECTS, CAR_MAKES, FAQ_ITEMS } from "@/share/constants/data"
+import { BODY_TYPES_OBJECTS, FAQ_ITEMS } from "@/share/constants/data"
 import dynamic from "next/dynamic"
+import { AnimatedCarMakes } from "@/share/components/animated/animated-car-makes"
 
 const DynamicReadyToFind = dynamic(() => import("@/share/components/home-components/ready-to-find").then((mod) => mod.default))
 
@@ -58,25 +59,7 @@ export default async function Home() {
 							</Link>
 						</Button>
 					</div>
-					<div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-						{CAR_MAKES.map((make) => (
-							<Link
-								className="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer"
-								key={make.name}
-								href={`/cars?make=${make.name}`}
-							>
-								<div className="h-16 w-auto mx-auto mb-2 relative">
-									<Image
-										src={make.image}
-										alt={make.name}
-										fill
-										sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-										style={{ objectFit: "contain" }}
-									/>
-								</div>
-							</Link>
-						))}
-					</div>
+					<AnimatedCarMakes />
 				</div>
 			</section>
 
