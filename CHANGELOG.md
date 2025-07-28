@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.37](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.36...v0.2.37) (2025-07-28)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** добавил мета для яндекс ([80bab9e](https://github.com/m1rxcle/Mira-Rent/commit/80bab9e3d064a22cf9616aa582d507ae153bcb17))
+
 ### [0.2.36](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.35...v0.2.36) (2025-07-28)
 
 
