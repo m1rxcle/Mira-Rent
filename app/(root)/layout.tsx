@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import dynamic from "next/dynamic"
+import Head from "next/head"
 
 export const metadata: Metadata = {
 	title: "Miracle Rent",
@@ -49,6 +50,9 @@ const DynamicFooter = dynamic(() => import("@/share/components/footer").then((mo
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<>
+			<Head>
+				<meta name="yandex-verification" content="91af6efd4cc869cd" />
+			</Head>
 			<main className="min-h-screen mt-20">{children}</main>
 			<DynamicFooter />
 		</>
