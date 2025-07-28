@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.36](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.35...v0.2.36) (2025-07-28)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** добавил ВЕЗДЕ в мета index, сделал анимированные марки ([6ba1da4](https://github.com/m1rxcle/Mira-Rent/commit/6ba1da4f81d6917ae10a82c9d56e6ecc3ab2e1bb))
+
 ### [0.2.35](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.34...v0.2.35) (2025-07-26)
 
 
