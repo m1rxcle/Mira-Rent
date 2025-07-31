@@ -13,10 +13,9 @@ import { formatPhoneNumber } from "@/share/constants/data"
 
 interface Props {
 	carId: string
-	className?: string
 }
 
-export const CredentialsForm: React.FC<Props> = ({ carId, className }) => {
+export const CredentialsForm: React.FC<Props> = ({ carId }) => {
 	const router = useRouter()
 	const [submitting, setSubmitting] = React.useState(false)
 

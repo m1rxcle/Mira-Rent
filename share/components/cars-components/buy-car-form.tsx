@@ -1,4 +1,4 @@
-import { CarProps } from "@/@types"
+import { CarProps, IDealership } from "@/@types"
 import { Card, CardContent } from "@/share/ui"
 import { Car } from "lucide-react"
 import React from "react"
@@ -7,11 +7,10 @@ import { CredentialsForm } from "../purchase-components/credentials-form"
 
 interface Props {
 	car: CarProps
-	dealership?: any
-	className?: string
+	dealership?: IDealership
 }
 
-export const BuyCarForm: React.FC<Props> = ({ car, dealership, className }) => {
+export const BuyCarForm: React.FC<Props> = ({ car, dealership }) => {
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
 			<div className="md:col-span-1 relative">

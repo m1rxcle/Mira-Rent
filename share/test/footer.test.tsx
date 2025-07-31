@@ -36,8 +36,18 @@ describe("Footer component", () => {
 
 		const gitHubLink = screen.getByRole("link", { name: "m1rxcle" }) as HTMLAnchorElement
 		expect(gitHubLink.href).toContain("https://github.com/m1rxcle/Mira-Rent")
+	})
 
-		const mailLink = screen.getByRole("link", { name: "noonebesideu@gmail.com" }) as HTMLAnchorElement
-		expect(mailLink.href).toContain("mailto:noonebesideu@gmail.com")
+	it("display contact info", () => {
+		render(<Footer />)
+
+		const addressLine = screen.getByText("г. Калининград, ул. Мира, 12")
+		expect(addressLine).toBeInTheDocument()
+
+		const phoneNumber = screen.getByText("+7 (999) 123-45-67")
+		expect(phoneNumber).toBeInTheDocument()
+
+		const emailAddress = screen.getByText("noonebesideu@gmail.com")
+		expect(emailAddress).toBeInTheDocument()
 	})
 })

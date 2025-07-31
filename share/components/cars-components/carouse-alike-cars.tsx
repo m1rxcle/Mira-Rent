@@ -7,10 +7,9 @@ import { Loader2 } from "lucide-react"
 interface Props {
 	exceptCars: IExceptCars[]
 	loading: boolean
-	className?: string
 }
 
-export const CarouseAlikeCars: React.FC<Props> = ({ exceptCars, loading, className }) => {
+export const CarouseAlikeCars: React.FC<Props> = ({ exceptCars, loading }) => {
 	return (
 		<div className="mt-8 py-4 px-2 md:p-6  bg-white rounded-lg shadow-sm border">
 			<h5 className="text-2xl font-bold">Похожие автомобили</h5>

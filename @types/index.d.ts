@@ -350,4 +350,23 @@ export interface IExceptCars {
 	mileage: number
 	color: string
 }
-;[] | undefined
+
+export interface IDealership {
+	createdAt: string
+	updatedAt: string
+	workingHours: {
+		id: string
+		createdAt: Date
+		updatedAt: Date
+		dealersihpId: string
+		dayOfWeek: $Enums.DayOfWeek
+		openTime: string
+		closeTime: string
+		isOpen: boolean
+	}[]
+	address: string
+	id: string
+	name: string
+	email: string
+	phone: string
+}
