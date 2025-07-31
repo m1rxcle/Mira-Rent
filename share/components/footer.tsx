@@ -21,7 +21,7 @@ const Footer = () => {
 	}, [isMobile])
 
 	return (
-		<footer className="bg-gradient-to-br from-blue-500 to-green-500 text-white">
+		<footer data-testid="footer" className="bg-gradient-to-br from-blue-500 to-green-500 text-white">
 			<div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 md:gap-8 gap-4">
 				<div>
 					<h2 className="text-lg font-bold text-white">Mira Rent</h2>

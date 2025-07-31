@@ -114,7 +114,7 @@ const TestDriveCard = ({
 						<div className="p-4 border-t sm:border-t-0 sm:border-l sm:w-1/4 sm:flex sm:flex-col sm:justify-center sm:items-center sm:space-y-2">
 							{booking.notes && (
 								<div className="bg-gray-50 p-2 rounded text-sm w-full">
-									<p className="font-medium">Notes: </p>
+									<p className="font-medium">Комментарий:</p>
 									<p className="text-gray-600">{booking.notes}</p>
 								</div>
 							)}

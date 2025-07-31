@@ -16,9 +16,9 @@ const UserOrdersCard = ({ orders }: { orders: TOrdersProps }) => {
 			case "PENDING":
 				return <Badge className="bg-amber-100 text-amber-800">Ожидает</Badge>
 			case "SUCCEEDED":
-				return <Badge className="bg-green-100 text-green-800">Оплачена</Badge>
+				return <Badge className="bg-green-100 text-green-800">Оплачен</Badge>
 			case "CANCELLED":
-				return <Badge className="bg-gray-100 text-gray-800">Отменена</Badge>
+				return <Badge className="bg-gray-100 text-gray-800">Отменен</Badge>
 			default:
 				return <Badge variant="outline">{status}</Badge>
 		}
