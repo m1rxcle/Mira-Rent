@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/m1rxcle/Mira-Rent/compare/v0.3.1...v0.3.2) (2025-07-31)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** добавил ветку мастер в check.yml ([5e82f6d](https://github.com/m1rxcle/Mira-Rent/commit/5e82f6d6009d0f88ba1e9024fc5d1443de04eafa))
+
 ### [0.3.1](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.40...v0.3.1) (2025-07-31)
 
 
