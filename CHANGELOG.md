@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.3](https://github.com/m1rxcle/Mira-Rent/compare/v0.3.2...v0.3.3) (2025-07-31)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** добавил тесты на футер ([70a5ac1](https://github.com/m1rxcle/Mira-Rent/commit/70a5ac1cd6b832d1e17c7e8e8869b8efb9afc16e))
+
 ### [0.3.2](https://github.com/m1rxcle/Mira-Rent/compare/v0.3.1...v0.3.2) (2025-07-31)
 
 
