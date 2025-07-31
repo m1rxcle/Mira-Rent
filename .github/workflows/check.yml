@@ -13,3 +13,13 @@ jobs:
         run: npm ci --legacy-peer-deps
       - name: Lint
         run: npm run lint
+  test:
+    needs: [lint]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Test
+        run: npm run test
