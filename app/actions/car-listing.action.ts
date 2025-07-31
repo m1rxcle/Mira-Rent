@@ -356,15 +356,6 @@ export async function getCarById(carId: Car["id"]) {
 
 export async function alikeCars(carMake: Car["make"]) {
 	try {
-		const { userId } = await auth()
-		let dbUser = null
-
-		if (userId) {
-			dbUser = await prisma.user.findUnique({
-				where: { clerkUserId: userId },
-			})
-		}
-
 		const car = await prisma.car.findMany({
 			where: { make: carMake },
 		})
@@ -397,6 +388,8 @@ export async function alikeCars(carMake: Car["make"]) {
 			data: formattedCars,
 		}
 	} catch (error) {
+		console.log("Error getting alike cars: ", error)
+
 		return {
 			success: false,
 			error: "Failed to get alike cars",

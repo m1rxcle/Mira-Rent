@@ -1,6 +1,5 @@
 import { Metadata } from "next"
 import dynamic from "next/dynamic"
-import Head from "next/head"
 
 export const metadata: Metadata = {
 	title: "Miracle Rent",

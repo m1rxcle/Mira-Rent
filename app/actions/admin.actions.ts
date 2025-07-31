@@ -205,6 +205,8 @@ export async function getAllPurchase() {
 			data: formattedPurchase,
 		}
 	} catch (error) {
+		console.log("Error getting all purchase", error)
+
 		return {
 			success: false,
 			error: "Error getting all purchase",

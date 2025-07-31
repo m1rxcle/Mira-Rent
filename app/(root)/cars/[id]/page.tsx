@@ -1,4 +1,4 @@
-import { alikeCars, getCarById } from "@/app/actions/car-listing.action"
+import { getCarById } from "@/app/actions/car-listing.action"
 import { CarDetails } from "@/share/components/index"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"

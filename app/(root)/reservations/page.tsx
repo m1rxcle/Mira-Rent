@@ -3,11 +3,10 @@ import { getUserOrders, getUserTestDrives } from "@/app/actions/test-drive.actio
 import { EmptyOrders } from "@/share/components/empty/empty-orders"
 import { ReservationsList } from "@/share/components/index"
 import OrdersList from "@/share/components/test-drive-components/orders-list"
-import { Button, Tabs, TabsContent, TabsList, TabsTrigger } from "@/share/ui"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/share/ui"
 import { auth } from "@clerk/nextjs/server"
-import { BadgeRussianRuble, Calendar, Clock } from "lucide-react"
+import { BadgeRussianRuble, Clock } from "lucide-react"
 import { Metadata } from "next"
-import Link from "next/link"
 import { redirect } from "next/navigation"
 
 export const metadata: Metadata = {
