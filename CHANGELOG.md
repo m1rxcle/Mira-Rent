@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.40](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.39...v0.2.40) (2025-07-31)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** удалил redirects из next.config и добавил git-workflows на lint ([06ee9c2](https://github.com/m1rxcle/Mira-Rent/commit/06ee9c2b843928a738336dff39c30115535aec87))
+
 ### [0.2.39](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.38...v0.2.39) (2025-07-28)
 
 
