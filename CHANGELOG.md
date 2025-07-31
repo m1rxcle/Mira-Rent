@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.40...v0.3.1) (2025-07-31)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** добавил legacy-peer-deps в check.yml ([1503e2a](https://github.com/m1rxcle/Mira-Rent/commit/1503e2a0bce972df7a0686dc394dbeb5bd5d9a71))
+
 ### [0.2.40](https://github.com/m1rxcle/Mira-Rent/compare/v0.2.39...v0.2.40) (2025-07-31)
 
 
