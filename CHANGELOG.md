@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.7](https://github.com/m1rxcle/Mira-Rent/compare/v0.3.6...v0.3.7) (2025-08-02)
+
+
+### fix - 🐛 Исправление
+
+* **custom:** исправил clerk auth, добавил анимацию hover:transition в animated ([75bbf12](https://github.com/m1rxcle/Mira-Rent/commit/75bbf12ea31f5356799bcaad4e2b5cec6747a448))
+
 ### [0.3.6](https://github.com/m1rxcle/Mira-Rent/compare/v0.3.5...v0.3.6) (2025-07-31)
 
 
