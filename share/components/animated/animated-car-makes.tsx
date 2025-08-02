@@ -10,10 +10,10 @@ interface Props {
 export const AnimatedCarMakes: React.FC<Props> = ({ className }) => {
 	return (
 		<div className="overflow-hidden mask">
-			<div className="flex gap-10 infinite-scroll will-change-transform">
+			<div className="flex gap-10 h-full infinite-scroll will-change-transform p-4">
 				{[...CAR_MAKES, ...CAR_MAKES].map((make, index) => (
 					<Link
-						className="min-w-[200px] bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer"
+						className="min-w-[200px] bg-white rounded-lg shadow p-4 text-center hover:shadow-md hover:-translate-y-1 transition cursor-pointer "
 						key={make.name + index}
 						href={`/cars?make=${make.name}`}
 					>
